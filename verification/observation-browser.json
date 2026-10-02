@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-02T05:42:05.096Z",
+  "data_origin": "synthetic",
+  "scope": "Isolated gstack Chromium and controlled synthetic Node server; simulated dates and values, not actual use",
+  "counts": [
+    2,
+    0,
+    3,
+    1,
+    2
+  ],
+  "checks": [
+    {
+      "name": "synthetic T06 file upload, seven-table preview and empty-account import through UI",
+      "passed": true
+    },
+    {
+      "name": "user-entered question/rule and explicitly accepted fixed count/unit/calculation stored through UI",
+      "passed": true
+    },
+    {
+      "name": "simulated day 1: UI confirms 2 and preserves date and contributions",
+      "passed": true
+    },
+    {
+      "name": "simulated day 2: UI confirms 0 and preserves date and contributions",
+      "passed": true
+    },
+    {
+      "name": "exactly one rule change after day two through UI with reference IDs preserved",
+      "passed": true
+    },
+    {
+      "name": "simulated day 3: UI confirms 3 and preserves date and contributions",
+      "passed": true
+    },
+    {
+      "name": "simulated day 4: UI confirms 1 and preserves date and contributions",
+      "passed": true
+    },
+    {
+      "name": "simulated day 5: UI confirms 2 and preserves date and contributions",
+      "passed": true
+    },
+    {
+      "name": "five-day sum/mean, 2-day versus 3-day comparison and manually supplied synthetic check agree",
+      "passed": true
+    },
+    {
+      "name": "four-stage observation screen has no horizontal overflow at 375px",
+      "passed": true
+    }
+  ],
+  "credentials": "[REDACTED]",
+  "screenshots": [
+    "verification/observation-synthetic-five-days.png",
+    "verification/observation-mobile.png"
+  ]
+}

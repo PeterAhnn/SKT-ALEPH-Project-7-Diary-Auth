@@ -2,6 +2,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { observationOperations } from './observation-store.mjs';
+import { importLegacy } from './migration.mjs';
 
 const TABLES = ['plans', 'plan_history', 'tasks', 'executions', 'completion_events', 'request_receipts', 'reviews'];
 const PLAN_FIELDS = ['title', 'description', 'start_date', 'end_date', 'priority', 'success_criteria', 'expected_minutes'];
@@ -91,10 +93,17 @@ export function createSqliteStore({ filename = '.data/diary.sqlite', clock = () 
       throw failure(500, '자료를 저장하지 못했습니다. 다시 시도해 주세요.');
     }
   }
+  const diaryState = () => Object.fromEntries(TABLES.map(table => [table, db.prepare(`SELECT * FROM ${table} ORDER BY ${table === 'completion_events' ? 'completed_at' : 'created_at'}, ${table === 'request_receipts' ? 'request_id' : 'id'}`).all().map(decoded)]));
+  const observation = observationOperations({ db, transaction, now, requireRow, recordOrigin, diaryState });
   return {
     kind: 'sqlite',
+    async observationState() { return observation.state(); },
+    async stateBundle() { return transaction(() => ({ data: diaryState(), observation: observation.snapshot() }), false); },
+    async mutateObservation(action, input) { return observation.mutate(action, input); },
+    async exportState() { return transaction(() => ({ ...diaryState(), ...observation.snapshot() }), false); },
+    async importLegacy(exported, expectedDigest) { return importLegacy({ db, transaction, now, exported, expectedDigest }); },
     async state() {
-      return transaction(() => Object.fromEntries(TABLES.map(table => [table, db.prepare(`SELECT * FROM ${table} ORDER BY ${table === 'completion_events' ? 'completed_at' : 'created_at'}, ${table === 'request_receipts' ? 'request_id' : 'id'}`).all().map(decoded)])), false);
+      return transaction(diaryState, false);
     },
     async mutate(action, payload = {}) {
       if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw failure(400, '입력 자료를 확인해 주세요.');
@@ -128,6 +137,7 @@ export function createSqliteStore({ filename = '.data/diary.sqlite', clock = () 
           const current = requireRow('tasks', payload.id, true); let changed = false; let event;
           if (action === 'task.complete') {
             if (current.status === 'pending') {
+              observation.guardCompletion(current, stamp);
               event = { id: randomUUID(), task_id: current.id, cycle: current.completion_cycle, request_id: payload.request_id, completed_at: stamp };
               insert('completion_events', event);
               update('tasks', current.id, { status: 'completed', version: current.version + 1, updated_at: stamp }); changed = true;

@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-02T05:41:50.703Z",
+  "data_origin": "synthetic",
+  "scope": "Generated synthetic T06-shaped fixture into isolated in-memory databases; not real user migration",
+  "checks": [
+    {
+      "name": "atomic-seven-table-import",
+      "counts": {
+        "plans": 2,
+        "plan_history": 2,
+        "tasks": 1,
+        "executions": 1,
+        "completion_events": 1,
+        "request_receipts": 1,
+        "reviews": 1
+      },
+      "source_digest": "c518a4156b1855be626114ee951179de78c45cfea51f1c79ff2cb33da28836fb",
+      "all_ids_dates_values_and_relationships_preserved": true,
+      "source_unchanged": true,
+      "repeat_import_denied": true
+    },
+    {
+      "name": "invalid-source-no-mutation",
+      "rejected": [
+        "foreign key",
+        "invalid calendar date",
+        "unknown owner column",
+        "duplicate ID",
+        "history snapshot mismatch"
+      ],
+      "destination_unchanged": true
+    },
+    {
+      "name": "preview-and-empty-destination",
+      "modified_source_denied": true,
+      "nonempty_destination_preserved": true,
+      "canonical_digest_ignores_row_order": true
+    },
+    {
+      "name": "failed-import-rollback",
+      "fault": "synthetic task insertion failure after plans/history were inserted",
+      "all_tables_and_receipt_unchanged": true
+    }
+  ]
+}

@@ -134,7 +134,7 @@ test('HTTP state and one-file export retain IDs, dates, values and units after D
   assert.equal(exported.status, 200);
   assert.match(exported.response.headers.get('content-type'), /application\/json/);
   assert.match(exported.response.headers.get('content-disposition'), /attachment;.*\.json/i);
-  assert.equal(exported.body.schema_version, 2);
+  assert.equal(exported.body.schema_version, 3);
   assert.equal(exported.body.time_unit, 'minutes');
   assert.equal(exported.body.timezone, 'Asia/Seoul');
   assert.equal(exported.body.record_origin, 'synthetic');

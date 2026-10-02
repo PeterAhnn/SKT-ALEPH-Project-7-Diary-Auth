@@ -40,6 +40,7 @@
       <p class="sidebar-intro">계획을 고르고 오늘의 기록을 이어 보세요.</p>
       <button id="new-plan-button" class="button primary wide" type="button"><span aria-hidden="true">＋</span> 새 계획 세우기</button>
       <div id="plan-list" class="plan-list" aria-live="polite"></div>
+      <button id="migration-button" class="button secondary wide" type="button">T06 자료 가져오기</button>
       <div class="sidebar-foot"><span aria-hidden="true">✦</span><p>완료한 개수보다,<br>다음 계획에서 바꿀 한 가지.</p></div>
     </aside>
     <section id="workspace" class="workspace" tabindex="-1" aria-label="선택한 계획의 다이어리">
@@ -49,10 +50,12 @@
         <button id="tab-plan" class="stage-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-plan" data-stage="plan"><span class="stage-number">01</span><span>Plan <small>계획 세우기</small></span></button>
         <button id="tab-do" class="stage-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-do" data-stage="do" tabindex="-1"><span class="stage-number">02</span><span>Do <small>실제로 한 일</small></span></button>
         <button id="tab-see" class="stage-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-see" data-stage="see" tabindex="-1"><span class="stage-number">03</span><span>See <small>돌아보기</small></span></button>
+        <button id="tab-observe" class="stage-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-observe" data-stage="observe" tabindex="-1"><span class="stage-number">04</span><span>5일 <small>완료 개수 관찰</small></span></button>
       </nav>
       <section id="panel-plan" class="stage-panel" role="tabpanel" aria-labelledby="tab-plan"></section>
       <section id="panel-do" class="stage-panel" role="tabpanel" aria-labelledby="tab-do" hidden></section>
       <section id="panel-see" class="stage-panel" role="tabpanel" aria-labelledby="tab-see" hidden></section>
+      <section id="panel-observe" class="stage-panel" role="tabpanel" aria-labelledby="tab-observe" hidden></section>
       <footer class="workspace-foot"><span id="save-status" role="status">서버에 저장된 기록을 불러오는 중입니다.</span><span>날짜·지연 기준: 한국 시간(Asia/Seoul) · 시간 단위: 분</span></footer>
     </section>
   </main>

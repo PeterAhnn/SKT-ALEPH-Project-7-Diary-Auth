@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-10-02T05:41:51.157Z",
+  "data_origin": "synthetic",
+  "scope": "Isolated SQLite with explicitly simulated server clock; not actual five-day use",
+  "checks": [
+    {
+      "name": "frozen-setup",
+      "metric": "완료한 할 일 수",
+      "unit": "개",
+      "unknown_fields_rejected": true,
+      "immutable": true,
+      "past_completions_not_reclassified": true
+    },
+    {
+      "name": "five-day-sequence",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06"
+      ],
+      "counts": [
+        2,
+        0,
+        3,
+        1,
+        2
+      ],
+      "total": {
+        "days": 5,
+        "sum": 8,
+        "mean": 1.6,
+        "mean_display": "1.6"
+      },
+      "before": {
+        "days": 2,
+        "sum": 2,
+        "mean": 1,
+        "mean_display": "1.0"
+      },
+      "after": {
+        "days": 3,
+        "sum": 6,
+        "mean": 2,
+        "mean_display": "2.0"
+      },
+      "change": {
+        "id": "40c991c4-edf5-4cac-9b3b-215436b14564",
+        "study_id": "3788622e-20f7-487b-8b40-412a554476d0",
+        "day_one_id": "a26d0caa-bd73-4d0f-a25a-9965ead6cc58",
+        "day_two_id": "30762332-9c72-4053-9280-6005db869a59",
+        "previous_rule": "합성 첫 규칙",
+        "next_rule": "합성 변경 규칙",
+        "reason": "합성 1일차 2개, 2일차 0개를 참조",
+        "created_at": "2026-10-04T00:00:00.000Z"
+      },
+      "manual_check": {
+        "id": "43c21ab8-605a-42e2-8f20-0f9fd074ce76",
+        "study_id": "3788622e-20f7-487b-8b40-412a554476d0",
+        "hand_sum": 8,
+        "hand_mean": "1.6",
+        "note": "합성 계산: 2+0+3+1+2=8, 8/5=1.6",
+        "created_at": "2026-10-07T00:00:00.001Z"
+      },
+      "same_day_duplicate_completion_deduplicated": true,
+      "zero_explicitly_confirmed": true,
+      "deleted_task_contributes_to_past_count": true,
+      "sixth_day_denied": true,
+      "rule_change_once": true,
+      "restart_preserved": true
+    },
+    {
+      "name": "server-date-and-missing",
+      "utc_boundary": "15:00",
+      "distinct_korean_dates": [
+        "2026-10-02",
+        "2026-10-03"
+      ],
+      "missing_mean": null,
+      "confirmed_zero_mean": 0,
+      "backdating_rejected": true,
+      "missed_initial_date_requires_new_study": true
+    },
+    {
+      "name": "immutable-day-contributions",
+      "original_count": 1,
+      "after_delete_count": 1,
+      "direct_sql_change_denied": true
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "checked_at": "2026-10-02T05:45:56.331Z",
+  "scope": "Local observation and migration checkpoint; synthetic tests, read-only real source comparison; no real account import, actual five-day use, cloud deployment or submission",
+  "app_version": "0.3.0",
+  "tests": {
+    "command": "npm test",
+    "total": 45,
+    "passed": 45,
+    "failed": 0,
+    "duration_ms": 12204.8113,
+    "data_origin": "synthetic"
+  },
+  "browser": {
+    "authentication": {
+      "passed": 10,
+      "evidence": "verification/auth-browser.json",
+      "checkpoint": "previous authentication stage"
+    },
+    "observation_and_migration": {
+      "passed": 10,
+      "evidence": "verification/observation-browser.json",
+      "data_origin": "synthetic",
+      "process_exit_code": 0
+    },
+    "desktop_and_mobile_screenshots_visually_inspected": true
+  },
+  "inherited_t06_manifest_checks": [
+    {
+      "path": "contracts/pds-schema-v2.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/postgres-catalog.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "records/user-approved-recommendation.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/current-export.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/browser-export.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/delivery.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-inputs.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/platform-submission.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-success.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-pending.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/plan-history-public.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-screen-evidence.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-task-edit-reopen.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-task-delete.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-search-filter-sort.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-execution-link.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/pre-submission-public.json",
+      "original_matches": true,
+      "copy_matches": true
+    }
+  ],
+  "official_readback_unique_criteria": 68,
+  "t06_original_worktree_clean": true,
+  "local_preview": {
+    "health_status": 200,
+    "record_origin": "user",
+    "anonymous_observations_status": 401,
+    "anonymous_diary_status": 303
+  },
+  "real_active_accounts_at_check": 0,
+  "user_selected_migration_source": "Current T06 whole dataset, including additions and changed history",
+  "real_source_check": "verification/t06-live-export-check.json",
+  "actual_migration_performed": false,
+  "actual_observation_days": 0,
+  "pending": [
+    "User account and verified whole-data import/export comparison",
+    "Actual question, first rule and five distinct dates with one real change",
+    "Persistent private cloud backend and HTTPS deployment",
+    "Public GitHub full commit and platform submission"
+  ],
+  "source_check": {
+    "command": "npm run check",
+    "passed": true,
+    "files_checked": 96,
+    "scope": "JavaScript syntax and named credential patterns; not exhaustive absence of all secrets"
+  },
+  "git": {
+    "branch": "t07-auth",
+    "previous_checkpoint": "2f5b0f4ba4f847192097388d1ae00d5aa81089d3",
+    "submitted_t06_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+    "submitted_t06_is_ancestor": true,
+    "github_origin_prepared": false
+  }
+}

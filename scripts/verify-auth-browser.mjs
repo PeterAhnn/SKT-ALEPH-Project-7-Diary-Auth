@@ -11,6 +11,7 @@ const cli = process.env.T07_BROWSE_CLI;
 assert.ok(bun && cli, 'Set T07_BROWSE_BUN and T07_BROWSE_CLI to the installed gstack browse runtime.');
 const health = await fetch(base + '/api/health').then(r => r.json());
 assert.equal(health.authentication, true);
+assert.equal(health.record_origin, 'synthetic', 'The browser fixture must use a synthetic server before creating an account.');
 const email = `browser-${randomBytes(5).toString('hex')}@example.test`;
 const password = randomBytes(24).toString('base64url');
 const checks = [];

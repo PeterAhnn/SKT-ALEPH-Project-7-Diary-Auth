@@ -1,0 +1,122 @@
+{
+  "checked_at": "2026-10-02T05:34:46.950Z",
+  "scope": "Read-only public T06 API export through isolated gstack browser; not account migration",
+  "source_url": "https://skt-aleph-project-6-diary.vercel.app/api/export",
+  "source_data_origin": "user",
+  "source_exported_at": "2026-10-02T05:34:46.465Z",
+  "counts": {
+    "plans": 3,
+    "plan_history": 7,
+    "tasks": 8,
+    "executions": 4,
+    "completion_events": 8,
+    "request_receipts": 8,
+    "reviews": 1
+  },
+  "canonical_live_digest": "fdddd8160688c77d53e9441bdfa5fd29a824dee1cf4bf150fd96273ee4cbe542",
+  "canonical_preserved_digest": "eca70912a00a9d9d9c1f64c6344e362865dd9fd8c995dae873860809a34c0a7e",
+  "rows_match_preserved_export": false,
+  "legacy_validation_passed": true,
+  "source_changed": false,
+  "destination_migration_performed": false,
+  "raw_live_snapshot": ".test-data/t06-readonly/live-export.json (ignored, not published)",
+  "differences": {
+    "plans": {
+      "added_ids": [
+        "389f266f-9757-4674-b108-86f2c0d17ba9"
+      ],
+      "removed_ids": [],
+      "changed": [
+        {
+          "id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+          "fields": [
+            "version",
+            "end_date",
+            "start_date",
+            "updated_at",
+            "description"
+          ]
+        }
+      ]
+    },
+    "plan_history": {
+      "added_ids": [
+        "c1e4fbea-a71c-4421-a9fc-c296f13e0cbe",
+        "8279f6f2-b99a-4f3b-bcbf-75186eb220a9",
+        "c3bfb179-379f-4228-a199-4a3d3ed84674",
+        "3c2df3c6-c9dd-4045-a5af-fe205fb8505c"
+      ],
+      "removed_ids": [],
+      "changed": []
+    },
+    "tasks": {
+      "added_ids": [
+        "099a5109-0bfe-4789-b592-a3d18c04ac51"
+      ],
+      "removed_ids": [],
+      "changed": [
+        {
+          "id": "db003817-745a-48d5-90c0-0c80758edcbb",
+          "fields": [
+            "status",
+            "version",
+            "updated_at"
+          ]
+        },
+        {
+          "id": "2f88a19f-eb83-4aea-909c-1f1e5843981e",
+          "fields": [
+            "status",
+            "version",
+            "updated_at"
+          ]
+        },
+        {
+          "id": "61a3a22b-deb8-4078-972f-a704ecdac68d",
+          "fields": [
+            "status",
+            "version",
+            "updated_at"
+          ]
+        }
+      ]
+    },
+    "executions": {
+      "added_ids": [
+        "0d445801-d13f-4d18-9715-410b22e85be8"
+      ],
+      "removed_ids": [],
+      "changed": []
+    },
+    "completion_events": {
+      "added_ids": [
+        "0b58aaa0-ac41-4912-8012-17490bd8ca03",
+        "1daec7cd-181a-4745-83c1-9f1c34e9dbb0",
+        "36c8a3c6-8daa-45e2-ba0d-cee451b92acc",
+        "5e58095a-4ec6-4335-8319-d8fedf7aeee5"
+      ],
+      "removed_ids": [],
+      "changed": []
+    },
+    "request_receipts": {
+      "added_ids": [
+        "81e04e96-fb79-4ba1-9fdb-143f56e05114",
+        "1c5d2fb8-3dac-47c2-9a86-ccd87b54a26a",
+        "43a9e06f-1fe9-4ef9-a0a2-50bd23faebf3",
+        "e952ea18-24ac-4aa6-99d4-44f1eb9069e7"
+      ],
+      "removed_ids": [],
+      "changed": []
+    },
+    "reviews": {
+      "added_ids": [],
+      "removed_ids": [],
+      "changed": []
+    }
+  },
+  "user_selected_migration_source": {
+    "choice": "Current T06 whole dataset, including additions and changed history",
+    "confirmed_on": "2026-10-02",
+    "confirmation_origin": "Direct human response in this task"
+  }
+}

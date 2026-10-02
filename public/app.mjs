@@ -1,9 +1,11 @@
 import { aggregate, selectTasks, seoulToday } from './core.mjs';
+import { OBSERVATION_RULES, completionContribution, observationSummary } from './observation-core.mjs';
 
 const $ = (id) => document.getElementById(id);
 const ui = {
   state: { plans: [], plan_history: [], tasks: [], executions: [], completion_events: [], request_receipts: [], reviews: [] },
   meta: null,
+  observation: { observation_studies: [], observation_days: [], observation_changes: [], observation_checks: [], migration_receipts: [] },
   selectedId: null,
   stage: 'plan',
   filters: { search: '', status: 'all', priority: 'all', tag: '', sort: 'due' },
@@ -91,6 +93,7 @@ async function loadState({ announce = false } = {}) {
     const result = await api('/api/state');
     ui.state = result.data;
     ui.meta = result.meta;
+    ui.observation = result.observation;
     if (!ui.state.plans.some((plan) => plan.id === ui.selectedId)) {
       const sorted = [...ui.state.plans].sort((a, b) => b.created_at.localeCompare(a.created_at) || a.id.localeCompare(b.id));
       ui.selectedId = sorted.find(plan => plan.start_date <= today() && plan.end_date >= today())?.id || sorted[0]?.id || null;
@@ -124,7 +127,7 @@ function pickPlan(id, stage = ui.stage) {
 }
 function setStage(stage, focus = false) {
   ui.stage = stage;
-  for (const current of ['plan', 'do', 'see']) {
+  for (const current of ['plan', 'do', 'see', 'observe']) {
     const active = current === stage;
     $(`tab-${current}`).classList.toggle('active', active);
     $(`tab-${current}`).setAttribute('aria-selected', String(active));
@@ -142,6 +145,7 @@ function render() {
   renderPlan();
   renderDo();
   renderSee();
+  renderObservation();
   setStage(ui.stage);
 }
 function renderSidebar() {
@@ -541,6 +545,107 @@ function createEditorForm(saveLabel, onSubmit) {
 function planPayload(data) {
   return { title: data.get('title').trim(), description: data.get('description').trim(), start_date: data.get('start_date'), end_date: data.get('end_date'), priority: data.get('priority'), success_criteria: data.get('success_criteria').trim(), expected_minutes: Number(data.get('expected_minutes')) };
 }
+function renderObservation() {
+  const host = $('panel-observe'); host.replaceChildren();
+  const plan = selectedPlan();
+  if (!plan) { host.append(emptyState('관찰할 새 계획을 만드세요', 'T06 자료는 보존하고, 아직 완료 기록이 없는 계획에서 질문과 첫 규칙을 정합니다.', '새 계획 세우기', () => openPlanForm())); return; }
+  const study = ui.observation.observation_studies.find(row => row.plan_id === plan.id);
+  if (!study) { host.append(emptyState('완료한 할 일 수를 5일 동안 관찰하기', '질문과 첫 계획 규칙은 직접 입력합니다. 시작 날짜 안에 1일차를 확정하고, 2일차 뒤 규칙 하나를 바꿉니다.', '질문과 첫 규칙 정하기', openObservationStart)); host.querySelector('button').id='observation-start-button'; return; }
+  const summary = observationSummary(ui.observation, study.id);
+  const stack = el('div', null, 'panel-stack');
+  const setup = card('처음 정한 기준', `${summary.days.length}/5일 확정 · 완료한 할 일 수(개) · 한국 시간`);
+  const dl = el('dl', null, 'detail-grid');
+  addDetail(dl,'질문',study.question,true); addDetail(dl,'첫 계획 규칙',study.first_rule,true);
+  addDetail(dl,'시작 시각',timestampText(study.created_at)); addDetail(dl,'현재 계획 규칙',summary.change?.next_rule || study.first_rule,true); setup.append(dl);
+  const rules = el('details',null,'observation-rules'); rules.append(el('summary','계산·누락·중복·이상치·반올림 규칙 보기'));
+  for (const key of ['calculation','missing','duplicate','outlier','rounding','comparison']) rules.append(el('p',study.rules[key]));
+  rules.append(el('p',`주 시작: ${study.rules.week_start}`)); setup.append(rules); stack.append(setup);
+  const log = card('날짜별 확정 기록','미기록은 0으로 채우지 않습니다. 확정한 날짜의 값과 완료 ID는 변경되지 않습니다.');
+  const table = el('table',null,'observation-table');
+  const head = el('tr'); for (const label of ['일차 / 날짜','규칙','완료 수','기록과 근거']) head.append(el('th',label)); table.append(head);
+  for (const day of summary.days) {
+    const row = el('tr'); row.append(el('td',`${day.ordinal}일차 / ${dateText(day.date)}`),el('td',day.ordinal<=2?'변경 전':'변경 후'),el('td',`${day.count}개`));
+    const cell = el('td'); cell.append(el('p',day.note || '메모 없음'));
+    const detail = el('details'); detail.append(el('summary',`완료한 할 일 ${day.contribution.task_ids.length}개 근거`));
+    for (const id of day.contribution.task_ids) { const task=taskById(id); detail.append(el('p',`${task?.title || '보존된 할 일'} · ${id}`)); }
+    detail.append(el('p',`완료 이벤트 ${day.contribution.event_ids.length}개 · 확정 ${timestampText(day.created_at)}`)); cell.append(detail); row.append(cell); table.append(row);
+  }
+  if (!summary.days.length) log.append(el('p','아직 확정한 날짜가 없습니다. 오늘 0개여도 직접 확인해야 기록됩니다.'));
+  else log.append(table);
+  const already = summary.days.some(day=>day.date===today());
+  const live = completionContribution(ui.state,study,today());
+  if (summary.days.length < 5 && !already) {
+    if (summary.days.length===2 && !summary.change) log.append(el('p','2일차를 마쳤습니다. 아래에서 계획 규칙 하나를 변경한 뒤 다음 날짜에 진행하세요.','observation-message'));
+    else { log.append(el('p',`오늘 ${dateText(today())}: 현재 ${live.count}개 · 아직 미확정`)); const confirm=button(`오늘 ${live.count}개 확인하고 마치기`,'primary',()=>openObservationDay(study,live)); confirm.id='observation-confirm-button'; log.append(confirm); }
+  } else if (already && summary.days.length < 5) log.append(el('p','오늘 기록을 확정했습니다. 다음 날짜에 이어서 기록하세요.'));
+  stack.append(log);
+  if (summary.days.length>=2) {
+    const changeCard=card('계획 규칙 한 번 바꾸기','질문·지표·단위·계산 규칙은 그대로 두고 계획 규칙만 바꿉니다.');
+    if (summary.change) {
+      changeCard.append(el('p',`${summary.change.previous_rule} → ${summary.change.next_rule}`),el('p',summary.change.reason),el('p',`변경 ${timestampText(summary.change.created_at)} · 참조 1일차 ${summary.change.day_one_id} / 2일차 ${summary.change.day_two_id}`,'evidence-minor'));
+    } else if (summary.days.length===2) { const control=button('1~2일차를 보고 규칙 하나 변경','primary',()=>openObservationRule(study,summary.days)); control.id='observation-rule-button'; changeCard.append(control); }
+    stack.append(changeCard);
+  }
+  const comparison=card('합계·평균 대조',summary.complete?'5일 기록 완료 · 같은 기준으로 전후 비교':'아직 진행 중인 값입니다. 최종 전후 비교는 5일을 마친 뒤 확인합니다.');
+  const totals=el('dl',null,'detail-grid');
+  for (const [label,values] of [['전체',summary.total],['변경 전',summary.before],['변경 후',summary.after]]) addDetail(totals,label,`${values.days}일 · 합계 ${values.sum}개 · 평균 ${values.mean_display ?? '미기록'}${values.mean===null?'':'개'}`);
+  comparison.append(totals,el('p',`${summary.days.map(day=>day.count).join(' + ') || '미기록'}${summary.days.length ? ` = ${summary.total.sum}개; ${summary.total.sum} ÷ ${summary.total.days} = ${summary.total.mean}개 (표시 ${summary.total.mean_display}개)` : ''}`,'formula-note'));
+  const check=ui.observation.observation_checks.find(row=>row.study_id===study.id);
+  if (check) comparison.append(el('p',`입력한 손계산: ${check.hand_sum}개 / ${check.hand_mean}개 · ${check.note} · ${timestampText(check.created_at)}`));
+  else if (summary.complete) { const control=button('직접 더한 합계·평균 대조 저장','primary',()=>openObservationCheck(study)); control.id='observation-check-button'; comparison.append(control); }
+  comparison.append(el('p','작업 크기가 다를 수 있습니다. 평균의 변화만으로 규칙이 원인이라고 단정하지 마세요.','formula-note')); stack.append(comparison); host.append(stack);
+}
+function openObservationStart() {
+  const plan=selectedPlan(); if (!plan || !openDialog('5일 관찰 시작','질문과 규칙 고정')) return;
+  const editor=createEditorForm('이 질문과 규칙으로 시작',data=>mutate(`/api/plans/${plan.id}/observation`,'POST',{question:data.get('question'),first_rule:data.get('first_rule'),accept_rules:data.get('accept_rules')==='on'}));
+  editor.form.append(el('p','관찰 지표는 완료한 할 일 수(개)입니다. 아래 질문은 AI 제안이므로 읽고 수정한 뒤 확정하세요. 첫 계획 규칙은 직접 입력합니다.'));
+  editor.form.append(formField('관찰 질문','question',{type:'textarea',value:'계획 규칙 하나를 바꾸면 하루 완료한 할 일 수가 어떻게 달라질까?',required:true,maxLength:2000}).wrapper,formField('1~2일차의 첫 계획 규칙','first_rule',{type:'textarea',required:true,maxLength:2000,hint:'예: 매일 시작 전에 오늘 할 일 3개를 먼저 정하기. 예시를 실제 판단으로 자동 저장하지 않습니다.'}).wrapper);
+  for (const key of ['calculation','missing','duplicate','outlier','rounding','comparison']) editor.form.append(el('p',OBSERVATION_RULES[key],'form-description'));
+  editor.form.append(el('p','주 시작은 월요일입니다. 질문·지표·단위·계산은 시작 후 변경하지 않습니다. 시작 날짜 안에 1일차를 확정해야 합니다.','form-description'));
+  const label=el('label',null,'observation-agree'); const input=el('input'); input.type='checkbox'; input.name='accept_rules'; input.required=true; label.append(input,document.createTextNode('계산 규칙을 읽었으며 내 질문·첫 규칙으로 확정합니다.')); editor.form.append(label); editor.finish();
+}
+function openObservationDay(study,live) {
+  if (!openDialog('오늘 관찰을 마치고 확정','한국 시간 날짜 확인')) return;
+  const expectedDate=today();
+  const editor=createEditorForm('오늘 기록 확정',data=>mutate(`/api/observations/${study.id}/days`,'POST',{expected_date:expectedDate,note:data.get('note')}));
+  editor.form.append(el('p',`${dateText(expectedDate)}에 현재 완료한 고유 할 일 ${live.count}개입니다. 0개도 실제 0으로 확인됩니다. 확정하면 오늘 이 계획에 완료를 더 추가할 수 없습니다. 할 일을 모두 마친 뒤 확정하세요.`));
+  editor.form.append(formField('오늘 실제 기록·이상치 설명','note',{type:'textarea',maxLength:4000}).wrapper); editor.finish();
+}
+function openObservationRule(study,days) {
+  if (!openDialog('계획 규칙 하나 변경','2일차 뒤·3일차 앞')) return;
+  const editor=createEditorForm('한 번의 변경 저장',data=>mutate(`/api/observations/${study.id}/rule`,'POST',{next_rule:data.get('next_rule'),reason:data.get('reason'),day_one_id:days[0].id,day_two_id:days[1].id}));
+  editor.form.append(el('p',`첫 규칙: ${study.first_rule}`),el('p',`1일차 ${dateText(days[0].date)} ${days[0].count}개 · 2일차 ${dateText(days[1].date)} ${days[1].count}개. 이 두 기록을 근거로 이유를 직접 적으세요.`));
+  editor.form.append(formField('바꿀 계획 규칙 하나','next_rule',{type:'textarea',required:true,maxLength:2000}).wrapper,formField('1~2일차 기록을 보고 바꾸는 실제 이유','reason',{type:'textarea',required:true,maxLength:4000}).wrapper); editor.finish();
+}
+function openObservationCheck(study) {
+  if (!openDialog('손계산과 화면 대조','5일 기록 확인')) return;
+  const editor=createEditorForm('대조 결과 저장',data=>mutate(`/api/observations/${study.id}/check`,'POST',{hand_sum:Number(data.get('hand_sum')),hand_mean:data.get('hand_mean'),note:data.get('note')}));
+  editor.form.append(el('p','날짜별 완료 수 5개를 직접 더하고, 5로 나눈 평균을 소수 1자리로 입력하세요. 자동으로 채우지 않습니다.'));
+  editor.form.append(formField('직접 더한 합계(개)','hand_sum',{type:'number',required:true,min:0}).wrapper,formField('직접 나눈 평균(소수 1자리)','hand_mean',{required:true,maxLength:30,hint:'예: 2.0'}).wrapper,formField('실제 대조·전후 결과·한계 메모','note',{type:'textarea',required:true,maxLength:4000}).wrapper); editor.finish();
+}
+function openMigrationForm() {
+  if (!openDialog('T06 자료를 내 계정으로 가져오기','원본을 보존하는 한 번의 이관')) return;
+  let exported=null,preview=null,generation=0;
+  const editor=createEditorForm('확인한 자료를 내 계정으로 가져오기',async()=>{
+    if (!exported || !preview) throw new Error('T06 JSON 파일의 미리보기를 먼저 확인해 주세요.');
+    return mutate('/api/migration/import','POST',{exported,expected_digest:preview.source_digest});
+  });
+  editor.form.append(el('p','T06의 전체 내보내기 JSON을 선택하세요. ID·날짜·값·7표 관계를 그대로 보존합니다. 비어 있는 내 계정에만 가져올 수 있으며 기존 자료나 T06 공개 원본을 삭제하지 않습니다. 실제 관찰은 새 계획에서 시작하세요.'));
+  const field=formField('T06 전체 JSON 파일','source_file',{type:'file',required:true}); field.wrapper.querySelector('input').accept='.json,application/json'; editor.form.append(field.wrapper);
+  const message=el('p','파일을 선택하면 표별 건수와 검증 결과를 보여 줍니다.','form-description'); editor.form.append(message);
+  editor.finish(); const submit=editor.form.querySelector('button[type="submit"]'); submit.disabled=true;
+  field.wrapper.querySelector('input').addEventListener('change',async event=>{
+    const revision=++generation; exported=null; preview=null; submit.disabled=true;
+    const file=event.target.files[0]; if (!file) return;
+    try {
+      if (file.size>60000) throw new Error('현재 이관 파일은 60KB 이하로 선택해 주세요.');
+      const parsed=JSON.parse(await file.text()); const result=await api('/api/migration/preview',{method:'POST',body:JSON.stringify({exported:parsed})});
+      if (revision!==generation) return; exported=parsed; preview=result.data;
+      message.textContent=Object.entries(preview.counts).map(([name,count])=>`${name}: ${count}개`).join(' · ')+` / 자료 종류: ${preview.source_record_origin}. 이 파일이 내 T06 자료인지 확인한 뒤 가져오세요.`;
+      submit.disabled=false;
+    } catch(error) { if(revision===generation) message.textContent=error.message || '파일 형식을 확인해 주세요.'; }
+  });
+}
 function openPlanForm(plan = null, review = null) {
   if (!openDialog(plan ? '계획 수정하기' : review ? '개선으로 다음 계획 세우기' : '새 계획 세우기', '01 · PLAN')) return;
   const editor = createEditorForm(plan ? '수정하고 이력 남기기' : '계획 저장하기', async (data) => {
@@ -730,14 +835,15 @@ $('new-plan-button').addEventListener('click', () => openPlanForm());
 $('reload-button').addEventListener('click', () => loadState({ announce: true }));
 $('connection-retry').addEventListener('click', () => loadState({ announce: true }));
 $('export-button').addEventListener('click', exportAll);
+$('migration-button').addEventListener('click', openMigrationForm);
 $('export-button').disabled = true;
 $('dialog-close').addEventListener('click', closeDialog);
 $('editor-dialog').addEventListener('cancel', (event) => { if (dialogBusy) event.preventDefault(); });
-for (const stage of ['plan', 'do', 'see']) {
+for (const stage of ['plan', 'do', 'see', 'observe']) {
   const tab = $(`tab-${stage}`);
   tab.addEventListener('click', () => setStage(stage));
   tab.addEventListener('keydown', (event) => {
-    const stages = ['plan', 'do', 'see'];
+    const stages = ['plan', 'do', 'see', 'observe'];
     let index = stages.indexOf(stage);
     if (event.key === 'ArrowRight') index = (index + 1) % stages.length;
     else if (event.key === 'ArrowLeft') index = (index + stages.length - 1) % stages.length;

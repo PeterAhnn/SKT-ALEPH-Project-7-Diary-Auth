@@ -3,11 +3,13 @@ import { join } from 'node:path';
 import { timingSafeEqual } from 'node:crypto';
 import { seoulToday } from '../public/core.mjs';
 import { problem, validate } from './validation.mjs';
+import { validateLegacyExport } from './migration.mjs';
 
 const assets = { '/': ['index.html', 'text/html; charset=utf-8'], '/index.html': ['index.html', 'text/html; charset=utf-8'],
   '/app.mjs': ['app.mjs', 'text/javascript; charset=utf-8'], '/core.mjs': ['core.mjs', 'text/javascript; charset=utf-8'], '/styles.css': ['styles.css', 'text/css; charset=utf-8'] };
 const csp = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'";
 assets['/auth.mjs'] = ['auth.mjs', 'text/javascript; charset=utf-8'];
+assets['/observation-core.mjs'] = ['observation-core.mjs', 'text/javascript; charset=utf-8'];
 assets['/diary'] = assets['/'];
 function sessionToken(req) {
   const matches = (req.headers.cookie || '').split(';').map(part => part.trim()).filter(part => part.startsWith('pds_session='));
@@ -73,7 +75,7 @@ export function createHandler({ identity, publicDir, secureCookies = true, clock
     res.setHeader('X-Frame-Options', 'DENY');
     try {
       const path = new URL(req.url, 'http://diary.invalid').pathname;
-      if (req.method === 'GET' && path === '/api/health') return json(res, 200, { ok: true, storage: identity?.kind || 'unconfigured', authentication: true });
+      if (req.method === 'GET' && path === '/api/health') return json(res, 200, { ok: true, storage: identity?.kind || 'unconfigured', authentication: true, record_origin: recordOrigin });
       if (path.startsWith('/api/') && !identity) throw problem(503, '인증 저장소 연결을 준비하고 있습니다.', 'UNAVAILABLE');
       const token = sessionToken(req);
       const session = identity?.authenticate(token);
@@ -110,19 +112,35 @@ export function createHandler({ identity, publicDir, secureCookies = true, clock
         return json(res, 200, { ok: true, data: { account_deleted: true, diary_deleted: true } });
       }
       const withStore = callback => identity.withDiary(session.user.id, callback);
+      if (req.method === 'POST' && ['/api/migration/preview','/api/migration/import'].includes(path)) {
+        const input = await body(req);
+        if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(key => !['exported','expected_digest'].includes(key))) throw problem(400, '이관 입력을 확인해 주세요.', 'VALIDATION');
+        const data = path.endsWith('/preview') ? validateLegacyExport(input.exported) : await withStore(store => store.importLegacy(input.exported, input.expected_digest));
+        return json(res, 200, { ok: true, data });
+      }
+      const studyStart = path.match(/^\/api\/plans\/([^/]+)\/observation$/);
+      const studyMutation = path.match(/^\/api\/observations\/([^/]+)\/(days|rule|check)$/);
+      if (req.method === 'POST' && (studyStart || studyMutation)) {
+        const input = await body(req);
+        if (!input || typeof input !== 'object' || Array.isArray(input) || Object.hasOwn(input, studyStart ? 'plan_id' : 'id')) throw problem(400, '관찰 입력·경로를 확인해 주세요.', 'VALIDATION');
+        const data = await withStore(store => store.mutateObservation(studyStart ? 'start' : studyMutation[2] === 'days' ? 'day' : studyMutation[2], { ...input, ...(studyStart ? { plan_id: studyStart[1] } : { id: studyMutation[1] }) }));
+        return json(res, 200, { ok: true, data });
+      }
+      if (req.method === 'GET' && path === '/api/observations') return json(res, 200, { ok: true, data: await withStore(store => store.observationState()) });
       if (['GET', 'POST'].includes(req.method) && path === '/api/state') {
         if (req.method === 'POST') {
           const input = await body(req);
           if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k => !['user_id', 'account_id'].includes(k))) throw problem(400, '목록 입력을 확인해 주세요.', 'VALIDATION');
           // Client-supplied ownership hints are deliberately ignored. Only the session chooses the diary.
         }
-        return json(res, 200, { ok: true, data: await withStore(store => store.state()), meta: {
+        const bundle = await withStore(store => store.stateBundle());
+        return json(res, 200, { ok: true, ...bundle, meta: {
           storage: identity.kind, timezone: 'Asia/Seoul', time_unit: 'minutes', today: seoulToday(new Date(clock())), authentication: true, user: session.user, record_origin: recordOrigin } });
       }
       if (req.method === 'GET' && path === '/api/export') {
         const exportedAt = clock();
         res.setHeader('Content-Disposition', `attachment; filename="pds-diary-${seoulToday(new Date(exportedAt))}.json"`);
-        return json(res, 200, { schema_version: 2, exported_at: exportedAt, timezone: 'Asia/Seoul', time_unit: 'minutes', record_origin: recordOrigin, ...await withStore(store => store.state()) });
+        return json(res, 200, { schema_version: 3, exported_at: exportedAt, timezone: 'Asia/Seoul', time_unit: 'minutes', observation_unit: '개', record_origin: recordOrigin, ...await withStore(store => store.exportState()) });
       }
       const single = path.match(/^\/api\/(plans|tasks|executions|reviews)\/([^/]+)$/);
       if (req.method === 'GET' && single) {

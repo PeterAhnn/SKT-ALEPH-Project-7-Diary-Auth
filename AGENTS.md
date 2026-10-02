@@ -6,7 +6,7 @@
 - T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`의 조상 이력을 보존한다. 기존 T06 실제 자료를 수정하지 않는다. 이관은 현재 운영 export와 보존 자료를 읽기 전용으로 대조한 뒤 서버에서 지정한 계정에 연결한다.
 - 계정 ID는 서버 세션으로만 결정한다. 사용자 입력의 경로·쿼리·헤더·본문을 계정 선택에 사용하지 않는다. 모든 개인 API는 인증, 쓰기는 CSRF 확인 후 수행한다.
 - 사용자 주제는 ALEPH 공부·과제 진행, 선택한 관찰 지표는 `완료한 할 일 수`, 단위는 `개`다. 실제 질문·계획 규칙·5일 기록·규칙 변경·판단을 AI가 만들어 넣지 않는다.
-- 합성 검사와 실제 사용을 구분한다. `verification/auth-local.json`, `auth-browser.json`만 현재 T07 인증 검사다. 상속한 다른 증거는 T06 과거 자료다.
-- 현재 일기 7표와 `contracts/pds-schema-v2.json`은 T06 계약이다. T07 인증 DB 구조는 `docs/AUTH-IMPLEMENTATION.md`에 별도로 적는다. 관찰 기능 구현 시 계약을 실제 저장 구조와 함께 확장한다.
+- 합성 검사와 실제 사용을 구분한다. `verification/auth-local.json`, `auth-browser.json`은 T07 인증 검사, `observation-local.json`, `observation-browser.json`, `migration-local.json`은 T07 합성 관찰/이관 검사다. 상속한 다른 증거는 T06 과거 자료다.
+- 현재 일기 7표와 `contracts/pds-schema-v2.json`은 T06 계약이다. T07 인증 DB 구조는 `docs/AUTH-IMPLEMENTATION.md`에 별도로 적는다. 관찰·이관을 포함한 현재 로컬 계약은 `contracts/t07-schema-v3.json`이다. 기존 7표와 T06 실제 자료/계약을 보존한다.
 - 제출은 `docs/SUBMISSION.md`에 작성한다. 검증한 공개 HTTPS 결과물, 소문자 전체 `/commit/FULL_COMMIT` 소스 URL, 확인 4항목·판단 3항목을 유지한다. 현재 T07 제출은 하지 않았다.
 - 기존 인증된 Codex 내장 브라우저를 안내 확인에 사용한다. 공개 접근 확인·반복 QA에는 격리된 gstack `/browse`를 사용한다. 개인 Chrome과 `mcp__claude-in-chrome__*`를 사용하지 않는다.
