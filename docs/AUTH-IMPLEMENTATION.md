@@ -69,11 +69,24 @@ T06 실제 최종 제출은 `b9de0298cd200961eac56286c6a6a55299947a96`, T07의 �
 
 소유자 거절은 공식 필수 읽기·수정·삭제 **양방향 6개**, 추가 완료·복구·실행·자식 생성 등 **10개**를 검사했다. 계정 UUID를 쿼리/헤더/본문에 위조한 state 요청도 다른 자료를 돌려주지 않고 자기 목록만 200으로 반환한다. 이는 요청 전체를 오류로 거절하는 정책이 아니라 **다른 계정 선택을 무효화하는 정책**이다. 목록·export에 다른 계정 데이터가 없음을 `account-hints-list-and-export`에서 확인했다.
 
-`registration-and-password-storage`에는 같은 비밀번호로 만든 합성 두 계정의 실제 DB hash 두 개가 있다. 저장 모양은 `scrypt$32768$8$3$<16바이트 salt의 hex>$<32바이트 hash의 hex>`이며 두 salt/hash가 다르다. 입력 원문은 증거에 없다. 로그인을 실패시킨 두 경우의 상태와 문구가 모두 같다. 입력 비밀번호를 서버 로그·HTML·응답에 출력하는 코드를 두지 않았고 검사 응답과 생성 증거에 원문이 없음을 확인했다. 자동 소스 패턴 검사는 모든 가능한 유출 경로 부재의 증명은 아니다.
+### 카드 2: 실제 저장값과 원문 노출 확인
+
+[production-api.json](../verification/production-api.json)의 `stored_synthetic_hashes`에서 가져온 아래 두 값은 **같은 시험 비밀번호로 만든 합성 계정**의 실제 PostgreSQL `password_digest`다. 계정 생성은 서버 fixture, 로그인 검사는 공개 HTTPS였다. 시험 계정은 검사 후 삭제했으며 실제 본인 계정의 저장값을 공개하지 않는다.
+
+```text
+A: scrypt$32768$8$3$77ad01023e2474ff047de72f785ff846$33ed6cf4fe4cc439faeea720738874c9ffcfb2fc1b1b8b3a84a1289f72a8eabe
+B: scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c204860e065e9ea742a1de50fb9404d56bb4d538
+```
+
+저장 형식은 `scrypt$N$r$p$salt의 hex$hash의 hex`다. 무작위 16바이트 salt와 32바이트 hash가 둘 다 다르다. [검사 코드](../scripts/verify-production.mjs)는 같은 시험 비밀번호를 두 계정에 사용하고 실제 DB 값을 읽어 서로 다름을 확인했다. 로컬 `registration-and-password-storage`도 별도의 합성 두 계정으로 같은 검사를 수행했다. 비용 파라미터·salt·hash를 함께 저장하므로 로그인할 때 같은 비용과 salt로 다시 계산해 `timingSafeEqual`로 비교할 수 있다. 알고리즘을 새로 만든 것이 아니라 Node/OpenSSL `crypto.scrypt`를 호출하며 라우트·저장·검증 정책은 직접 작성했다.
+
+로그인 입력은 HTTPS POST 본문으로 서버에 전달된다. 실제 전송 본문과 **제출용 요청 기록**을 혼동하지 않는다. 제출 기록의 `input.password`는 `[REDACTED]`이고 응답은 비밀번호·저장 hash를 돌려주지 않는다. `raw-password-response-and-runtime-log-scan`은 가리기 전 시험 응답의 비밀번호 부재와 당시 운영 로그 **최근 15분·최대 100개**에서 시험 비밀번호·인증값·DB 비밀번호 부재를 확인했다. 전체 과거·미래 로그의 부재를 증명한 것은 아니다.
+
+화면 입력은 `type=password`이고 성공/실패 후 입력을 비우며 비밀번호를 메시지에 출력하지 않는다. 공개 UI의 실패 후 비우기 검사는 production-browser.json, 해당 코드는 [auth.mjs](../public/auth.mjs)와 [index.html](../public/index.html)에 있다. 서버 저장소 오류 로그는 정해진 코드/타입만 출력한다. 로그인을 실패시킨 두 경우의 상태와 문구도 같다. 자동 소스 패턴 검사 역시 모든 가능한 유출 경로 부재의 증명은 아니다. [카드 2 대조표](./CARD-2-REVIEW.md).
 
 `disposable-account-deletion`은 합성 계정 DB 및 WAL/SHM 파일 제거, 이전 세션·로그인 거절, 반대 계정 state 불변을 확인했다. [브라우저 화면](../verification/authenticated-synthetic.png)은 실제 검사용 합성 계정이며 사용자 실제 다이어리 화면이 아니다. 초기 로컬 자동 검사 45개, 인증 화면 10개, 관찰/이관 화면 10개가 통과했다. cloud 경계 검사를 추가한 현재 자동 검사는 48개다. 후자는 가상 날짜·합성 개수이며 실제 5일 사용이 아니다.
 
-공개 운영에서도 [production-api.json](../verification/production-api.json)의 10개 합성 검사로 가입/서로 다른 저장 hash, 같은 오류, Secure/HttpOnly/SameSite cookie, 익명/CSRF/origin 거절, 양방향 6건 404·전체 불변·위조 무효·export 분리, 자기 수정/삭제 성공, 같은 인증값의 로그아웃 뒤 401, 비밀번호 변경 후 두 세션 401, 시험 세션 만료 후 401, 자기 계정 삭제·타 계정 불변을 확인했다. 만료는 시험 계정의 만료시각을 앞당긴 검사이며 실제 8시간을 기다린 결과가 아니다.
+공개 운영에서도 [production-api.json](../verification/production-api.json)의 10개 합성 검사로 서로 다른 저장 hash, 같은 오류, Secure/HttpOnly/SameSite cookie, 익명/CSRF/origin 거절, 양방향 6건 404·전체 불변·위조 무효·export 분리, 자기 수정/삭제 성공, 같은 인증값의 로그아웃 뒤 401, 비밀번호 변경 후 두 세션 401, 시험 세션 만료 후 401, 자기 계정 삭제·타 계정 불변을 확인했다. 최신 API 반복의 계정 생성은 서버 fixture이며 공개 가입 폼 검사는 production-browser.json에 별도로 있다. 만료는 시험 계정의 만료시각을 앞당긴 검사이며 실제 8시간을 기다린 결과가 아니다.
 
 [cloud-integration.json](../verification/cloud-integration.json)의 13개는 실제 전용 PostgreSQL과 로컬 HTTP adapter 검사다. 다른 계정 snapshot에 RLS가 적용되고, 새 adapter에서도 동일 state가 복원되며 동시 저장·중간 오류 롤백·전체 7표 합성 이관·가상 5일 12표 재복원을 확인했다. 가상 날짜는 실제 5일 사용으로 세지 않는다. 자동 검사는 최종 48개 통과했다. 첫 공개 가입 검사는 socket이 없는 서버리스 요청에서 503으로 실패했고 이를 수정한 다음 전체 공개 API 검사가 통과했다. 실패를 보관하고 성공으로 바꾸어 적지 않는다.
 

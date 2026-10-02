@@ -20,6 +20,19 @@ https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df05345
 
 [AUTH-IMPLEMENTATION.md](./AUTH-IMPLEMENTATION.md)의 여섯 항목은 직접 Node 인증/crypto.scrypt/DB 세션과 Vercel Node 24·Supabase PostgreSQL 17.11.0.002·pg 8.23.1, 대안/이유·소스 위치·성공/거절·실제 한계를 설명한다. 공개 운영 API/화면 합성 근거를 연결했으며 본인 T06 이관은 actual-migration.json의 7표 digest 일치로 확인했다. 실제 5일 근거는 확보 후 추가한다. 별도 PDF나 첨부 파일은 공식 필수가 아니다.
 
+### 비밀번호 보관 근거 — 카드 2
+
+비밀번호는 Node/OpenSSL의 `crypto.scrypt`로 처리한다. 기존 Node 환경에서 내장 구현을 사용하면서 무작위 salt와 비용을 적용할 수 있어 선택했다. `N=32768, r=8, p=3`, 무작위 salt 16바이트, 결과 32바이트다. 암호 알고리즘을 새로 만들지 않았으며 인증 라우트·저장·세션 정책은 직접 작성했다.
+
+같은 시험 비밀번호로 만든 **합성 두 계정의 실제 PostgreSQL 저장값**은 다음과 같다. 본인 계정의 비밀번호나 저장값이 아니다. 시험 계정은 삭제했다.
+
+```text
+A: scrypt$32768$8$3$77ad01023e2474ff047de72f785ff846$33ed6cf4fe4cc439faeea720738874c9ffcfb2fc1b1b8b3a84a1289f72a8eabe
+B: scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c204860e065e9ea742a1de50fb9404d56bb4d538
+```
+
+두 salt/hash가 다르고 입력 원문을 저장하지 않는다. [production-api.json](../verification/production-api.json)의 실제 DB 값과 동일하다. 제출용 로그인 요청의 비밀번호는 `[REDACTED]`이며 원문 응답에 시험 비밀번호가 없음을 검사했다. 당시 운영 로그 검사 범위는 최근 15분·최대 100개다. 화면은 비밀번호 입력을 가리고 제출 후 비운다. 전체 과거·미래 로그나 모든 유출 경로의 부재를 주장하지 않는다. 코드·화면·응답과 검사 범위는 [카드 2 대조표](./CARD-2-REVIEW.md)에 연결했다.
+
 ## 재현·통과 확인 4가지 (권장)
 
 - 어디로 가나요: https://skt-aleph-project-7-diary-auth.vercel.app 의 로그인 첫 화면.
