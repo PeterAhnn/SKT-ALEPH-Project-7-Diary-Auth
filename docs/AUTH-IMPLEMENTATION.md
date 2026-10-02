@@ -34,9 +34,11 @@ T06이 이미 Node 24와 SQLite로 동작하므로 기존 ID·관계·수정 이
 
 ## ③ 어디를 어떻게 고쳤나
 
+HTTP 라우트는 로컬·공개 운영이 공유한다. 로컬 [server.mjs](../server.mjs)는 SQLite adapter를, 공개 [api/index.mjs](../api/index.mjs)는 [identity-postgres.mjs](../src/identity-postgres.mjs)의 PostgreSQL adapter를 주입한다. 공개 adapter도 [identity-sqlite.mjs](../src/identity-sqlite.mjs)의 비밀번호 검증·scrypt 함수를 재사용한다.
+
 | 흐름 | 실제 처리와 소스 |
 |---|---|
-| 가입 | [auth.mjs](../public/auth.mjs)의 가입 폼 → [http.mjs](../src/http.mjs) `POST /api/auth/register` → [identity-sqlite.mjs](../src/identity-sqlite.mjs) `register` / `hashPassword`. random salt로 scrypt를 수행하고 유일 email을 저장한다. 응답은 public user만 포함한다. |
+| 가입 | [auth.mjs](../public/auth.mjs)의 가입 폼 → [http.mjs](../src/http.mjs) `POST /api/auth/register` → 로컬 `identity-sqlite.mjs` 또는 공개 `identity-postgres.mjs`의 `register` → 공유 `hashPassword`. random salt로 scrypt를 수행하고 유일 email을 저장한다. 응답은 public user만 포함한다. |
 | 로그인 | 같은 폼 → `POST /api/auth/login` → `login` / `verifyPassword`. 없는 계정도 같은 비용으로 비교하고 틀린 비밀번호와 동일 401 문구를 준다. 성공하면 32바이트 random token을 만들고 DB에 SHA256만 저장한다. token은 `HttpOnly; SameSite=Strict; Path=/; Max-Age=28800` cookie로 보내며 production에서는 `Secure`도 붙인다. 브라우저 JSON에는 user·CSRF·만료만 보낸다. |
 | 로그아웃 | 로그아웃 버튼 → `POST /api/auth/logout` → `logout`이 서버 세션 hash 행을 삭제하고 cookie도 지운다. 같은 URL·method·기존 cookie로 다시 요청하면 DB 조회에 실패해 401이다. |
 | 자료 조회 | [app.mjs](../public/app.mjs) → `GET /api/state`, `GET /api/export`, 개별 조회 → HTTP 인증 gate → `withDiary(session.user.id, ...)`. 서버가 인증한 UUID의 DB만 연다. 그 DB에 없는 다른 계정 record ID는 404다. 쿼리·헤더·본문의 계정 지정은 소유자 선택에 쓰지 않는다. |

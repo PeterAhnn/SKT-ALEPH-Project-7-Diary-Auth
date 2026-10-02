@@ -16,6 +16,8 @@ https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df05345
 
 ## 인증 구현 설명서
 
+인증 방식은 **직접 구현한 Node 인증 라우트 + 서버 DB 세션**이다. 앱 0.3.0, Vercel Node 24, 비밀번호 처리는 내장 `crypto.scrypt`, 공개 DB는 Supabase PostgreSQL 17.11.0.002, 연결 패키지는 pg 8.23.1이다. T06의 자료·이력과 작업 로직을 이어 쓰고 매 요청 서버 세션을 확인해 로그아웃 즉시 기존 인증값을 거절하려고 이 구성을 사용했다. 대안으로 Supabase Auth를 검토했지만 기본 JWT 검증만으로 즉시 재사용 거절을 보장할 수 없고 별도 세션 확인이 필요하므로 현재는 DB 공급자로만 사용했다. 직접 구현에 따른 유지·검토 부담과 이메일 소유 확인 부재는 설명서 ⑥에 남겼다.
+
 [AUTH-IMPLEMENTATION.md](./AUTH-IMPLEMENTATION.md)의 여섯 항목은 직접 Node 인증/crypto.scrypt/DB 세션과 Vercel Node 24·Supabase PostgreSQL 17.11.0.002·pg 8.23.1, 대안/이유·소스 위치·성공/거절·실제 한계를 설명한다. 공개 운영 API/화면 합성 근거를 연결했으며 본인 T06 이관은 actual-migration.json의 7표 digest 일치로 확인했다. 실제 5일 근거는 확보 후 추가한다. 별도 PDF나 첨부 파일은 공식 필수가 아니다.
 
 ## 재현·통과 확인 4가지 (권장)
