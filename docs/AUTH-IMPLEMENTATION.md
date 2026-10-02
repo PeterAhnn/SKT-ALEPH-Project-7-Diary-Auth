@@ -90,6 +90,29 @@ B: scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c20
 
 [cloud-integration.json](../verification/cloud-integration.json)의 13개는 실제 전용 PostgreSQL과 로컬 HTTP adapter 검사다. 다른 계정 snapshot에 RLS가 적용되고, 새 adapter에서도 동일 state가 복원되며 동시 저장·중간 오류 롤백·전체 7표 합성 이관·가상 5일 12표 재복원을 확인했다. 가상 날짜는 실제 5일 사용으로 세지 않는다. 자동 검사는 최종 48개 통과했다. 첫 공개 가입 검사는 socket이 없는 서버리스 요청에서 503으로 실패했고 이를 수정한 다음 전체 공개 API 검사가 통과했다. 실패를 보관하고 성공으로 바꾸어 적지 않는다.
 
+### 카드 3: 같은 인증값의 로그아웃 전후 응답
+
+사용자를 알아보는 방식은 **서버 DB 세션**이다. 로그인 때 만든 무작위 32바이트 값은 `pds_session` 쿠키로 전달하고 DB에는 SHA256만 저장한다. 매 개인 요청에서 해당 세션·계정·만료 시각을 확인한다. 쿠키는 공개 운영에서 `Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800`이다. 고정 서명 비밀키로 JWT를 발급하는 구조가 아니다.
+
+[production-api.json](../verification/production-api.json)의 `same-old-auth-after-logout`을 다음과 같이 나란히 옮겼다. 성공 응답은 `ok` 필드만 발췌하며 전체 합성 state는 원래 JSON에 있다.
+
+| 비교 항목 | 로그아웃 전 | 로그아웃 후 |
+|---|---|---|
+| 공개 주소 | `https://skt-aleph-project-7-diary-auth.vercel.app/api/state` | 같은 주소 |
+| 요청 방식 | `GET` | `GET` |
+| Cookie | `pds_session=[REDACTED: 같은 기존 값]` | `pds_session=[REDACTED: 같은 기존 값]` |
+| X-CSRF-Token | `[REDACTED: 같은 기존 값]` | `[REDACTED: 같은 기존 값]` |
+| HTTP 상태 | `200` | `401` |
+| 응답 | 발췌: `{"ok":true}` | `{"ok":false,"error":{"code":"UNAUTHENTICATED","message":"로그인한 뒤 내 기록을 열어 주세요."}}` |
+
+사이에 실행한 요청은 `POST /api/auth/logout` 200이다. 검사 코드는 기존 인증값을 보관한 `oldA`로 전후 요청을 수행하므로 쿠키를 비우거나 새 인증값으로 바꿔서 거절을 얻은 것이 아니다. 서버의 `logout`이 세션 hash 행을 삭제한다. 이 요청 순서는 합성 시험 계정에 대한 실제 공개 HTTPS 검사다.
+
+세션은 로그인 발급 시각부터 **8시간(28,800초)**, 자동 연장은 없다. 시험 로그인 응답의 실제 `expires_at` 예는 `2026-10-02T15:03:19.489Z`다. 만료 비교는 서버에서 매 요청 `expires_at > 현재 시각`으로 수행한다. 공개 `forced-test-session-expiry`는 시험 계정의 DB 만료시각을 앞당긴 뒤 기존 값으로 401을 확인했으며 실제 8시간 대기가 아니다. 로컬 `expiry-boundary`는 제어된 시계와 시험 60초로 경계 전 200/경계 401을 확인했다.
+
+비밀번호 변경은 hash 갱신과 해당 계정의 모든 세션 삭제를 같은 트랜잭션에서 수행한다. 공개 `password-change-all-sessions-denied`에는 변경 200 뒤 기존 두 세션의 `GET /api/state` 401/401이 있다. 인증값은 URL 대신 Cookie 헤더로만 전달하며 HTTP 라우트도 쿠키에서만 읽는다. 제출 기록의 Cookie·Set-Cookie·CSRF는 가린다.
+
+고정 세션 서명키는 없으며 DB 비밀번호 등 운영 비밀값은 서버 환경 변수로만 읽는다. `.gitignore`와 `.vercelignore`는 `.env*`·개인 DB·검사 자료를 제외한다. 배포 설정은 공개 출력 디렉터리를 `public`, 함수 포함 파일을 DB SQL과 공개 HTML로 지정한다. 공급자 서버 환경에는 필요한 DB 비밀번호가 있어야 하므로 “어느 곳에도 비밀값이 존재하지 않는다”고 쓰지 않는다. [현재 Git 검사](../verification/history-secret-check-card-3.json)는 기록된 HEAD에서 도달 가능한 Git blob 236개에 알려진 DB 비밀번호·Vercel OIDC 원문이 없음을 확인했다. 이 두 값과 소스 패턴 검사는 미지의 모든 비밀값 부재의 증명이 아니며 실제 배포 bundle을 내려받아 검사한 결과도 아니다. [카드 3 대조표](./CARD-3-REVIEW.md)에 코드·배포 제외 설정·근거 범위를 연결했다.
+
 ## ⑤ AI와 나
 
 - **AI에게 맡긴 일:** T06 조상 이력 연결, 로컬 인증 선택·구현, 서버 소유자 분리, 자동·브라우저 합성 검사, 공식 원문과 구현·근거 연결.

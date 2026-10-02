@@ -33,6 +33,22 @@ B: scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c20
 
 두 salt/hash가 다르고 입력 원문을 저장하지 않는다. [production-api.json](../verification/production-api.json)의 실제 DB 값과 동일하다. 제출용 로그인 요청의 비밀번호는 `[REDACTED]`이며 원문 응답에 시험 비밀번호가 없음을 검사했다. 당시 운영 로그 검사 범위는 최근 15분·최대 100개다. 화면은 비밀번호 입력을 가리고 제출 후 비운다. 전체 과거·미래 로그나 모든 유출 경로의 부재를 주장하지 않는다. 코드·화면·응답과 검사 범위는 [카드 2 대조표](./CARD-2-REVIEW.md)에 연결했다.
 
+### 세션과 종료 근거 — 카드 3
+
+로그인 뒤에는 **서버 DB 세션**으로 계정을 알아본다. 무작위 32바이트 값을 `pds_session` 쿠키로 전달하고 DB에는 SHA256만 저장한다. 공개 쿠키는 Secure/HttpOnly/SameSite=Strict이며 세션은 발급 시각부터 8시간, 자동 연장 없이 만료된다. 인증값은 URL에 보내지 않고 Cookie에서만 읽는다. 고정 서명 비밀키로 세션값을 만드는 방식은 아니다.
+
+공개 HTTPS의 같은 시험 계정·기존 Cookie/CSRF·주소·방식으로 요청한 결과는 다음과 같다. 성공 응답은 ok 필드 발췌이며 전체 응답은 [원래 검사 JSON](../verification/production-api.json)에 있다.
+
+| 항목 | 로그아웃 전 | 로그아웃 후 |
+|---|---|---|
+| URL·방식 | `GET https://skt-aleph-project-7-diary-auth.vercel.app/api/state` | 같은 URL·GET |
+| Cookie·CSRF | `[REDACTED: 기존 값]` | `[REDACTED: 같은 기존 값]` |
+| 응답 | HTTP 200, 발췌 `{"ok":true}` | HTTP 401, `{"ok":false,"error":{"code":"UNAUTHENTICATED","message":"로그인한 뒤 내 기록을 열어 주세요."}}` |
+
+사이에 `POST /api/auth/logout` 200을 수행했다. 서버 세션 행 삭제 때문에 보관한 기존 값도 거절된다. 비밀번호 변경 200 뒤 기존 두 세션도 각각 401이었다. 시험 로그인 응답의 만료 예는 `2026-10-02T15:03:19.489Z`이며 공개 만료 검사는 시험 계정의 시각을 앞당긴 결과로, 실제 8시간 대기는 아니다.
+
+DB 비밀번호 등은 서버 환경 변수에 두고 `.env*`를 Git/배포 업로드에서 제외한다. [현재 Git 검사](../verification/history-secret-check-card-3.json)는 기록된 HEAD의 도달 가능한 blob 236개에서 알려진 DB 비밀번호·Vercel OIDC 원문 부재를 확인했다. 실제 배포 bundle을 내려받아 검사한 것은 아니며 미지의 모든 비밀값 부재를 보장하지 않는다. [카드 3 대조표](./CARD-3-REVIEW.md)에 관련 코드·배포 설정·가린 기록을 연결했다.
+
 ## 재현·통과 확인 4가지 (권장)
 
 - 어디로 가나요: https://skt-aleph-project-7-diary-auth.vercel.app 의 로그인 첫 화면.
