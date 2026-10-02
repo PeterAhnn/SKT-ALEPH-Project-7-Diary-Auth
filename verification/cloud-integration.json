@@ -1,0 +1,1557 @@
+{
+  "checked_at": "2026-10-02T06:43:39.495Z",
+  "data_origin": "synthetic",
+  "scope": "Real dedicated T07 PostgreSQL with local HTTP adapter; controlled simulated observation dates, not actual use or public Vercel QA",
+  "project_ref": "vagluzmvitdtshjknxrp",
+  "checks": [
+    {
+      "name": "registration-and-storage",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "status": 201,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "cloud-991c37e49432@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "4c2c9d7e-c2b2-408e-bae9-c37ed1726566",
+                "email": "cloud-991c37e49432@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "cloud-991c37e49432@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "4c2c9d7e-c2b2-408e-bae9-c37ed1726566",
+                "email": "cloud-991c37e49432@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T14:43:25.891Z"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "status": 201,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "cloud-a82908343c45@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "37b3b9b9-5ebb-4fc9-90e0-9362fe1735ca",
+                "email": "cloud-a82908343c45@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "status": 409,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "CLOUD-991C37E49432@EXAMPLE.TEST",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "CONFLICT",
+              "message": "이미 사용 중인 아이디 또는 기록입니다."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 401,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "cloud-991c37e49432@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 401,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "absent-0cf8e93d-a3aa-46fc-83eb-5263d41baf8f@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        }
+      ],
+      "stored_synthetic_hashes": [
+        "scrypt$32768$8$3$fd86c7def0b61faa9a77f88195e93bbc$7048c56f278fd68e8faf9fbd2496440ccfa2db953ca6fd7b6b8c8dcf94657608",
+        "scrypt$32768$8$3$3e4ffb5c24e3f898717bc652d05ad7f6$41b98d8fa597ca86d7f5cd0cbc6946b1012de508c61cc8e9c63ff3b8c5f8e0be"
+      ],
+      "different_salts": true
+    },
+    {
+      "name": "anonymous-and-csrf",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "4c2c9d7e-c2b2-408e-bae9-c37ed1726566",
+                "email": "cloud-991c37e49432@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {},
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 403,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "title": "합성 클라우드 검사",
+            "description": "실제 사용자 기록 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "분리·이관·관찰 검사",
+            "expected_minutes": 0
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "CSRF",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 403,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Origin": "https://untrusted.example"
+          },
+          "input": {
+            "title": "합성 클라우드 검사",
+            "description": "실제 사용자 기록 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "분리·이관·관찰 검사",
+            "expected_minutes": 0
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "ORIGIN",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "postgres-owner-row-policy",
+      "passed": true,
+      "requests": [],
+      "server_session_owner_context_only": true,
+      "foreign_snapshot_invisible": true
+    },
+    {
+      "name": "bidirectional-ownership",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/tasks/2299c545-9018-4ddf-92bc-503c287a7366",
+          "method": "GET",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/2299c545-9018-4ddf-92bc-503c287a7366",
+          "method": "PATCH",
+          "status": 404,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "expected_version": 1,
+            "title": "외부 변경",
+            "notes": "시험 자료",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/2299c545-9018-4ddf-92bc-503c287a7366",
+          "method": "DELETE",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+          "method": "GET",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+          "method": "PATCH",
+          "status": 404,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "expected_version": 1,
+            "title": "외부 변경",
+            "notes": "시험 자료",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+          "method": "DELETE",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/state?user_id=37b3b9b9-5ebb-4fc9-90e0-9362fe1735ca",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "X-User-Id": "37b3b9b9-5ebb-4fc9-90e0-9362fe1735ca"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 클라우드 검사",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "693341f4-80e5-48ee-b216-7d8b352298b5",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                    "title": "합성 클라우드 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 할 일",
+                  "notes": "시험 자료",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "pending",
+                  "completion_cycle": 0,
+                  "version": 1,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "4c2c9d7e-c2b2-408e-bae9-c37ed1726566",
+                "email": "cloud-991c37e49432@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        }
+      ],
+      "six_denials": true,
+      "full_states_unchanged": true,
+      "before_task_counts": [
+        1,
+        1
+      ],
+      "after_task_counts": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "postgres-transaction-rollback",
+      "passed": true,
+      "requests": [],
+      "complete_snapshot_unchanged": true
+    },
+    {
+      "name": "concurrent-writes-and-replay",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/tasks/6bbe51d1-bdf0-4e31-b7fd-97acc6254023/complete",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                "title": "합성 할 일",
+                "notes": "시험 자료",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "completed",
+                "completion_cycle": 0,
+                "version": 2,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "updated_at": "2026-10-02T06:43:25.891Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true,
+              "event": {
+                "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                "cycle": 0,
+                "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                "completed_at": "2026-10-02T06:43:25.891Z"
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6bbe51d1-bdf0-4e31-b7fd-97acc6254023/complete",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "event": {
+                "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                "cycle": 0,
+                "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                "completed_at": "2026-10-02T06:43:25.891Z"
+              },
+              "entity": {
+                "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                "tags": [
+                  "synthetic"
+                ],
+                "notes": "시험 자료",
+                "title": "합성 할 일",
+                "status": "completed",
+                "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                "version": 2,
+                "due_date": null,
+                "priority": "medium",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "deleted_at": null,
+                "updated_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic",
+                "completion_cycle": 0,
+                "expected_minutes": 0
+              },
+              "changed": true,
+              "replayed": true
+            }
+          }
+        }
+      ],
+      "both_plan_writes_retained": true,
+      "one_completion_event": true
+    },
+    {
+      "name": "fresh-adapter-persistence",
+      "passed": true,
+      "requests": []
+    },
+    {
+      "name": "same-value-after-logout",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "title": "합성 동시 계획 1",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 클라우드 검사",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "title": "합성 동시 계획 2",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "40cfaf67-5268-4983-a897-ae3ef336c1a6",
+                  "plan_id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                    "title": "합성 동시 계획 1",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "693341f4-80e5-48ee-b216-7d8b352298b5",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                    "title": "합성 클라우드 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "b69c421e-5e34-43f8-922c-bf5699d3a50f",
+                  "plan_id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                    "title": "합성 동시 계획 2",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 할 일",
+                  "notes": "시험 자료",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "completed",
+                  "completion_cycle": 0,
+                  "version": 2,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [
+                {
+                  "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                  "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "cycle": 0,
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "completed_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "request_receipts": [
+                {
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "action": "task.complete",
+                  "resource_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "response": {
+                    "event": {
+                      "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                      "cycle": 0,
+                      "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                      "completed_at": "2026-10-02T06:43:25.891Z"
+                    },
+                    "entity": {
+                      "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "tags": [
+                        "synthetic"
+                      ],
+                      "notes": "시험 자료",
+                      "title": "합성 할 일",
+                      "status": "completed",
+                      "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                      "version": 2,
+                      "due_date": null,
+                      "priority": "medium",
+                      "created_at": "2026-10-02T06:43:25.891Z",
+                      "deleted_at": null,
+                      "updated_at": "2026-10-02T06:43:25.891Z",
+                      "record_origin": "synthetic",
+                      "completion_cycle": 0,
+                      "expected_minutes": 0
+                    },
+                    "changed": true
+                  }
+                }
+              ],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "4c2c9d7e-c2b2-408e-bae9-c37ed1726566",
+                "email": "cloud-991c37e49432@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/logout",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "same_url_method_cookie": true
+    },
+    {
+      "name": "password-change-revokes-all",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "cloud-a82908343c45@example.test",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "37b3b9b9-5ebb-4fc9-90e0-9362fe1735ca",
+                "email": "cloud-a82908343c45@example.test",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "record_origin": "synthetic"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T14:43:25.891Z"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/password",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "current_password": "[REDACTED]",
+            "password": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true,
+              "all_sessions_revoked": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "whole-seven-table-migration",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/migration/preview",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "exported": {
+              "schema_version": 2,
+              "exported_at": "2026-10-02T06:43:25.891Z",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "observation_unit": "개",
+              "record_origin": "synthetic",
+              "plans": [
+                {
+                  "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "title": "합성 동시 계획 1",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 클라우드 검사",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "title": "합성 동시 계획 2",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "40cfaf67-5268-4983-a897-ae3ef336c1a6",
+                  "plan_id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                    "title": "합성 동시 계획 1",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "693341f4-80e5-48ee-b216-7d8b352298b5",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                    "title": "합성 클라우드 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "b69c421e-5e34-43f8-922c-bf5699d3a50f",
+                  "plan_id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                    "title": "합성 동시 계획 2",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 할 일",
+                  "notes": "시험 자료",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "completed",
+                  "completion_cycle": 0,
+                  "version": 2,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [
+                {
+                  "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                  "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "cycle": 0,
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "completed_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "request_receipts": [
+                {
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "action": "task.complete",
+                  "resource_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "response": {
+                    "event": {
+                      "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                      "cycle": 0,
+                      "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                      "completed_at": "2026-10-02T06:43:25.891Z"
+                    },
+                    "entity": {
+                      "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "tags": [
+                        "synthetic"
+                      ],
+                      "notes": "시험 자료",
+                      "title": "합성 할 일",
+                      "status": "completed",
+                      "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                      "version": 2,
+                      "due_date": null,
+                      "priority": "medium",
+                      "created_at": "2026-10-02T06:43:25.891Z",
+                      "deleted_at": null,
+                      "updated_at": "2026-10-02T06:43:25.891Z",
+                      "record_origin": "synthetic",
+                      "completion_cycle": 0,
+                      "expected_minutes": 0
+                    },
+                    "changed": true
+                  }
+                }
+              ],
+              "reviews": [],
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            }
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "source_digest": "e62ab2886c4a378c2456b1a26457d2c24833f3188295adf209a096461549917e",
+              "counts": {
+                "plans": 3,
+                "plan_history": 3,
+                "tasks": 1,
+                "executions": 0,
+                "completion_events": 1,
+                "request_receipts": 1,
+                "reviews": 0
+              },
+              "source_exported_at": "2026-10-02T06:43:25.891Z",
+              "source_record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/migration/import",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "exported": {
+              "schema_version": 2,
+              "exported_at": "2026-10-02T06:43:25.891Z",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "observation_unit": "개",
+              "record_origin": "synthetic",
+              "plans": [
+                {
+                  "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "title": "합성 동시 계획 1",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 클라우드 검사",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                },
+                {
+                  "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "title": "합성 동시 계획 2",
+                  "description": "실제 사용자 기록 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "분리·이관·관찰 검사",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "40cfaf67-5268-4983-a897-ae3ef336c1a6",
+                  "plan_id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "00cfb337-812b-4245-a4e2-66faadea1a5a",
+                    "title": "합성 동시 계획 1",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "693341f4-80e5-48ee-b216-7d8b352298b5",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                    "title": "합성 클라우드 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                },
+                {
+                  "id": "b69c421e-5e34-43f8-922c-bf5699d3a50f",
+                  "plan_id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                  "version": 1,
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "snapshot": {
+                    "id": "f2c789cb-6236-4f84-af6d-cc0ff05e41e9",
+                    "title": "합성 동시 계획 2",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T06:43:25.891Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T06:43:25.891Z",
+                    "description": "실제 사용자 기록 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "분리·이관·관찰 검사",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                  "title": "합성 할 일",
+                  "notes": "시험 자료",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "completed",
+                  "completion_cycle": 0,
+                  "version": 2,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "updated_at": "2026-10-02T06:43:25.891Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [
+                {
+                  "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                  "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "cycle": 0,
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "completed_at": "2026-10-02T06:43:25.891Z"
+                }
+              ],
+              "request_receipts": [
+                {
+                  "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                  "action": "task.complete",
+                  "resource_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                  "created_at": "2026-10-02T06:43:25.891Z",
+                  "response": {
+                    "event": {
+                      "id": "a0e4968b-ddb5-4c84-b547-05d7efe1648d",
+                      "cycle": 0,
+                      "task_id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "request_id": "78bc6ede-59a2-4da7-b089-a8dd6555359d",
+                      "completed_at": "2026-10-02T06:43:25.891Z"
+                    },
+                    "entity": {
+                      "id": "6bbe51d1-bdf0-4e31-b7fd-97acc6254023",
+                      "tags": [
+                        "synthetic"
+                      ],
+                      "notes": "시험 자료",
+                      "title": "합성 할 일",
+                      "status": "completed",
+                      "plan_id": "c7c5851d-68a5-4cdf-85c7-f9fee9ac8aa0",
+                      "version": 2,
+                      "due_date": null,
+                      "priority": "medium",
+                      "created_at": "2026-10-02T06:43:25.891Z",
+                      "deleted_at": null,
+                      "updated_at": "2026-10-02T06:43:25.891Z",
+                      "record_origin": "synthetic",
+                      "completion_cycle": 0,
+                      "expected_minutes": 0
+                    },
+                    "changed": true
+                  }
+                }
+              ],
+              "reviews": [],
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "expected_digest": "e62ab2886c4a378c2456b1a26457d2c24833f3188295adf209a096461549917e"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "imported": true,
+              "receipt": {
+                "id": "348d1c72-f97a-430d-827b-e8769b7c5318",
+                "source_digest": "e62ab2886c4a378c2456b1a26457d2c24833f3188295adf209a096461549917e",
+                "source_exported_at": "2026-10-02T06:43:25.891Z",
+                "created_at": "2026-10-02T06:43:25.891Z",
+                "counts": {
+                  "plans": 3,
+                  "plan_history": 3,
+                  "tasks": 1,
+                  "executions": 0,
+                  "completion_events": 1,
+                  "request_receipts": 1,
+                  "reviews": 0
+                }
+              }
+            }
+          }
+        }
+      ],
+      "all_row_values_digest_match": true,
+      "source_is_synthetic": true
+    },
+    {
+      "name": "simulated-five-day-persistence",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/observations/765fc962-67ca-4757-a0c5-af9c1e77eb1d/check",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "hand_sum": 8,
+            "hand_mean": "1.6",
+            "note": "합성 입력: 2+0+3+1+2=8, 8/5=1.6"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "cc8e15c2-f625-4804-ad01-9a515616456d",
+                "study_id": "765fc962-67ca-4757-a0c5-af9c1e77eb1d",
+                "hand_sum": 8,
+                "hand_mean": "1.6",
+                "note": "합성 입력: 2+0+3+1+2=8, 8/5=1.6",
+                "created_at": "2026-10-06T06:43:25.892Z"
+              },
+              "changed": true
+            }
+          }
+        }
+      ],
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06"
+      ],
+      "counts": [
+        2,
+        0,
+        3,
+        1,
+        2
+      ],
+      "one_change": true,
+      "all_twelve_tables_exported": true,
+      "actual_usage": false
+    },
+    {
+      "name": "forced-synthetic-expiration",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "expiry_forced_on_test_session": true,
+      "actual_eight_hour_wait": false
+    },
+    {
+      "name": "account-delete-cascade",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/account",
+          "method": "DELETE",
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "input": {
+            "current_password": "[REDACTED]",
+            "confirm": "cloud-991c37e49432@example.test"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "account_deleted": true,
+              "diary_deleted": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "other_account_unchanged": true,
+      "diary_and_sessions_removed": true
+    }
+  ],
+  "disposable_accounts_cleaned": 3,
+  "user_count_before": 0,
+  "user_count_after": 0,
+  "credentials": "[REDACTED]"
+}

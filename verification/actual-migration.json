@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-02T07:00:10.793Z",
+  "data_origin": "user",
+  "scope": "Actual logged-in public T07 account UI import and downloaded export; whole seven-table canonical values compared",
+  "source_exported_at": "2026-10-02T05:34:46.465Z",
+  "destination_exported_at": "2026-10-02T06:59:44.346Z",
+  "source_url": "https://skt-aleph-project-6-diary.vercel.app/api/export",
+  "destination_url": "https://skt-aleph-project-7-diary-auth.vercel.app",
+  "source_canonical_digest": "fdddd8160688c77d53e9441bdfa5fd29a824dee1cf4bf150fd96273ee4cbe542",
+  "destination_canonical_digest": "fdddd8160688c77d53e9441bdfa5fd29a824dee1cf4bf150fd96273ee4cbe542",
+  "all_seven_tables_values_match": true,
+  "source_counts": {
+    "plans": 3,
+    "plan_history": 7,
+    "tasks": 8,
+    "executions": 4,
+    "completion_events": 8,
+    "request_receipts": 8,
+    "reviews": 1
+  },
+  "destination_counts": {
+    "plans": 3,
+    "plan_history": 7,
+    "tasks": 8,
+    "executions": 4,
+    "completion_events": 8,
+    "request_receipts": 8,
+    "reviews": 1
+  },
+  "migration_receipts": 1,
+  "observation_days": 0,
+  "raw_destination": ".test-data/user-evidence/after-t06-import.json (ignored/private)",
+  "account_identifier": "[EXCLUDED]",
+  "credentials": "[EXCLUDED]"
+}

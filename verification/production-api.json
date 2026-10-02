@@ -1,0 +1,1284 @@
+{
+  "checked_at": "2026-10-02T07:04:25.742Z",
+  "url": "https://skt-aleph-project-7-diary-auth.vercel.app",
+  "data_origin": "synthetic",
+  "scope": "Actual public HTTPS API; account/duplicate setup through isolated server fixture bucket, real clock, no simulated observations",
+  "completed": true,
+  "checks": [
+    {
+      "name": "public-without-account-and-private-denial",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200,
+          "headers": {},
+          "response": "[HTML omitted]"
+        },
+        {
+          "path": "/diary",
+          "method": "GET",
+          "status": 303,
+          "headers": {},
+          "response": "[HTML omitted]"
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {},
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "fixture-password-storage-and-public-secure-login",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "email": "production-f433d18d6c78@example.test",
+            "password": "[REDACTED]"
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "f30e05a3-5e0d-4c1e-bce3-4f2ec39dc465",
+                "email": "production-f433d18d6c78@example.test",
+                "created_at": "2026-10-02T07:03:17.287Z",
+                "record_origin": "synthetic"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T15:03:19.489Z"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "email": "production-d4a552fa5f0a@example.test",
+            "password": "[REDACTED]"
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "3c6e3e63-450a-462d-8fb9-5b8f67e9390c",
+                "email": "production-d4a552fa5f0a@example.test",
+                "created_at": "2026-10-02T07:03:20.596Z",
+                "record_origin": "synthetic"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T15:03:21.756Z"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 401,
+          "input": {
+            "email": "production-f433d18d6c78@example.test",
+            "password": "[REDACTED]"
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "status": 401,
+          "input": {
+            "email": "missing-7cd83a0d42a5@example.test",
+            "password": "[REDACTED]"
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        }
+      ],
+      "stored_synthetic_hashes": [
+        "scrypt$32768$8$3$77ad01023e2474ff047de72f785ff846$33ed6cf4fe4cc439faeea720738874c9ffcfb2fc1b1b8b3a84a1289f72a8eabe",
+        "scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c204860e065e9ea742a1de50fb9404d56bb4d538"
+      ],
+      "secure_httponly_samesite": true,
+      "account_setup_transport": "trusted server adapter, distinct synthetic throttle bucket; not a public registration request",
+      "duplicate_setup_transport": "trusted server adapter"
+    },
+    {
+      "name": "csrf-origin-denial",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "f30e05a3-5e0d-4c1e-bce3-4f2ec39dc465",
+                "email": "production-f433d18d6c78@example.test",
+                "created_at": "2026-10-02T07:03:17.287Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 403,
+          "input": {
+            "title": "공개 배포 합성 검사",
+            "description": "실제 사용자 자료 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "HTTPS 인증 및 소유자 차단",
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "CSRF",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 403,
+          "input": {
+            "title": "공개 배포 합성 검사",
+            "description": "실제 사용자 자료 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "HTTPS 인증 및 소유자 차단",
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Origin": "https://untrusted.example"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "ORIGIN",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "two-way-read-edit-delete-isolation",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "title": "공개 배포 합성 검사",
+            "description": "실제 사용자 자료 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "HTTPS 인증 및 소유자 차단",
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "공개 배포 합성 검사",
+                "description": "실제 사용자 자료 아님",
+                "start_date": "2026-10-02",
+                "end_date": "2026-12-31",
+                "priority": "medium",
+                "success_criteria": "HTTPS 인증 및 소유자 차단",
+                "expected_minutes": 0,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:30.113Z",
+                "updated_at": "2026-10-02T07:03:30.113Z"
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/plans/8f3ee26a-0e8f-43e0-b01d-57526c771810/tasks",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "title": "배포 합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "a5918981-e019-433f-8711-d54680f4599e",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "배포 합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:31.719Z",
+                "updated_at": "2026-10-02T07:03:31.719Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "a5918981-e019-433f-8711-d54680f4599e",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "배포 합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:31.719Z",
+                "updated_at": "2026-10-02T07:03:31.719Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "title": "공개 배포 합성 검사",
+            "description": "실제 사용자 자료 아님",
+            "start_date": "2026-10-02",
+            "end_date": "2026-12-31",
+            "priority": "medium",
+            "success_criteria": "HTTPS 인증 및 소유자 차단",
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "ed0babba-73e2-4e71-b135-c2a1ac234b15",
+                "title": "공개 배포 합성 검사",
+                "description": "실제 사용자 자료 아님",
+                "start_date": "2026-10-02",
+                "end_date": "2026-12-31",
+                "priority": "medium",
+                "success_criteria": "HTTPS 인증 및 소유자 차단",
+                "expected_minutes": 0,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:34.752Z",
+                "updated_at": "2026-10-02T07:03:34.752Z"
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/plans/ed0babba-73e2-4e71-b135-c2a1ac234b15/tasks",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "title": "배포 합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "d120861b-78b5-461d-91d3-ad00c54d7e51",
+                "plan_id": "ed0babba-73e2-4e71-b135-c2a1ac234b15",
+                "title": "배포 합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:36.351Z",
+                "updated_at": "2026-10-02T07:03:36.351Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/d120861b-78b5-461d-91d3-ad00c54d7e51",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "d120861b-78b5-461d-91d3-ad00c54d7e51",
+                "plan_id": "ed0babba-73e2-4e71-b135-c2a1ac234b15",
+                "title": "배포 합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:36.351Z",
+                "updated_at": "2026-10-02T07:03:36.351Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/d120861b-78b5-461d-91d3-ad00c54d7e51",
+          "method": "GET",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/d120861b-78b5-461d-91d3-ad00c54d7e51",
+          "method": "PATCH",
+          "status": 404,
+          "input": {
+            "expected_version": 1,
+            "title": "외부 수정",
+            "notes": "실사용 기록 아님",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/d120861b-78b5-461d-91d3-ad00c54d7e51",
+          "method": "DELETE",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "GET",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "PATCH",
+          "status": 404,
+          "input": {
+            "expected_version": 1,
+            "title": "외부 수정",
+            "notes": "실사용 기록 아님",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "DELETE",
+          "status": 404,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/state?user_id=3c6e3e63-450a-462d-8fb9-5b8f67e9390c",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "X-User-Id": "3c6e3e63-450a-462d-8fb9-5b8f67e9390c"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "공개 배포 합성 검사",
+                  "description": "실제 사용자 자료 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "HTTPS 인증 및 소유자 차단",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "updated_at": "2026-10-02T07:03:30.113Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "f8266051-198f-4acf-acf8-091eabd8846f",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "version": 1,
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "snapshot": {
+                    "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                    "title": "공개 배포 합성 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T07:03:30.113Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T07:03:30.113Z",
+                    "description": "실제 사용자 자료 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "HTTPS 인증 및 소유자 차단",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "a5918981-e019-433f-8711-d54680f4599e",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "배포 합성 할 일",
+                  "notes": "실사용 기록 아님",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "pending",
+                  "completion_cycle": 0,
+                  "version": 1,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:31.719Z",
+                  "updated_at": "2026-10-02T07:03:31.719Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "f30e05a3-5e0d-4c1e-bce3-4f2ec39dc465",
+                "email": "production-f433d18d6c78@example.test",
+                "created_at": "2026-10-02T07:03:17.287Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "user_id": "3c6e3e63-450a-462d-8fb9-5b8f67e9390c"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "공개 배포 합성 검사",
+                  "description": "실제 사용자 자료 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "HTTPS 인증 및 소유자 차단",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "updated_at": "2026-10-02T07:03:30.113Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "f8266051-198f-4acf-acf8-091eabd8846f",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "version": 1,
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "snapshot": {
+                    "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                    "title": "공개 배포 합성 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T07:03:30.113Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T07:03:30.113Z",
+                    "description": "실제 사용자 자료 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "HTTPS 인증 및 소유자 차단",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "a5918981-e019-433f-8711-d54680f4599e",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "배포 합성 할 일",
+                  "notes": "실사용 기록 아님",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "pending",
+                  "completion_cycle": 0,
+                  "version": 1,
+                  "deleted_at": null,
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:31.719Z",
+                  "updated_at": "2026-10-02T07:03:31.719Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "f30e05a3-5e0d-4c1e-bce3-4f2ec39dc465",
+                "email": "production-f433d18d6c78@example.test",
+                "created_at": "2026-10-02T07:03:17.287Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/export",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "schema_version": 3,
+            "exported_at": "2026-10-02T07:03:55.643Z",
+            "timezone": "Asia/Seoul",
+            "time_unit": "minutes",
+            "observation_unit": "개",
+            "record_origin": "synthetic",
+            "plans": [
+              {
+                "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "공개 배포 합성 검사",
+                "description": "실제 사용자 자료 아님",
+                "start_date": "2026-10-02",
+                "end_date": "2026-12-31",
+                "priority": "medium",
+                "success_criteria": "HTTPS 인증 및 소유자 차단",
+                "expected_minutes": 0,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:30.113Z",
+                "updated_at": "2026-10-02T07:03:30.113Z"
+              }
+            ],
+            "plan_history": [
+              {
+                "id": "f8266051-198f-4acf-acf8-091eabd8846f",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "version": 1,
+                "created_at": "2026-10-02T07:03:30.113Z",
+                "snapshot": {
+                  "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "공개 배포 합성 검사",
+                  "version": 1,
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "start_date": "2026-10-02",
+                  "updated_at": "2026-10-02T07:03:30.113Z",
+                  "description": "실제 사용자 자료 아님",
+                  "record_origin": "synthetic",
+                  "expected_minutes": 0,
+                  "source_review_id": null,
+                  "success_criteria": "HTTPS 인증 및 소유자 차단",
+                  "carried_improvement": ""
+                }
+              }
+            ],
+            "tasks": [
+              {
+                "id": "a5918981-e019-433f-8711-d54680f4599e",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "배포 합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:31.719Z",
+                "updated_at": "2026-10-02T07:03:31.719Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            ],
+            "executions": [],
+            "completion_events": [],
+            "request_receipts": [],
+            "reviews": [],
+            "observation_studies": [],
+            "observation_days": [],
+            "observation_changes": [],
+            "observation_checks": [],
+            "migration_receipts": []
+          }
+        }
+      ],
+      "six_denials": true,
+      "full_state_unchanged": true,
+      "counts_before": [
+        1,
+        1
+      ],
+      "counts_after": [
+        1,
+        1
+      ],
+      "export_other_account_absent": true
+    },
+    {
+      "name": "own-edit-delete-success",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "PATCH",
+          "status": 200,
+          "input": {
+            "expected_version": 1,
+            "title": "자기 자료 정상 수정",
+            "notes": "실사용 기록 아님",
+            "due_date": null,
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 0
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "a5918981-e019-433f-8711-d54680f4599e",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "자기 자료 정상 수정",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 2,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:31.719Z",
+                "updated_at": "2026-10-02T07:03:57.947Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/a5918981-e019-433f-8711-d54680f4599e",
+          "method": "DELETE",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "a5918981-e019-433f-8711-d54680f4599e",
+                "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                "title": "자기 자료 정상 수정",
+                "notes": "실사용 기록 아님",
+                "due_date": null,
+                "priority": "medium",
+                "expected_minutes": 0,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 3,
+                "deleted_at": "2026-10-02T07:03:59.556Z",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T07:03:31.719Z",
+                "updated_at": "2026-10-02T07:03:59.556Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "same-old-auth-after-logout",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "공개 배포 합성 검사",
+                  "description": "실제 사용자 자료 아님",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-12-31",
+                  "priority": "medium",
+                  "success_criteria": "HTTPS 인증 및 소유자 차단",
+                  "expected_minutes": 0,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "updated_at": "2026-10-02T07:03:30.113Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "f8266051-198f-4acf-acf8-091eabd8846f",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "version": 1,
+                  "created_at": "2026-10-02T07:03:30.113Z",
+                  "snapshot": {
+                    "id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                    "title": "공개 배포 합성 검사",
+                    "version": 1,
+                    "end_date": "2026-12-31",
+                    "priority": "medium",
+                    "created_at": "2026-10-02T07:03:30.113Z",
+                    "start_date": "2026-10-02",
+                    "updated_at": "2026-10-02T07:03:30.113Z",
+                    "description": "실제 사용자 자료 아님",
+                    "record_origin": "synthetic",
+                    "expected_minutes": 0,
+                    "source_review_id": null,
+                    "success_criteria": "HTTPS 인증 및 소유자 차단",
+                    "carried_improvement": ""
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "a5918981-e019-433f-8711-d54680f4599e",
+                  "plan_id": "8f3ee26a-0e8f-43e0-b01d-57526c771810",
+                  "title": "자기 자료 정상 수정",
+                  "notes": "실사용 기록 아님",
+                  "due_date": null,
+                  "priority": "medium",
+                  "expected_minutes": 0,
+                  "status": "pending",
+                  "completion_cycle": 0,
+                  "version": 3,
+                  "deleted_at": "2026-10-02T07:03:59.556Z",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T07:03:31.719Z",
+                  "updated_at": "2026-10-02T07:03:59.556Z",
+                  "tags": [
+                    "synthetic"
+                  ]
+                }
+              ],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "observation": {
+              "observation_studies": [],
+              "observation_days": [],
+              "observation_changes": [],
+              "observation_checks": [],
+              "migration_receipts": []
+            },
+            "meta": {
+              "storage": "postgres",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "f30e05a3-5e0d-4c1e-bce3-4f2ec39dc465",
+                "email": "production-f433d18d6c78@example.test",
+                "created_at": "2026-10-02T07:03:17.287Z",
+                "record_origin": "synthetic"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/logout",
+          "method": "POST",
+          "status": 200,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "same_url_method_cookie": true
+    },
+    {
+      "name": "password-change-all-sessions-denied",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/password",
+          "method": "POST",
+          "status": 200,
+          "input": {
+            "current_password": "[REDACTED]",
+            "password": "[REDACTED]"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true,
+              "all_sessions_revoked": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "forced-test-session-expiry",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "actual_eight_hour_wait": false,
+      "test_account_only": true
+    },
+    {
+      "name": "delete-own-account-other-state-retained",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/api/auth/account",
+          "method": "DELETE",
+          "status": 200,
+          "input": {
+            "current_password": "[REDACTED]",
+            "confirm": "production-f433d18d6c78@example.test"
+          },
+          "headers": {
+            "Content-Type": "application/json",
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": true,
+            "data": {
+              "account_deleted": true,
+              "diary_deleted": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "raw-password-response-and-runtime-log-scan",
+      "passed": true,
+      "requests": [],
+      "all_test_passwords_absent_from_raw_responses": true,
+      "test_passwords_tokens_csrf_and_db_password_absent_from_fetched_logs": true,
+      "log_scope": "Production, latest 15m, maximum 100 entries; limited snapshot, not all historical logs"
+    }
+  ],
+  "user_count_before": 1,
+  "user_count_after": 1,
+  "external_user_delta": 0,
+  "cleanup_assertion": "Only this helper's created UUIDs absent; unrelated users may register during QA",
+  "own_accounts_remaining": 0,
+  "disposable_accounts_cleaned": 2,
+  "credentials": "[REDACTED]"
+}

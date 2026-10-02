@@ -1,18 +1,27 @@
-# T07 다음 작업: 공개 운영 준비
+# T07 공개 운영 · 2026-10-02
 
-## 지금 확인한 상태 · 2026-10-02
+[공개 앱](https://skt-aleph-project-7-diary-auth.vercel.app) · [해야 할 일](./TODO.md)
 
-- 연결된 Supabase에는 `skt-aleph-t06-diary`만 있다. `PeterAhn's Org`의 요금제는 Free다. 이 정보만으로 T07 새 프로젝트의 생성 비용과 잔여 한도를 확정하지 않는다.
-- T07 전용 프로젝트는 아직 없다. 조직 선택을 사용자에게 요청했다. 프로젝트 생성 도구는 조직 선택과 비용 확인을 요구한다.
-- Vercel connector의 team 목록은 비어 있고 T06의 `.vercel/project.json`에 있는 team scope 조회는 403이다. 같은 환경의 기존 CLI 인증을 읽기 전용으로 확인했으며 `vercel whoami`와 해당 scope의 프로젝트 조회 모두 성공했다. 조회한 ALEPH 프로젝트에는 T07이 없다. connector 오류를 계정 전체 배포 불가로 해석하지 않는다.
-- T07의 현재 Vercel API entry는 인증된 지속 저장소가 미구성이라 503이다. 공개 운영은 아직 준비되지 않았다.
+사용자가 제출까지 계속 진행하도록 요청했고, 사전에 제안한 PeterAhn's Org에서 전용 DB를 만들었다. 생성 도구의 project 비용 확인은 월 0 USD였고 조직은 Free다. 생성 당시 확인 값이며 향후 이용 증가 비용을 보증하지 않는다. 기존 T06 프로젝트는 변경하지 않았다. 이전 준비 점검은 verification/cloud-prerequisites.json에 역사적 상태로 보존한다.
 
-## 만들 것과 통과 기준
+| 항목 | 실제 구성 |
+|---|---|
+| Supabase | skt-aleph-t07-diary-auth / vagluzmvitdtshjknxrp / ap-northeast-2 / PostgreSQL 17.11.0.002 |
+| Vercel | skt-aleph-project-7-diary-auth / peter-ahns-projects / Node 24 / HTTPS |
+| 연결 | pg 8.23.1, Supavisor transaction pooler, TLS CA·호스트 검증, 함수별 pool max 2 |
+| 인증 | 직접 Node 라우트, crypto.scrypt, 요청마다 서버 DB 세션 확인, 8시간, Secure/HttpOnly/SameSite Strict cookie |
+| 물리 저장 | t07_private.users / sessions / auth_attempts / diaries. 모든 4표 RLS, anon/authenticated schema 권한 없음 |
+| 자료 | 서버 세션 UUID의 diary 한 행에 논리 12표 JSONB snapshot, 계정당 2MB |
+| 저장 원자성 | 계정/세션 공유 잠금 → diary FOR UPDATE → SQLite :memory: 검증 → snapshot 갱신. 실패 시 PG 롤백 |
+| 소유자 RLS | 서버가 확인한 UUID를 transaction-local t07.user_id로 설정. foreign snapshot은 조회되지 않음 |
+| 비밀값 | 제한된 t07_server 역할 비밀번호는 무시된 .env.cloud.local과 Vercel sensitive env. 브라우저/공개 Git에 제외 |
 
-1. **T07 전용 지속 DB와 서버 연결.** T06의 공개 표·RPC·키를 재사용하지 않고 새 DB에 계정·세션·본인 다이어리와 관찰 기록을 저장한다. 실제 방식은 연결·비용 조건을 확정한 뒤 구현한다. 브라우저에 관리 비밀키를 넘기지 않고 서버에서 로그인한 사람을 확인한다.
-2. **공개용 API 어댑터.** 서버리스 임시 파일에 의존하지 않고 재시작 뒤에도 자료를 유지한다. 로컬에서 확인한 로그아웃 뒤 기존 값 즉시 거절·비밀번호 변경 뒤 무효화·만료·CSRF·계정 분리·저장/이관의 전체 롤백을 유지한다.
-3. **T07 전용 Vercel 프로젝트와 공개 소스.** HTTPS 로그인 첫 화면이 새 시크릿 창에서 가입 없이 열린다. 본인 자료는 공개하지 않는다. GitHub 공개 full commit에 T06 제출 commit이 조상으로 남는다.
-4. **실제 운영 시험 근거.** 합성 시험 계정 두 개로 가입·로그인·로그아웃·만료·변경·양방향 6건 거절·목록/export·거절 전후 불변·삭제를 재검증한다. 소스·배포 파일·로그/응답과 제출 근거의 비밀값을 점검한다.
-5. **본인 실제 이관과 관찰 시작.** 운영 검사 뒤 사용자가 본인 계정을 만든다. 선택한 현재 T06 전체 자료를 옮겨 7표 전체 값/digest를 비교한다. 새 ALEPH 계획에서 질문·첫 규칙을 확정하고 실제 5일을 시작한다.
+t07_server에는 superuser, CREATEDB, CREATEROLE, BYPASSRLS 권한이 없다. 계정·세션 표는 인증 서버 역할만 조회한다. DB 접속용 역할은 애플리케이션 신뢰 경계이며 서버 침해 시 모든 계정이 위험할 수 있다. RLS가 서버 관리자 침해까지 막는다고 주장하지 않는다.
 
-각 결과는 [ACCEPTANCE-AUDIT.md](./ACCEPTANCE-AUDIT.md)와 [TASK-READBACK.md](./TASK-READBACK.md)에 반영한다. 이번 준비에서는 새 DB/앱 생성·과금·외부 소스 push·공개 배포·실제 이관/5일 관찰을 수행하지 않았다.
+공개 API 9개와 화면 10개가 실제 배포 주소에서 통과했다. 추가 로그/원문 응답 검사는 최종 보고서의 검사 개수와 범위에 따른다. 전용 DB 통합 13개는 로컬 HTTP + 실제 PostgreSQL, 48개 자동 검사는 로컬이다. 모두 합성 계정/자료이며 실제 관찰로 세지 않는다. 공개 API report는 verification/production-api.json, 화면은 production-browser.json, DB는 cloud-integration.json이다.
+
+처음 배포는 가입 503: 서버리스 요청에 socket이 없었다. socket 없는 요청에 안전한 공유 횟수 제한 bucket을 사용하도록 수정하고 회귀 검사와 공개 재검사를 통과했다. TLS 인증을 끄거나 T06 공개 저장소로 우회하지 않았다.
+
+실제 한계: HTTP 입력 64KB, 계정 자료 2MB, 매 요청 전체 snapshot 복원 및 계정 단위 저장 잠금, 공유 IP fallback bucket, 이메일 인증·자동 복구·MFA 없음, 백업 복구/소거 및 부하 시험 미수행. 배포 지역은 첫 빌드에서 iad1로 확인했고 DB는 한국이다. 낮은 지연이나 고부하 성능을 주장하지 않는다. 상세 한계는 인증 설명서 ⑥에 있다.
+
+다음은 본인 계정 생성 → 현재 T06 전체 7표 이관/digest 대조 → 새 ALEPH 계획에서 실제 질문·첫 규칙 고정 → 실제 5일과 한 번의 변경 → 최종 설명/제출이다. 본인 비밀번호를 채팅이나 심사자에게 보내지 않는다. 실제 이관은 본인 계정으로 완료했고 7표 건수·전체 값 digest가 일치했다. 실제 5일/플랫폼 제출은 아직 수행하지 않았다.

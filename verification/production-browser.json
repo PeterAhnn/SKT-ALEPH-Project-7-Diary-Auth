@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-02T06:54:53.674Z",
+  "url": "https://skt-aleph-project-7-diary-auth.vercel.app",
+  "data_origin": "synthetic",
+  "scope": "Actual public HTTPS UI in isolated gstack Chromium; no actual five-day observations",
+  "checks": [
+    {
+      "name": "anonymous public login screen without signup or hosting login",
+      "passed": true
+    },
+    {
+      "name": "375px login has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "real HTTPS registration form creates disposable test account",
+      "passed": true
+    },
+    {
+      "name": "HTTPS login opens own diary and synthetic label",
+      "passed": true
+    },
+    {
+      "name": "authenticated UI saves own plan",
+      "passed": true
+    },
+    {
+      "name": "reload keeps HTTPS session and persisted plan",
+      "passed": true
+    },
+    {
+      "name": "375px authenticated diary has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "logout returns to login",
+      "passed": true
+    },
+    {
+      "name": "direct diary URL after logout redirects",
+      "passed": true
+    },
+    {
+      "name": "generic wrong login error and password field cleared",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "verification/production-login-desktop.png",
+    "verification/production-login-mobile.png",
+    "verification/production-authenticated-synthetic.png"
+  ],
+  "disposable_account_cleaned": true,
+  "credentials": "[REDACTED]"
+}

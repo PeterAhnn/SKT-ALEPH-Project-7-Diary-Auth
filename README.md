@@ -1,16 +1,17 @@
 # 플랜두씨 다이어리 2 · T07
 
-T06의 Plan → Do → See 앱에 가입·로그인과 계정별 자료 보호를 붙인 로컬 구현입니다. 로그인 첫 화면은 누구나 열 수 있고 개인 기록은 로그인한 계정에만 보입니다.
+T06의 Plan → Do → See 앱에 가입·로그인과 계정별 자료 보호를 붙였습니다. [공개 앱](https://skt-aleph-project-7-diary-auth.vercel.app)의 로그인 첫 화면은 누구나 열 수 있고 개인 기록은 로그인한 계정에만 보입니다.
 
-**현재:** 로컬 인증·5일 관찰·T06 이관 기능·전체 내보내기·계정 삭제 검사 완료. 공개 HTTPS 배포, T06 실제 자료 이관, 실제 5일 사용과 최종 제출은 미완료입니다. 관찰 지표는 사용자가 선택한 **완료한 할 일 수(개)**이며 질문·첫 계획 규칙은 제안 단계입니다.
+**현재:** 공개 HTTPS·전용 PostgreSQL 배포 및 운영 API 검사 완료. 자동 48개, PostgreSQL 합성 검사 13개, 공개 API 검사 10개 통과. T06 실제 계정 이관은 7표 전체 digest 일치로 확인했습니다. 실제 5일 관찰과 최종 제출은 미완료입니다. 관찰 지표는 사용자가 선택한 **완료한 할 일 수(개)**이며 질문·첫 계획 규칙은 사용자 채택 완료, 계산 동의와 관찰 시작 저장은 확인 전입니다. [해야 할 일 체크](docs/TODO.md).
 
 [공식 안내와 진행 상태](docs/TASK-READBACK.md) · [충족 여부와 확인 일정](docs/ACCEPTANCE-AUDIT.md) · [인증 구현 설명서](docs/AUTH-IMPLEMENTATION.md) · [5일 관찰 준비](docs/OBSERVATION-PLAN.md) · [전체 자료 이관](docs/DATA-MIGRATION.md) · [다음 작업](HANDOFF.md) · [제출 초안](docs/SUBMISSION.md)
 
 ## 실행
 
-Node.js 24에서 외부 패키지 설치 없이 실행합니다. 현재 확인한 런타임은 Node 24.18.0입니다.
+Node.js 24에서 실행합니다. 현재 확인한 런타임은 Node 24.18.0이며 공개 저장소 연결에는 `pg 8.23.1`을 사용합니다.
 
 ```powershell
+npm ci
 npm start
 ```
 
@@ -18,7 +19,7 @@ npm start
 
 비밀번호는 Node `crypto.scrypt`로 처리합니다. 서버 세션은 최대 8시간 유지하고 로그아웃·비밀번호 변경 시 서버 DB에서 무효화합니다. 로그인 화면에서 이메일 소유 확인과 자동 비밀번호 재설정을 현재 지원하지 않는다고 안내합니다. 계정 삭제는 현재 비밀번호와 계정 아이디를 다시 입력한 뒤 계정과 이 앱의 개인 DB 파일을 함께 삭제합니다.
 
-로컬 개발은 loopback HTTP를 사용합니다. 외부 공개 운영은 HTTPS와 지속 저장소가 필요하며 현재 준비되지 않았습니다. `api/index.mjs`는 기존 T06 공개 DB에 연결하지 않고 503으로 응답합니다.
+로컬 개발은 loopback HTTP와 계정별 SQLite를 사용합니다. 공개 운영은 Vercel HTTPS와 T07 전용 Supabase PostgreSQL을 사용합니다. `api/index.mjs`가 제한된 DB 역할로 서버에서만 연결하며, 인증·세션과 계정별 12표 JSONB를 지속 저장합니다. 함수 임시 파일에 개인 자료를 저장하지 않습니다. [실제 배포 구조와 한계](docs/CLOUD-DEPLOYMENT-PLAN.md).
 
 ## 확인한 범위
 
@@ -27,11 +28,11 @@ npm test
 npm run check
 ```
 
-- 자동 검사 45개 통과: 기존 다이어리 회귀, 비밀번호 salt, 중복 가입, 같은 로그인 오류, 익명 API 거절, CSRF, 세션 종료·만료, 양방향 소유자 차단, 계정 위조 무효, 내보내기, 삭제, 로그인 횟수 제한, 미구성 서버리스 차단, 관찰 날짜·중복·규칙 변경·손계산·이관 롤백.
+- 자동 검사 48개 통과: 기존 다이어리 회귀, 인증·소유자 분리·관찰·이관, 12표 cloud snapshot 복원, TLS 설정 및 socket이 없는 서버리스 요청 검사.
 - 격리된 gstack Chromium에서 합성 계정으로 화면 검사 10개 통과: 가입·로그인·계획 저장·새로고침·로그아웃·직접 주소 접근·잘못된 로그인, 375px 가로 넘침 확인.
 - [가린 HTTP 요청·응답](verification/auth-local.json), [브라우저 검사 기록](verification/auth-browser.json), [로그인 화면](verification/login-desktop.png), [모바일 화면](verification/login-mobile.png), [합성 로그인 화면](verification/authenticated-synthetic.png).
 
-이 검사는 합성 자료이며 실제 5일 사용이나 공개 운영 검증을 증명하지 않습니다. 소스 검사는 지정 패턴과 문법 검사이며 모든 종류의 비밀값 부재를 보증하지 않습니다.
+로컬 검사는 합성 자료입니다. 추가 [PostgreSQL 검사](verification/cloud-integration.json) 13개와 [공개 HTTPS API 검사](verification/production-api.json) 10개도 합성 계정으로 수행했으며 실제 5일 사용을 증명하지 않습니다. 소스 검사는 지정 패턴과 문법 검사이며 모든 종류의 비밀값 부재를 보증하지 않습니다.
 
 ## 실제 관찰과 이관
 

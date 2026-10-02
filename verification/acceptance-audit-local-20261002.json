@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-02T07:05:29.363Z",
-  "reviewed_source_head": "ebf584cdc2297e5cbc321a50a72bf3be2217001a",
-  "scope": "Current source + actual public HTTPS synthetic API/UI checks + actual T06 user-account import/export + official 68 preserved requirements. Real five-day observations and platform submission pending.",
+  "checked_at": "2026-10-02T06:10:53.193Z",
+  "reviewed_source_head": "bb9bf677c0058dab174236da1739177ba0b5d9a0",
+  "scope": "Read-only source/evidence/document cross-check against today-preserved official page; no new live deployment QA, migration, real observation or platform submission",
   "official_source": "docs/TASK-SOURCE.md",
   "latest_page_reloaded_this_review": false,
   "overall_acceptance": "incomplete",
@@ -21,16 +21,7 @@
     "six_explanation_sections": true,
     "two_synthetic_browser_reports_with_ten_passes_each": true,
     "previous_full_test_run_45_passes": true,
-    "account_export_contract_12_tables": true,
-    "latest_automated_tests": 48,
-    "real_postgres_synthetic_checks": 13,
-    "public_https_api_checks": 10,
-    "public_https_browser_checks": 10,
-    "public_api_accounts_seeded_for_latest_repeat": true,
-    "public_signup_form_verified_separately": true,
-    "actual_t06_user_import_seven_table_digest_match": true,
-    "actual_observation_days": 0,
-    "platform_submitted": false
+    "account_export_contract_12_tables": true
   },
   "password_length": {
     "official_minimum_specified": false,
@@ -55,19 +46,15 @@
     },
     {
       "path": "docs/AUTH-IMPLEMENTATION.md",
-      "sha256": "8683c3e5c598f12cdab0f49c4bca000439aaefeaf6c9a873b3852952c5970a3d"
+      "sha256": "16f9fdaa44b6cfe5e164a4aefab40998d6dc1ac9ee497f86ab09470df5265c2f"
     },
     {
       "path": "docs/SUBMISSION.md",
-      "sha256": "9e6df8337635ffa1472706d12eaf81bd91a7e6445155b43f35feeb6033b56d06"
-    },
-    {
-      "path": "docs/TODO.md",
-      "sha256": "4ca95fd77f0100f96c83d6ff2277fa8902119fa3e38c3b32da99112f37a57622"
+      "sha256": "e264d2fbdbb3e0b6a887408a7c7bcaeec36873e3c1b0d8011297731a6610e83e"
     },
     {
       "path": "docs/OBSERVATION-PLAN.md",
-      "sha256": "0eeffb964ecf69eefbf64b497791d67147cab86f2a58ffd02f521496a57e96a0"
+      "sha256": "90f945a59975e3ff27ca40d5c697a58e1ed9b8ca1418e08fe875a66fd547affc"
     },
     {
       "path": "docs/DATA-MIGRATION.md",
@@ -75,7 +62,7 @@
     },
     {
       "path": "verification/auth-local.json",
-      "sha256": "8c3c45afbff01c2eec8c5b0f1a32117bcb6eccad1e4aeca405482508b71b9b41"
+      "sha256": "1d5a7e2eb961cfb61625c4911b3fd649106c5934140451569e230219906d5375"
     },
     {
       "path": "verification/auth-browser.json",
@@ -83,7 +70,7 @@
     },
     {
       "path": "verification/observation-local.json",
-      "sha256": "64c321b2b58e7593de0001c88f9fc2c103b28eeada60db57040669924aae5d9f"
+      "sha256": "0856ff23d66c2c2ab14ccd25d522a8e7ffe54643a508766c0f93403d705819db"
     },
     {
       "path": "verification/observation-browser.json",
@@ -91,39 +78,15 @@
     },
     {
       "path": "verification/migration-local.json",
-      "sha256": "19ddadb2e6e446269e81a634ffaf88817f974637901722e26abf1dda5884e869"
+      "sha256": "fe25c916ec4da83d14f62b692c8c2dba1cc76052a92057fec3358793e1cc815d"
     },
     {
       "path": "verification/t06-live-export-check.json",
       "sha256": "603b6ff7b422dfc7d54b64f8f14b09f25d6b1b59df4d9f6c91a8666dcb875e14"
     },
     {
-      "path": "verification/actual-migration.json",
-      "sha256": "6931f4df8c9b76a8e137e221abdfe325f025f4bd193d6d5400d41c6b53046273"
-    },
-    {
-      "path": "verification/cloud-integration.json",
-      "sha256": "6b4913539c94f365eced9d4c91a7d4869c2cafa7d7f253f189a3fd1744effb86"
-    },
-    {
-      "path": "verification/cloud-deployment.json",
-      "sha256": "c0dbd502bd279e388978ef578cf1fcaa9e4c553349fc974fab309e47f2b9910c"
-    },
-    {
-      "path": "verification/production-api.json",
-      "sha256": "cb8b5a135adcd3c65af91cb68cdd61d74cd091d33de175ed255ca16e39a7a406"
-    },
-    {
-      "path": "verification/production-browser.json",
-      "sha256": "54840f81e289c8ffb11bf30cc2614ebb855994ec60ccc808d1fb746827a1e18e"
-    },
-    {
-      "path": "verification/history-secret-check.json",
-      "sha256": "48d1fcedaa91f50b422d391681f4f34a6ecb7a33ad6b4e7cca9d1a928adae88b"
-    },
-    {
-      "path": "verification/t06-preservation-current.json",
-      "sha256": "b8d23e8a875f9cae0cbef7d1d7129b0e99a5b9f187ebd914427832bceb987f62"
+      "path": "verification/OBSERVATION-IMPLEMENTATION.json",
+      "sha256": "fc3201c863ee5944ecff3aa1210844b9f0a4d54d2a6313ef8b1c551bda1b25ba"
     },
     {
       "path": "contracts/t07-schema-v3.json",
@@ -135,556 +98,495 @@
       "id": "T07-C91",
       "stage": 1,
       "official_requirement": "인증을 무엇으로 붙였는지(직접 구현·라이브러리·인증 서비스 중 무엇인지)와 그 이름이 제출문에 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C92",
       "stage": 1,
       "official_requirement": "라이브러리나 서비스를 썼다면 그 이름과 버전이 제출문에 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C93",
       "stage": 1,
       "official_requirement": "함께 검토한 다른 방법이 하나 이상 적혀 있고, 그것을 고르지 않은 이유가 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C94",
       "stage": 1,
       "official_requirement": "가입 화면에서 새 계정을 만들 수 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C95",
       "stage": 1,
       "official_requirement": "만든 계정으로 로그인할 수 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C96",
       "stage": 1,
       "official_requirement": "로그아웃할 수 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C97",
       "stage": 1,
       "official_requirement": "로그인하지 않은 채로 내 자료 화면 주소를 열면 자료 대신 로그인 화면이 나온다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C98",
       "stage": 1,
       "official_requirement": "같은 아이디(또는 이메일)로 두 번 가입되지 않는다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C99",
       "stage": 1,
       "official_requirement": "아이디는 맞고 비밀번호만 틀렸을 때와, 아이디 자체가 없을 때의 안내 문구가 같다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
-        "verification/t06-live-export-check.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Publish and repeat account flows; actually import selected whole T06 data into the real user account; finalize explanation.",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C100",
       "stage": 1,
       "official_requirement": "6번에서 만든 다이어리에 이어 붙였고, 6번에 넣어 둔 내 자료가 내 계정으로 옮겨져 있다.",
-      "current_recorded_status": "현재 T06 전체 실제 본인 계정 이관 완료·7표 값/digest 일치",
+      "current_recorded_status": "이관 기능 합성 검사·기준 선택 완료, 실제 이관 전",
       "evidence": [
-        "verification/actual-migration.json",
+        "docs/AUTH-IMPLEMENTATION.md",
+        "verification/auth-local.json",
+        "verification/auth-browser.json",
+        "verification/migration-local.json",
         "verification/t06-live-export-check.json"
       ],
-      "remaining": "원본을 계속 보존",
-      "next_check": "최종 제출 직전 원본/근거 확인"
+      "remaining": "Actual real-account whole-data migration and exact source/export comparison",
+      "next_check": "After production deployment and actual user migration"
     },
     {
       "id": "T07-C101",
       "stage": 2,
       "official_requirement": "비밀번호를 되돌릴 수 없게 만드는 데 쓴 방법의 이름(bcrypt·argon2·scrypt·PBKDF2 중 무엇인지)이 제출문에 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "docs/SUBMISSION.md"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C102",
       "stage": 2,
       "official_requirement": "그 방법을 고른 이유가 한 문장 이상 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "docs/SUBMISSION.md"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C103",
       "stage": 2,
       "official_requirement": "계정 하나의 비밀번호가 데이터베이스에 저장된 모습이 제출문에 있고, 입력한 글자가 그대로 보이지 않는다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C104",
       "stage": 2,
       "official_requirement": "같은 비밀번호로 만든 두 계정의 저장된 값이 서로 다르다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C105",
       "stage": 2,
       "official_requirement": "로그인 요청과 응답을 적은 기록에 비밀번호 원문이 남아 있지 않다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C106",
       "stage": 2,
       "official_requirement": "서버 로그·화면·네트워크 응답 어디에도 비밀번호 원문이 없다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C107",
       "stage": 2,
       "official_requirement": "비밀번호를 다루는 부분을 널리 쓰이는 라이브러리에 맡겼고, 직접 만들었다면 그 사실이 제출문에 그대로 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/identity-sqlite.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/identity-sqlite.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Inspect deployed logs/UI/responses and final stored-hash explanation, with secrets redacted.",
+      "next_check": "Production authentication QA and final submission review"
     },
     {
       "id": "T07-C108",
       "stage": 3,
       "official_requirement": "로그인 뒤 무엇으로 사람을 알아보는지(세션·토큰 중 무엇인지)가 제출문에 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "docs/SUBMISSION.md"
+        "src/http.mjs"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C109",
       "stage": 3,
       "official_requirement": "로그인한 상태의 성공 응답과, 로그아웃한 뒤 같은 값으로 다시 요청했을 때의 거절 응답이 나란히 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C110",
       "stage": 3,
       "official_requirement": "그 두 요청이 같은 주소·같은 방식이고, 달라진 것은 로그아웃 여부뿐임이 기록에서 드러난다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C111",
       "stage": 3,
       "official_requirement": "사람을 알아보는 그 값에 만료 시각이 있고, 얼마 뒤 끊기는지가 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C112",
       "stage": 3,
       "official_requirement": "사람을 알아보는 그 값이 주소창(URL)에 실려 다니지 않는다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C113",
       "stage": 3,
       "official_requirement": "그 값을 만들 때 쓴 비밀키가 브라우저 코드·배포 파일·Git 기록 어디에도 없다.",
-      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/history-secret-check.json",
-        "verification/production-api.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
-      "next_check": "최종 commit 고정 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C114",
       "stage": 3,
       "official_requirement": "비밀번호를 바꾸거나 로그아웃하면 이전에 발급한 값이 더는 통하지 않는다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C115",
       "stage": 3,
       "official_requirement": "적어 둔 기록에서 토큰·세션 값이 가려져 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "src/http.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "src/http.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat session/logout/password-change/expiry on deployed backend; inspect deployment and public Git history.",
+      "next_check": "After deployment and after final public source revision is fixed"
     },
     {
       "id": "T07-C116",
       "stage": 4,
       "official_requirement": "계정 두 개를 만들어 각각에 자료를 넣었고, 그 사실이 제출문에 적혀 있다. 비밀번호는 적혀 있지 않다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C117",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 읽으려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C118",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 고치려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C119",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 지우려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C120",
       "stage": 4,
       "official_requirement": "반대 방향(다른 계정에서 첫 계정으로)의 읽기·수정·삭제도 똑같이 거절된 기록이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C121",
       "stage": 4,
       "official_requirement": "그 거절이 403으로, 또는 존재 자체를 감추는 404로 이뤄진다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C122",
       "stage": 4,
       "official_requirement": "거절 앞뒤로 반대편 계정의 자료 건수가 같고, 반대편에 새로 생긴 자료가 없다는 기록이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C123",
       "stage": 4,
       "official_requirement": "주소·요청 헤더·요청 본문에 다른 계정을 적어 보낸 요청과, 그래도 내 자료만 돌아온 응답이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C124",
       "stage": 4,
       "official_requirement": "로그인하지 않은 채 자료를 직접 요청한 것과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C125",
       "stage": 4,
       "official_requirement": "목록을 부른 응답에 다른 계정의 자료가 하나도 들어 있지 않다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C126",
       "stage": 4,
       "official_requirement": "위 거절을 만들어 내는 소스의 위치가 제출문에 함께 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
+      "current_recorded_status": "로컬 합성 검사 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
-        "tests/auth.test.mjs",
-        "verification/production-api.json",
-        "verification/production-browser.json"
+        "tests/auth.test.mjs"
       ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
+      "remaining": "Repeat both directions and full-state comparison on the production storage adapter; preserve paired requests/responses.",
+      "next_check": "After authenticated production storage is deployed"
     },
     {
       "id": "T07-C127",
       "stage": 5,
       "official_requirement": "인증 구현 설명서의 여섯 항목(① 무엇으로 붙였나, ② 왜 그걸 골랐나, ③ 어디를 어떻게 고쳤나, ④ 안 열리는 것을 확인한 기록, ⑤ AI와 나, ⑥ 아직 못 막은 것)이 제출문에 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -693,14 +595,14 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C128",
       "stage": 5,
       "official_requirement": "③에 가입·로그인·로그아웃·자료 조회 네 흐름이 소스의 어디를 지나는지 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -709,14 +611,14 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C129",
       "stage": 5,
       "official_requirement": "④에 확인 다섯 가지가 모두 있고, 각각 성공한 요청과 거절된 요청이 나란히 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -725,14 +627,14 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C130",
       "stage": 5,
       "official_requirement": "⑥에 아직 못 막은 것이 하나 이상 적혀 있고, 그것이 왜 위험한지가 함께 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "로컬 설명서 작성·최종 제출 전 보완",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -741,32 +643,14 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C131",
       "stage": 5,
       "official_requirement": "제출물 어디에도 비밀번호·토큰·비밀키의 원문이 없고, 가려서 적혀 있다.",
-      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
-      "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "verification/history-secret-check.json",
-        "verification/production-api.json"
-      ],
-      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
-      "next_check": "최종 commit 고정 뒤·제출 직전"
-    },
-    {
-      "id": "T07-C04",
-      "stage": 5,
-      "official_requirement": "1일차에 답하려는 질문 한 문장이 고정되어 있다.",
-      "current_recorded_status": "사용자 질문 채택 완료·계산 동의/관찰 시작 저장 전",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -775,7 +659,23 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 관찰 시작 화면 저장 및 1일차 확정",
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+    },
+    {
+      "id": "T07-C04",
+      "stage": 5,
+      "official_requirement": "1일차에 답하려는 질문 한 문장이 고정되어 있다.",
+      "current_recorded_status": "미완료",
+      "evidence": [
+        "docs/AUTH-IMPLEMENTATION.md",
+        "docs/OBSERVATION-PLAN.md",
+        "docs/SUBMISSION.md",
+        "verification/observation-local.json",
+        "verification/observation-browser.json",
+        "contracts/t07-schema-v3.json"
+      ],
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
       "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
@@ -1054,61 +954,7 @@
       "id": "T07-C133",
       "stage": 5,
       "official_requirement": "내 자료 전체를 파일 하나로 내보낼 수 있다.",
-      "current_recorded_status": "공개 본인 계정에서 전체 export 파일 생성 완료·실제 관찰 포함 최종 export 전",
-      "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "verification/actual-migration.json",
-        "verification/production-api.json"
-      ],
-      "remaining": "실제 5일·변경·대조까지 포함한 파일 하나 보관",
-      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
-    },
-    {
-      "id": "T07-C134",
-      "stage": 5,
-      "official_requirement": "내 계정을 지우면 내 자료도 함께 지워지거나, 지워진다는 안내가 화면에 적혀 있다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
-      "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
-      ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
-    },
-    {
-      "id": "T07-C03",
-      "stage": 5,
-      "official_requirement": "결과물 주소의 첫 화면은 로그인 화면이고, 심사하는 사람이 계정을 만들지 않아도 그 화면까지는 열린다. 로그인 뒤에 보이는 내 기록은 공개되지 않는다.",
-      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
-      "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "verification/production-api.json",
-        "verification/production-browser.json"
-      ],
-      "remaining": "최종 설명/제출 묶음과 연결 재확인",
-      "next_check": "실제 5일 뒤·제출 직전"
-    },
-    {
-      "id": "T07-C39",
-      "stage": 5,
-      "official_requirement": "짧은 확인 방법에 ① 어디로 가나요, ② 세 단계 안에 무엇을 하나요, ③ 무엇이 보이면 통과인가요, ④ 안 될 때는 무엇이 보이나요가 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
+      "current_recorded_status": "12표 전체 export 로컬 검사 완료·실제 사용자 export 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1117,8 +963,56 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json"
       ],
-      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
-      "next_check": "5일차 뒤·제출 직전"
+      "remaining": "Actual whole user-data export after migration/observation",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+    },
+    {
+      "id": "T07-C134",
+      "stage": 5,
+      "official_requirement": "내 계정을 지우면 내 자료도 함께 지워지거나, 지워진다는 안내가 화면에 적혀 있다.",
+      "current_recorded_status": "로컬 합성 검사 완료",
+      "evidence": [
+        "docs/AUTH-IMPLEMENTATION.md",
+        "docs/OBSERVATION-PLAN.md",
+        "docs/SUBMISSION.md",
+        "verification/observation-local.json",
+        "verification/observation-browser.json",
+        "contracts/t07-schema-v3.json"
+      ],
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+    },
+    {
+      "id": "T07-C03",
+      "stage": 5,
+      "official_requirement": "결과물 주소의 첫 화면은 로그인 화면이고, 심사하는 사람이 계정을 만들지 않아도 그 화면까지는 열린다. 로그인 뒤에 보이는 내 기록은 공개되지 않는다.",
+      "current_recorded_status": "로컬 로그인 화면 확인·공개 배포 전",
+      "evidence": [
+        "docs/AUTH-IMPLEMENTATION.md",
+        "docs/OBSERVATION-PLAN.md",
+        "docs/SUBMISSION.md",
+        "verification/observation-local.json",
+        "verification/observation-browser.json",
+        "contracts/t07-schema-v3.json"
+      ],
+      "remaining": "Public login screen and private personal records on deployed site",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+    },
+    {
+      "id": "T07-C39",
+      "stage": 5,
+      "official_requirement": "짧은 확인 방법에 ① 어디로 가나요, ② 세 단계 안에 무엇을 하나요, ③ 무엇이 보이면 통과인가요, ④ 안 될 때는 무엇이 보이나요가 각각 나뉘어 적혀 있다.",
+      "current_recorded_status": "미완료",
+      "evidence": [
+        "docs/AUTH-IMPLEMENTATION.md",
+        "docs/OBSERVATION-PLAN.md",
+        "docs/SUBMISSION.md",
+        "verification/observation-local.json",
+        "verification/observation-browser.json",
+        "contracts/t07-schema-v3.json"
+      ],
+      "remaining": "Final public verification instructions",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C40",
@@ -1140,19 +1034,17 @@
       "id": "T07-C46",
       "stage": 5,
       "official_requirement": "공개 화면·소스·제출물 어디에도 비밀값 원문이 남아 있지 않다.",
-      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "verification/history-secret-check.json",
-        "verification/production-api.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
-      "next_check": "최종 commit 고정 뒤·제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C01",
@@ -1204,14 +1096,15 @@
     }
   ],
   "source_check": {
-    "scope": "Source syntax, selected credential patterns and exact local DB/Vercel credential values; HEAD history exact known values",
-    "all_possible_secrets_proven_absent": false
+    "command": "npm run check",
+    "passed": true,
+    "files_checked": 98,
+    "scope": "Syntax and named credential patterns; does not prove all possible secret absence"
   },
   "document_mismatch_corrected": {
     "file": "docs/OBSERVATION-PLAN.md",
     "issue": "Outlier text previously promised correction history which the immutable confirmed-day implementation does not provide",
     "actual_behavior": "Keep original high value and explain in note before confirmation; confirmed days cannot be changed; retain incorrect observation and start a new study if necessary",
     "implementation_changed": false
-  },
-  "previous_audit": "verification/acceptance-audit-local-20261002.json"
+  }
 }

@@ -11,11 +11,12 @@ async function walk(dir) {
 const rootFiles = ['server.mjs', 'README.md', 'HANDOFF.md', 'AGENTS.md', 'SKT-ALEPH-project-guide.md', 'ALEPH-SUBMISSION-TEMPLATE.md', 'ALEPH-TASK-READBACK-TEMPLATE.md', 'package.json', 'package-lock.json', 'vercel.json', '.env.example'];
 const files = [...rootFiles.filter(existsSync), ... (await Promise.all(roots.map(walk))).flat()].filter(file => /\.(?:mjs|html|css|sql|json|md|txt)$/.test(file) || file === '.env.example');
 if (existsSync('.env.local')) process.loadEnvFile('.env.local');
-const taskSecret = process.env.VERCEL_OIDC_TOKEN;
+if (existsSync('.env.cloud.local')) process.loadEnvFile('.env.cloud.local');
+const taskSecrets = ['VERCEL_OIDC_TOKEN', 'T07_PG_PASSWORD'].map(key => [key, process.env[key]]).filter(([,value]) => value?.length > 16);
 let failures = 0;
 for (const file of files) {
   const source = await readFile(file, 'utf8');
-  if (taskSecret?.length > 16 && source.includes(taskSecret)) { console.error(`${file}: local Vercel credential detected (value omitted)`); failures++; }
+  for (const [key,value] of taskSecrets) if (source.includes(value)) { console.error(`${file}: ${key} credential detected (value omitted)`); failures++; }
   if (file.endsWith('.mjs')) {
     const checked = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
     if (checked.status !== 0) { console.error(checked.stderr); failures++; }

@@ -1,0 +1,15 @@
+{
+  "check_date": "2026-10-02",
+  "data_origin": "synthetic",
+  "scope": "Recorded execution outcomes; no credential values or invented request bodies",
+  "runs": [
+    {"phase": "first public registration", "status": "failed", "http_status": 503, "cause": "serverless request lacked socket", "fixed": true},
+    {"phase": "public API after socket fix", "status": "passed", "checks": 9, "public_registration_tested": true, "disposable_accounts_cleaned": 2},
+    {"phase": "public UI", "status": "passed", "checks": 10, "public_registration_tested": true, "disposable_account_cleaned": true, "evidence": "verification/production-browser.json"},
+    {"phase": "API plus raw response and runtime logs", "checks": 10, "checks_passed": true, "process_status": "failed", "cleanup_assertion": "Global user count expected 0 but actual human account was concurrently created, leaving total 1. Helper deleted only its own UUIDs; no real account was deleted.", "fixed": "Cleanup assertion now checks only created fixture UUIDs"},
+    {"phase": "unnecessary repeated public signup", "process_status": "failed", "http_status": 429, "expected_status": 409, "cause": "Shared signup bucket reached implemented 10/hour limit", "limits_weakened": false, "fixture_accounts_cleaned": true, "evidence": "verification/production-api-rate-limit-failure.json"},
+    {"phase": "final API/log checks", "status": "passed", "checks": 10, "account_setup": "Synthetic server fixture with a distinct bucket, not public signup", "public_registration_evidence": "verification/production-browser.json", "evidence": "verification/production-api.json"}
+  ],
+  "actual_user_records_not_used_as_test_fixtures": true,
+  "actual_five_day_use_proven": false
+}

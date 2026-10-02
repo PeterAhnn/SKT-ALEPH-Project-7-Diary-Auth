@@ -2,7 +2,7 @@
 
 - 상위 ALEPH 공통 가이드·템플릿과 최신 사용자 지침을 따른다.
 - 공식 전체 안내와 5단계·68개 기준은 `docs/TASK-SOURCE.md`, 착수 및 현재 진행은 `docs/TASK-READBACK.md`에 있다. 구현 전에 함께 읽는다.
-- 현재 앱은 로컬 Node 24 + 계정별 SQLite다. 공개 배포·클라우드 인증 저장소는 미완료다. T06의 공개 Supabase 어댑터·환경·DB를 T07 계정 저장소로 재사용하지 않는다.
+- 로컬은 Node 24 + 계정별 SQLite, 공개 운영은 Vercel HTTPS + T07 전용 PostgreSQL이다. 운영에는 비공개 4표(users/sessions/auth_attempts/diaries)와 계정별 12표 JSONB snapshot을 저장하고 SQLite는 메모리 검증에만 쓴다. T06의 공개 Supabase 어댑터·환경·DB를 재사용하지 않는다. 실제 운영 근거는 verification/production-api.json·production-browser.json, 전용 DB 검사는 cloud-integration.json이다.
 - T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`의 조상 이력을 보존한다. 기존 T06 실제 자료를 수정하지 않는다. 이관은 현재 운영 export와 보존 자료를 읽기 전용으로 대조한 뒤 서버에서 지정한 계정에 연결한다.
 - 계정 ID는 서버 세션으로만 결정한다. 사용자 입력의 경로·쿼리·헤더·본문을 계정 선택에 사용하지 않는다. 모든 개인 API는 인증, 쓰기는 CSRF 확인 후 수행한다.
 - 사용자 주제는 ALEPH 공부·과제 진행, 선택한 관찰 지표는 `완료한 할 일 수`, 단위는 `개`다. 실제 질문·계획 규칙·5일 기록·규칙 변경·판단을 AI가 만들어 넣지 않는다.

@@ -13,13 +13,13 @@ const digest = value => createHash('sha256').update(value).digest('hex');
 const loginMessage = '아이디 또는 비밀번호를 확인해 주세요.';
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
-function email(value) {
+export function email(value) {
   if (typeof value !== 'string' || value.length > 254) throw problem(400, '이메일 형식의 아이디를 입력해 주세요.', 'VALIDATION');
   const normalized = value.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) throw problem(400, '이메일 형식의 아이디를 입력해 주세요.', 'VALIDATION');
   return normalized;
 }
-function password(value, newPassword = false) {
+export function password(value, newPassword = false) {
   if (typeof value !== 'string' || Buffer.byteLength(value, 'utf8') > 1024 || value.length < (newPassword ? 12 : 1)) {
     throw problem(400, '비밀번호는 12자 이상, UTF-8 1,024바이트 이하로 입력해 주세요.', 'VALIDATION');
   }
@@ -31,7 +31,7 @@ export async function hashPassword(value) {
   const hash = await derive(value, salt, 32, PASSWORD_SETTINGS);
   return `scrypt$32768$8$3$${salt.toString('hex')}$${hash.toString('hex')}`;
 }
-async function verifyPassword(value, stored) {
+export async function verifyPassword(value, stored) {
   const parts = typeof stored === 'string' ? stored.split('$') : [];
   const valid = parts.length === 6 && parts.slice(0, 4).join('$') === 'scrypt$32768$8$3' && /^[0-9a-f]{32}$/.test(parts[4]) && /^[0-9a-f]{64}$/.test(parts[5]);
   const salt = valid ? Buffer.from(parts[4], 'hex') : Buffer.alloc(16);

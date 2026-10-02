@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-02T07:00:20.704Z",
+  "url": "https://skt-aleph-project-7-diary-auth.vercel.app",
+  "data_origin": "synthetic",
+  "scope": "Actual public HTTPS deployment API; real server time, no simulated five-day use",
+  "checks": [
+    {
+      "name": "public-without-account-and-private-denial",
+      "passed": true,
+      "requests": [
+        {
+          "path": "/",
+          "method": "GET",
+          "status": 200,
+          "headers": {},
+          "response": "[HTML omitted]"
+        },
+        {
+          "path": "/diary",
+          "method": "GET",
+          "status": 303,
+          "headers": {},
+          "response": "[HTML omitted]"
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "status": 401,
+          "headers": {},
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "user_count_before": 1,
+  "user_count_after": 1,
+  "external_user_delta": 0,
+  "cleanup_assertion": "Only this helper's created UUIDs absent; unrelated users may register during QA",
+  "own_accounts_remaining": 0,
+  "disposable_accounts_cleaned": 2,
+  "credentials": "[REDACTED]"
+}

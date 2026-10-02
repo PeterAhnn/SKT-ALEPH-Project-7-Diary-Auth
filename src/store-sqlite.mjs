@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { observationOperations } from './observation-store.mjs';
-import { importLegacy } from './migration.mjs';
+import { importLegacy, insertLegacyRows } from './migration.mjs';
 
 const TABLES = ['plans', 'plan_history', 'tasks', 'executions', 'completion_events', 'request_receipts', 'reviews'];
 const PLAN_FIELDS = ['title', 'description', 'start_date', 'end_date', 'priority', 'success_criteria', 'expected_minutes'];
@@ -96,6 +96,24 @@ export function createSqliteStore({ filename = '.data/diary.sqlite', clock = () 
   const diaryState = () => Object.fromEntries(TABLES.map(table => [table, db.prepare(`SELECT * FROM ${table} ORDER BY ${table === 'completion_events' ? 'completed_at' : 'created_at'}, ${table === 'request_receipts' ? 'request_id' : 'id'}`).all().map(decoded)]));
   const observation = observationOperations({ db, transaction, now, requireRow, recordOrigin, diaryState });
   return {
+    // Trusted cloud hydration only; there is no HTTP route for this operation.
+    async restoreSnapshot(snapshot) {
+      const extra = ['observation_studies','observation_days','observation_changes','observation_checks','migration_receipts'];
+      const all = [...TABLES, ...extra];
+      if (!snapshot || Object.keys(snapshot).length !== all.length || !all.every(table => Array.isArray(snapshot[table]))) throw failure(503,'저장된 자료 구조를 확인해 주세요.');
+      return transaction(() => {
+        if (all.some(table => db.prepare(`SELECT count(*) AS n FROM ${table}`).get().n)) throw failure(409,'빈 내부 저장소에만 자료를 불러올 수 있습니다.');
+        insertLegacyRows(db, snapshot);
+        const jsonFields = { rules:'rules_json',contribution:'contribution_json',counts:'counts_json' };
+        for (const table of extra) for (const value of snapshot[table]) {
+          const row = Object.fromEntries(Object.entries(value).map(([key,item]) => Object.hasOwn(jsonFields,key) ? [jsonFields[key],JSON.stringify(item)] : [key,item]));
+          const columns = db.prepare(`PRAGMA table_info(${table})`).all().map(column=>column.name);
+          if (Object.keys(row).length !== columns.length || Object.keys(row).some(key=>!columns.includes(key))) throw failure(503,'저장된 자료 구조를 확인해 주세요.');
+          insert(table,row);
+        }
+        if (db.prepare('PRAGMA foreign_key_check').all().length) throw failure(503,'저장된 자료 관계를 확인해 주세요.');
+      });
+    },
     kind: 'sqlite',
     async observationState() { return observation.state(); },
     async stateBundle() { return transaction(() => ({ data: diaryState(), observation: observation.snapshot() }), false); },

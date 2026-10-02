@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-02T05:42:02.352Z",
+  "checked_at": "2026-10-02T06:52:09.441Z",
   "data_origin": "synthetic",
   "scope": "Local Node HTTP + isolated SQLite, not live cloud, not actual five-day use",
   "password_method": "Node 24 node:crypto scrypt N=32768 r=8 p=3, 16-byte random salt",
@@ -23,7 +23,7 @@
             "ok": true,
             "data": {
               "user": {
-                "id": "85dcefce-01ce-45b6-a8bd-a798e60827d4",
+                "id": "85c7dc9b-c3c9-49e3-a2e6-698d00265f5e",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               }
@@ -45,7 +45,7 @@
             "ok": true,
             "data": {
               "user": {
-                "id": "85dcefce-01ce-45b6-a8bd-a798e60827d4",
+                "id": "85c7dc9b-c3c9-49e3-a2e6-698d00265f5e",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -69,7 +69,7 @@
             "ok": true,
             "data": {
               "user": {
-                "id": "731d770d-dfb2-42ec-8654-e4d046a03586",
+                "id": "8f494f80-c522-4a7f-8b8c-583b40078f89",
                 "email": "beta@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               }
@@ -135,8 +135,8 @@
         }
       ],
       "stored_test_password_hashes": [
-        "scrypt$32768$8$3$b3ede80871379aa35cad334462b6ad77$df23d108557d517d519ef3db50810cbf0896e1e316e1ad1f40ef86ed5615812d",
-        "scrypt$32768$8$3$7f126990346b47fa5009ec7df8d5d8be$4d3d314342fcfe5c93e98ea495261088974b0d192c6f9cceaae5c164a6efe555"
+        "scrypt$32768$8$3$0ac212911d422222b41276317c99a5d2$05b0c828ab7628b7bc1717560b552472ae8725ad3d2b10af2780efbf6b827246",
+        "scrypt$32768$8$3$fa3a9863834716db73b0a8e122bb57c4$97c0b7cb2a9068c8a43d03f8b00ff07adeee694739dedca3ab31105767df7957"
       ],
       "different_hashes_for_same_password": true,
       "session_tokens_stored_as_hashes": true,
@@ -181,7 +181,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "bfce3e55-e57c-40f8-9452-4b120e6fb6ea",
+                "id": "4ee1f649-34de-485d-bf69-cb361e7acbd3",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -314,7 +314,7 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "5b2e4393-3ca8-48fd-b621-7654b3bd44fc",
+                "id": "fe9a70fc-daca-4f0f-b4fd-2e8364f33174",
                 "title": "합성 계획",
                 "description": "인증 기능 시험 자료",
                 "start_date": "2026-10-02",
@@ -379,7 +379,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "f90d017c-cee9-4a49-a8b3-a47c64a9761c",
+                "id": "cdbc8793-7072-4ade-995c-c4b49d2781ed",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -462,7 +462,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "31d00861-8fc4-4fe9-9dce-17553d39560c",
+                "id": "c2009584-5d84-4c57-9590-e1fa930fd324",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -557,7 +557,7 @@
             "ok": true,
             "data": {
               "user": {
-                "id": "31d00861-8fc4-4fe9-9dce-17553d39560c",
+                "id": "c2009584-5d84-4c57-9590-e1fa930fd324",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -607,7 +607,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "1a3b6372-fa6c-4100-b31b-e2f1ce6d9d3f",
+                "id": "5ec6ee98-1032-482d-8536-9fa0d8ea064c",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -640,7 +640,7 @@
       "name": "bidirectional-ownership",
       "requests": [
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -651,8 +651,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -673,7 +673,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -689,7 +689,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -700,8 +700,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -722,7 +722,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "PATCH",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -750,7 +750,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -761,8 +761,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -783,7 +783,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "DELETE",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -799,7 +799,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -810,8 +810,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -832,7 +832,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd/complete",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb/complete",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -840,7 +840,7 @@
             "Content-Type": "application/json"
           },
           "input": {
-            "request_id": "5efaefda-7f52-4503-90a2-ad8748c131a0"
+            "request_id": "e4ffabca-5986-47b6-a212-a9bd5dd9d8fb"
           },
           "status": 404,
           "response": {
@@ -852,7 +852,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -863,8 +863,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -885,7 +885,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd/restore",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb/restore",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -903,7 +903,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -914,8 +914,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -936,7 +936,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd/executions",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb/executions",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -958,7 +958,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -969,8 +969,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -991,7 +991,7 @@
           }
         },
         {
-          "path": "/api/plans/b41a6b5c-c174-4883-b2ac-a071d0ce2c41/tasks",
+          "path": "/api/plans/109342e3-8356-4c95-9d9a-d4de48276806/tasks",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1018,7 +1018,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1029,8 +1029,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "8676effe-312d-474d-a1ad-d61fc1e6791f",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1051,7 +1051,7 @@
           }
         },
         {
-          "path": "/api/plans/b41a6b5c-c174-4883-b2ac-a071d0ce2c41/reviews",
+          "path": "/api/plans/109342e3-8356-4c95-9d9a-d4de48276806/reviews",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1071,7 +1071,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1082,8 +1082,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1104,7 +1104,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1120,7 +1120,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1131,8 +1131,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1153,7 +1153,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "PATCH",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1181,7 +1181,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1192,8 +1192,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1214,7 +1214,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b",
           "method": "DELETE",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1230,7 +1230,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1241,8 +1241,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1263,7 +1263,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f/complete",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b/complete",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1271,7 +1271,7 @@
             "Content-Type": "application/json"
           },
           "input": {
-            "request_id": "7015353a-0e23-4a5f-b1a9-f2d45bd57a49"
+            "request_id": "7f574da1-8edb-4d84-ab4c-e950a34b0ea7"
           },
           "status": 404,
           "response": {
@@ -1283,7 +1283,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1294,8 +1294,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1316,7 +1316,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f/restore",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b/restore",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1334,7 +1334,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1345,8 +1345,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1367,7 +1367,7 @@
           }
         },
         {
-          "path": "/api/tasks/8676effe-312d-474d-a1ad-d61fc1e6791f/executions",
+          "path": "/api/tasks/47e2e8a6-0308-411f-8a43-9c83a6f37d2b/executions",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1389,7 +1389,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1400,8 +1400,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1422,7 +1422,7 @@
           }
         },
         {
-          "path": "/api/plans/46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8/tasks",
+          "path": "/api/plans/ad3c39e1-0ecd-4ab7-a868-66f25d04ae26/tasks",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1449,7 +1449,7 @@
           }
         },
         {
-          "path": "/api/tasks/bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
+          "path": "/api/tasks/99d3ec8b-802d-487c-a6cf-216d7a9068eb",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1460,8 +1460,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "bb9c6624-7a8b-4b31-bb09-95a2cf2496dd",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "99d3ec8b-802d-487c-a6cf-216d7a9068eb",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "합성 할 일",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1482,7 +1482,7 @@
           }
         },
         {
-          "path": "/api/plans/46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8/reviews",
+          "path": "/api/plans/ad3c39e1-0ecd-4ab7-a868-66f25d04ae26/reviews",
           "method": "POST",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1502,7 +1502,7 @@
           }
         },
         {
-          "path": "/api/tasks/cde849f3-c7b6-40e3-8f79-14978d1747c8",
+          "path": "/api/tasks/b74ceecb-5d0c-4901-8c4c-bc0a140892f9",
           "method": "PATCH",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1525,8 +1525,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "cde849f3-c7b6-40e3-8f79-14978d1747c8",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "b74ceecb-5d0c-4901-8c4c-bc0a140892f9",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "내 기록 수정 성공 대조",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1548,7 +1548,7 @@
           }
         },
         {
-          "path": "/api/tasks/cde849f3-c7b6-40e3-8f79-14978d1747c8",
+          "path": "/api/tasks/b74ceecb-5d0c-4901-8c4c-bc0a140892f9",
           "method": "DELETE",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1559,8 +1559,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "cde849f3-c7b6-40e3-8f79-14978d1747c8",
-                "plan_id": "46bb24a9-8c30-42a2-9fa1-2f4e3f865ab8",
+                "id": "b74ceecb-5d0c-4901-8c4c-bc0a140892f9",
+                "plan_id": "ad3c39e1-0ecd-4ab7-a868-66f25d04ae26",
                 "title": "내 기록 수정 성공 대조",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1582,7 +1582,7 @@
           }
         },
         {
-          "path": "/api/tasks/7692cadd-72fa-4a18-a293-afc0638cf8a7",
+          "path": "/api/tasks/c3fc9428-8017-4b5c-9ebd-160eb182a4e8",
           "method": "PATCH",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1605,8 +1605,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "7692cadd-72fa-4a18-a293-afc0638cf8a7",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "c3fc9428-8017-4b5c-9ebd-160eb182a4e8",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "내 기록 수정 성공 대조",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1628,7 +1628,7 @@
           }
         },
         {
-          "path": "/api/tasks/7692cadd-72fa-4a18-a293-afc0638cf8a7",
+          "path": "/api/tasks/c3fc9428-8017-4b5c-9ebd-160eb182a4e8",
           "method": "DELETE",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1639,8 +1639,8 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "7692cadd-72fa-4a18-a293-afc0638cf8a7",
-                "plan_id": "b41a6b5c-c174-4883-b2ac-a071d0ce2c41",
+                "id": "c3fc9428-8017-4b5c-9ebd-160eb182a4e8",
+                "plan_id": "109342e3-8356-4c95-9d9a-d4de48276806",
                 "title": "내 기록 수정 성공 대조",
                 "notes": "실사용 기록 아님",
                 "due_date": "2026-10-02",
@@ -1700,7 +1700,7 @@
             "data": {
               "plans": [
                 {
-                  "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "title": "alpha@example.test",
                   "description": "인증 기능 시험 자료",
                   "start_date": "2026-10-02",
@@ -1718,12 +1718,12 @@
               ],
               "plan_history": [
                 {
-                  "id": "bcf1136d-1cfc-4fcf-9564-847ca568d41e",
-                  "plan_id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "68db7abf-6c9c-4b60-ad72-75c59bac5b24",
+                  "plan_id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "version": 1,
                   "created_at": "2026-10-02T00:00:00.000Z",
                   "snapshot": {
-                    "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                    "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                     "title": "alpha@example.test",
                     "description": "인증 기능 시험 자료",
                     "start_date": "2026-10-02",
@@ -1760,7 +1760,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "31154f41-aa12-4972-9884-d2fa7367fb35",
+                "id": "6aec8756-70b4-4bc6-a924-c6a01cd26f5a",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -1769,7 +1769,7 @@
           }
         },
         {
-          "path": "/api/state?user_id=7b4bd11d-8523-45b2-833e-31c8fa5754bb",
+          "path": "/api/state?user_id=0b0409b1-2518-4989-a6fe-54232f55717d",
           "method": "GET",
           "headers": {
             "Cookie": "[REDACTED]",
@@ -1781,7 +1781,7 @@
             "data": {
               "plans": [
                 {
-                  "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "title": "alpha@example.test",
                   "description": "인증 기능 시험 자료",
                   "start_date": "2026-10-02",
@@ -1799,12 +1799,12 @@
               ],
               "plan_history": [
                 {
-                  "id": "bcf1136d-1cfc-4fcf-9564-847ca568d41e",
-                  "plan_id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "68db7abf-6c9c-4b60-ad72-75c59bac5b24",
+                  "plan_id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "version": 1,
                   "created_at": "2026-10-02T00:00:00.000Z",
                   "snapshot": {
-                    "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                    "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                     "title": "alpha@example.test",
                     "description": "인증 기능 시험 자료",
                     "start_date": "2026-10-02",
@@ -1841,7 +1841,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "31154f41-aa12-4972-9884-d2fa7367fb35",
+                "id": "6aec8756-70b4-4bc6-a924-c6a01cd26f5a",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -1855,7 +1855,7 @@
           "headers": {
             "Cookie": "[REDACTED]",
             "X-CSRF-Token": "[REDACTED]",
-            "X-User-ID": "7b4bd11d-8523-45b2-833e-31c8fa5754bb"
+            "X-User-ID": "0b0409b1-2518-4989-a6fe-54232f55717d"
           },
           "status": 200,
           "response": {
@@ -1863,7 +1863,7 @@
             "data": {
               "plans": [
                 {
-                  "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "title": "alpha@example.test",
                   "description": "인증 기능 시험 자료",
                   "start_date": "2026-10-02",
@@ -1881,12 +1881,12 @@
               ],
               "plan_history": [
                 {
-                  "id": "bcf1136d-1cfc-4fcf-9564-847ca568d41e",
-                  "plan_id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "68db7abf-6c9c-4b60-ad72-75c59bac5b24",
+                  "plan_id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "version": 1,
                   "created_at": "2026-10-02T00:00:00.000Z",
                   "snapshot": {
-                    "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                    "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                     "title": "alpha@example.test",
                     "description": "인증 기능 시험 자료",
                     "start_date": "2026-10-02",
@@ -1923,7 +1923,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "31154f41-aa12-4972-9884-d2fa7367fb35",
+                "id": "6aec8756-70b4-4bc6-a924-c6a01cd26f5a",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -1940,7 +1940,7 @@
             "Content-Type": "application/json"
           },
           "input": {
-            "user_id": "7b4bd11d-8523-45b2-833e-31c8fa5754bb"
+            "user_id": "0b0409b1-2518-4989-a6fe-54232f55717d"
           },
           "status": 200,
           "response": {
@@ -1948,7 +1948,7 @@
             "data": {
               "plans": [
                 {
-                  "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "title": "alpha@example.test",
                   "description": "인증 기능 시험 자료",
                   "start_date": "2026-10-02",
@@ -1966,12 +1966,12 @@
               ],
               "plan_history": [
                 {
-                  "id": "bcf1136d-1cfc-4fcf-9564-847ca568d41e",
-                  "plan_id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "68db7abf-6c9c-4b60-ad72-75c59bac5b24",
+                  "plan_id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "version": 1,
                   "created_at": "2026-10-02T00:00:00.000Z",
                   "snapshot": {
-                    "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                    "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                     "title": "alpha@example.test",
                     "description": "인증 기능 시험 자료",
                     "start_date": "2026-10-02",
@@ -2008,7 +2008,7 @@
               "today": "2026-10-02",
               "authentication": true,
               "user": {
-                "id": "31154f41-aa12-4972-9884-d2fa7367fb35",
+                "id": "6aec8756-70b4-4bc6-a924-c6a01cd26f5a",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
@@ -2033,7 +2033,7 @@
             "record_origin": "synthetic",
             "plans": [
               {
-                "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                 "title": "alpha@example.test",
                 "description": "인증 기능 시험 자료",
                 "start_date": "2026-10-02",
@@ -2051,12 +2051,12 @@
             ],
             "plan_history": [
               {
-                "id": "bcf1136d-1cfc-4fcf-9564-847ca568d41e",
-                "plan_id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                "id": "68db7abf-6c9c-4b60-ad72-75c59bac5b24",
+                "plan_id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                 "version": 1,
                 "created_at": "2026-10-02T00:00:00.000Z",
                 "snapshot": {
-                  "id": "3e05fbf0-a142-4a4f-a9a0-72c35fa15ce2",
+                  "id": "c05ed5ff-8a34-46da-a52b-79cc4e4cf235",
                   "title": "alpha@example.test",
                   "description": "인증 기능 시험 자료",
                   "start_date": "2026-10-02",
@@ -2117,7 +2117,7 @@
             "ok": true,
             "data": {
               "entity": {
-                "id": "e4b9dcf3-3bd9-4708-a51e-caa7abe506e8",
+                "id": "1e2d2da2-954c-43eb-b4aa-7f1f752f095b",
                 "title": "합성 계획",
                 "description": "인증 기능 시험 자료",
                 "start_date": "2026-10-02",
@@ -2274,7 +2274,7 @@
             "ok": true,
             "data": {
               "user": {
-                "id": "c63ecf77-d948-460d-a7b1-abe74a37e1b0",
+                "id": "9826d8d5-386e-49c0-9be7-b342d5890c8d",
                 "email": "alpha@example.test",
                 "created_at": "2026-10-02T00:00:00.000Z"
               },
