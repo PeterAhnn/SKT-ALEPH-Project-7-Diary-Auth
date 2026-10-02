@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-02T08:52:38.580Z",
-  "reviewed_source_head": "760a38e69d3560967d566612e7d97adf40c180c6",
-  "scope": "Ordered cards 1-5 source/document/evidence review; preserved actual HTTPS synthetic tests plus current actual logged-in IAB export. Initial study setup saved; real confirmed dates 0/5. Documentation updates in current working tree. Platform submission pending.",
+  "checked_at": "2026-10-02T07:12:24.155Z",
+  "reviewed_source_head": "ccf765df053456161e881e541e4fd177ee7adc03",
+  "scope": "Current source + actual public HTTPS synthetic API/UI checks + actual T06 user-account import/export + official 68 preserved requirements. Real five-day observations and platform submission pending.",
   "official_source": "docs/TASK-SOURCE.md",
   "latest_page_reloaded_this_review": false,
   "overall_acceptance": "incomplete",
@@ -31,13 +31,7 @@
     "actual_t06_user_import_seven_table_digest_match": true,
     "actual_observation_days": 0,
     "platform_submitted": false,
-    "public_source_commit": "ccf765df053456161e881e541e4fd177ee7adc03",
-    "actual_observation_initial_setup_saved": true,
-    "actual_observation_started_at": "2026-10-02T08:21:52.942Z",
-    "actual_observation_plan_tasks": 0,
-    "actual_rule_changes": 0,
-    "actual_manual_checks": 0,
-    "actual_whole_export_logical_tables": 12
+    "public_source_commit": "ccf765df053456161e881e541e4fd177ee7adc03"
   },
   "password_length": {
     "official_minimum_specified": false,
@@ -58,23 +52,23 @@
     },
     {
       "path": "docs/TASK-READBACK.md",
-      "sha256": "1f5dee1e4549c91a4ebc61a40b5f090d20670f6e4de5b0c4b209ae66ec71d3ce"
+      "sha256": "b42478f5eead975cb4196f784d140f81f6acc039b0d36b76433c4aabb483e5d0"
     },
     {
       "path": "docs/AUTH-IMPLEMENTATION.md",
-      "sha256": "b12feb8cc3315f8e84b730161070f8cfaa479d27a6aac5b05ae8659e78d774f1"
+      "sha256": "dff7d1def3060c94946613b89a24a77dd4a7958286f2ad5e398a3ccc4966a26f"
     },
     {
       "path": "docs/SUBMISSION.md",
-      "sha256": "5d1df8438f5f5cdf845d9b1cfe346b6a4052b41df3ef593fb25407388b184fa2"
+      "sha256": "d38f0bf3fac7d75390b0144aa24b9310e7e20c07b498c312b044bf04811e2b25"
     },
     {
       "path": "docs/TODO.md",
-      "sha256": "0658b30d9f3b9507f4efefc0c8636927684b505909b6d8bbcf1b84d57fc50dc1"
+      "sha256": "886637b3264a46efdb790c7c8e4552117dfdbba5097be05ab73435eb07436f3e"
     },
     {
       "path": "docs/OBSERVATION-PLAN.md",
-      "sha256": "d2cdd1ca39308f2a586b21a4c9541e4a35101d69286b2ef5788e0ab7a2a4c40c"
+      "sha256": "97eddf97bd0de2e85487245aaa85c72bd8d1c7dffbc64c08e667aab28e53d047"
     },
     {
       "path": "docs/DATA-MIGRATION.md",
@@ -139,38 +133,6 @@
     {
       "path": "verification/public-delivery.json",
       "sha256": "5e4951b7344aeaa65f914464711140705655bd5888816744e4f805d11d23ca7c"
-    },
-    {
-      "path": "docs/CARD-1-REVIEW.md",
-      "sha256": "79e0186520869061d9716440f6c68ddabdcb72595bd425751d42c95be4350d15"
-    },
-    {
-      "path": "docs/CARD-2-REVIEW.md",
-      "sha256": "29bf889a1ac10d279f4193b59752b530b5ed35697ab9dad592d8da897d826bea"
-    },
-    {
-      "path": "docs/CARD-3-REVIEW.md",
-      "sha256": "6e51ff4a2b4ef4d96d41c365a45b47758c8054f79bd51c95602213091f9e8631"
-    },
-    {
-      "path": "docs/CARD-4-REVIEW.md",
-      "sha256": "e27b93c8cb5daa78e3a85585fc323e28ea07ae67a742a1503bc3361babc451c4"
-    },
-    {
-      "path": "docs/CARD-5-REVIEW.md",
-      "sha256": "9b2bba4aa8cdb42a0b9787966cb2305700e1af71824071d05d30b05cb1932c3e"
-    },
-    {
-      "path": "verification/card-4-review.json",
-      "sha256": "ab391b395176fbaaa84417209638b0150ecbd655192ed68bd6cd5c2cb88c9e26"
-    },
-    {
-      "path": "verification/card-5-current-status.json",
-      "sha256": "5f0fc874b90701c62e1925bf3039ea0f98e17512bf4f1dd8753fe78748e88d20"
-    },
-    {
-      "path": "verification/history-secret-check-card-3.json",
-      "sha256": "1b57f8913570eb5ff2eb0c9a821d91b464f8f86e22b3c9c2f05c760dd9f05967"
     }
   ],
   "criteria": [
@@ -178,58 +140,55 @@
       "id": "T07-C91",
       "stage": 1,
       "official_requirement": "인증을 무엇으로 붙였는지(직접 구현·라이브러리·인증 서비스 중 무엇인지)와 그 이름이 제출문에 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md",
-        "docs/CARD-1-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C92",
       "stage": 1,
       "official_requirement": "라이브러리나 서비스를 썼다면 그 이름과 버전이 제출문에 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md",
-        "docs/CARD-1-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C93",
       "stage": 1,
       "official_requirement": "함께 검토한 다른 방법이 하나 이상 적혀 있고, 그것을 고르지 않은 이유가 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "verification/auth-browser.json",
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
-        "docs/SUBMISSION.md",
-        "docs/CARD-1-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C94",
       "stage": 1,
       "official_requirement": "가입 화면에서 새 계정을 만들 수 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -237,18 +196,16 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C95",
       "stage": 1,
       "official_requirement": "만든 계정으로 로그인할 수 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -256,18 +213,16 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C96",
       "stage": 1,
       "official_requirement": "로그아웃할 수 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -275,18 +230,16 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C97",
       "stage": 1,
       "official_requirement": "로그인하지 않은 채로 내 자료 화면 주소를 열면 자료 대신 로그인 화면이 나온다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -294,18 +247,16 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C98",
       "stage": 1,
       "official_requirement": "같은 아이디(또는 이메일)로 두 번 가입되지 않는다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -313,18 +264,16 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C99",
       "stage": 1,
       "official_requirement": "아이디는 맞고 비밀번호만 틀렸을 때와, 아이디 자체가 없을 때의 안내 문구가 같다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
@@ -332,551 +281,479 @@
         "verification/migration-local.json",
         "verification/t06-live-export-check.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C100",
       "stage": 1,
       "official_requirement": "6번에서 만든 다이어리에 이어 붙였고, 6번에 넣어 둔 내 자료가 내 계정으로 옮겨져 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "현재 T06 전체 실제 본인 계정 이관 완료·7표 값/digest 일치",
       "evidence": [
         "verification/actual-migration.json",
-        "verification/t06-live-export-check.json",
-        "docs/CARD-1-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/t06-live-export-check.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "원본을 계속 보존",
+      "next_check": "최종 제출 직전 원본/근거 확인"
     },
     {
       "id": "T07-C101",
       "stage": 2,
       "official_requirement": "비밀번호를 되돌릴 수 없게 만드는 데 쓴 방법의 이름(bcrypt·argon2·scrypt·PBKDF2 중 무엇인지)이 제출문에 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
-        "docs/SUBMISSION.md",
-        "docs/CARD-2-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C102",
       "stage": 2,
       "official_requirement": "그 방법을 고른 이유가 한 문장 이상 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
-        "docs/SUBMISSION.md",
-        "docs/CARD-2-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C103",
       "stage": 2,
       "official_requirement": "계정 하나의 비밀번호가 데이터베이스에 저장된 모습이 제출문에 있고, 입력한 글자가 그대로 보이지 않는다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-2-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C104",
       "stage": 2,
       "official_requirement": "같은 비밀번호로 만든 두 계정의 저장된 값이 서로 다르다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-2-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C105",
       "stage": 2,
       "official_requirement": "로그인 요청과 응답을 적은 기록에 비밀번호 원문이 남아 있지 않다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-2-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C106",
       "stage": 2,
       "official_requirement": "서버 로그·화면·네트워크 응답 어디에도 비밀번호 원문이 없다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-2-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C107",
       "stage": 2,
       "official_requirement": "비밀번호를 다루는 부분을 널리 쓰이는 라이브러리에 맡겼고, 직접 만들었다면 그 사실이 제출문에 그대로 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/identity-sqlite.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-2-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C108",
       "stage": 3,
       "official_requirement": "로그인 뒤 무엇으로 사람을 알아보는지(세션·토큰 중 무엇인지)가 제출문에 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
-        "docs/SUBMISSION.md",
-        "docs/CARD-3-REVIEW.md"
+        "docs/SUBMISSION.md"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C109",
       "stage": 3,
       "official_requirement": "로그인한 상태의 성공 응답과, 로그아웃한 뒤 같은 값으로 다시 요청했을 때의 거절 응답이 나란히 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C110",
       "stage": 3,
       "official_requirement": "그 두 요청이 같은 주소·같은 방식이고, 달라진 것은 로그아웃 여부뿐임이 기록에서 드러난다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C111",
       "stage": 3,
       "official_requirement": "사람을 알아보는 그 값에 만료 시각이 있고, 얼마 뒤 끊기는지가 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C112",
       "stage": 3,
       "official_requirement": "사람을 알아보는 그 값이 주소창(URL)에 실려 다니지 않는다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C113",
       "stage": 3,
       "official_requirement": "그 값을 만들 때 쓴 비밀키가 브라우저 코드·배포 파일·Git 기록 어디에도 없다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/history-secret-check.json",
-        "verification/production-api.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-api.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
+      "next_check": "최종 commit 고정 뒤·제출 직전"
     },
     {
       "id": "T07-C114",
       "stage": 3,
       "official_requirement": "비밀번호를 바꾸거나 로그아웃하면 이전에 발급한 값이 더는 통하지 않는다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C115",
       "stage": 3,
       "official_requirement": "적어 둔 기록에서 토큰·세션 값이 가려져 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "src/http.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-3-REVIEW.md",
-        "docs/SUBMISSION.md"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C116",
       "stage": 4,
       "official_requirement": "계정 두 개를 만들어 각각에 자료를 넣었고, 그 사실이 제출문에 적혀 있다. 비밀번호는 적혀 있지 않다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C117",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 읽으려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C118",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 고치려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C119",
       "stage": 4,
       "official_requirement": "한 계정으로 로그인해 다른 계정의 자료를 지우려는 요청과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C120",
       "stage": 4,
       "official_requirement": "반대 방향(다른 계정에서 첫 계정으로)의 읽기·수정·삭제도 똑같이 거절된 기록이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C121",
       "stage": 4,
       "official_requirement": "그 거절이 403으로, 또는 존재 자체를 감추는 404로 이뤄진다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C122",
       "stage": 4,
       "official_requirement": "거절 앞뒤로 반대편 계정의 자료 건수가 같고, 반대편에 새로 생긴 자료가 없다는 기록이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C123",
       "stage": 4,
       "official_requirement": "주소·요청 헤더·요청 본문에 다른 계정을 적어 보낸 요청과, 그래도 내 자료만 돌아온 응답이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C124",
       "stage": 4,
       "official_requirement": "로그인하지 않은 채 자료를 직접 요청한 것과 그 거절 응답이 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C125",
       "stage": 4,
       "official_requirement": "목록을 부른 응답에 다른 계정의 자료가 하나도 들어 있지 않다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C126",
       "stage": 4,
       "official_requirement": "위 거절을 만들어 내는 소스의 위치가 제출문에 함께 적혀 있다.",
-      "current_recorded_status": "순서대로 대조 완료: 구현·기존 실제 합성 검사 근거·제출 초안 준비",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "verification/auth-local.json",
         "tests/auth.test.mjs",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-4-REVIEW.md",
-        "docs/SUBMISSION.md",
-        "verification/card-4-review.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "최종 제출 문안·공개 고정 커밋·가림 대조 및 플랫폼 제출/접수는 아직",
-      "next_check": "실제 5일 뒤 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C127",
       "stage": 5,
       "official_requirement": "인증 구현 설명서의 여섯 항목(① 무엇으로 붙였나, ② 왜 그걸 골랐나, ③ 어디를 어떻게 고쳤나, ④ 안 열리는 것을 확인한 기록, ⑤ AI와 나, ⑥ 아직 못 막은 것)이 제출문에 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "준비: [AUTH-IMPLEMENTATION.md](./AUTH-IMPLEMENTATION.md)의 ①~⑥. 실제 관찰 결과·최종 판단은 추가 필요",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "준비: [AUTH-IMPLEMENTATION.md](./AUTH-IMPLEMENTATION.md)의 ①~⑥. 실제 관찰 결과·최종 판단은 추가 필요",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C128",
       "stage": 5,
       "official_requirement": "③에 가입·로그인·로그아웃·자료 조회 네 흐름이 소스의 어디를 지나는지 적혀 있다.",
-      "current_recorded_status": "준비: 설명서 ③의 가입/로그인/로그아웃/자료 조회와 로컬·공개 adapter 경로",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C129",
       "stage": 5,
       "official_requirement": "④에 확인 다섯 가지가 모두 있고, 각각 성공한 요청과 거절된 요청이 나란히 적혀 있다.",
-      "current_recorded_status": "준비: 설명서 ④의 다섯 묶음과 원래 가린 HTTP 요청/응답. 이름·묶는 방식은 AI 정리 제안",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C130",
       "stage": 5,
       "official_requirement": "⑥에 아직 못 막은 것이 하나 이상 적혀 있고, 그것이 왜 위험한지가 함께 적혀 있다.",
-      "current_recorded_status": "준비: 설명서 ⑥의 이메일 소유 확인·복구/MFA·공유 제한·백업 등 실제 미구현과 영향",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C131",
       "stage": 5,
       "official_requirement": "제출물 어디에도 비밀번호·토큰·비밀키의 원문이 없고, 가려서 적혀 있다.",
-      "current_recorded_status": "현재 자료 검사·기록 가림 확인. 마지막 제출 묶음 재검사 필요",
+      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -885,342 +762,304 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "verification/history-secret-check.json",
-        "verification/production-api.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/production-api.json"
       ],
-      "remaining": "현재 자료 검사·기록 가림 확인. 마지막 제출 묶음 재검사 필요",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
+      "next_check": "최종 commit 고정 뒤·제출 직전"
     },
     {
       "id": "T07-C04",
       "stage": 5,
       "official_requirement": "1일차에 답하려는 질문 한 문장이 고정되어 있다.",
-      "current_recorded_status": "저장 확인: 실제 export의 observation_studies.question",
+      "current_recorded_status": "사용자 질문 채택 완료·계산 동의/관찰 시작 저장 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 관찰 시작 화면 저장 및 1일차 확정",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C05",
       "stage": 5,
       "official_requirement": "1일차에 관찰 지표 한 개가 고정되어 있다.",
-      "current_recorded_status": "저장 확인: 완료한 할 일 수",
+      "current_recorded_status": "사용자 지표 선택 완료·1일차 저장 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C06",
       "stage": 5,
       "official_requirement": "1일차에 관찰 지표의 단위가 고정되어 있다.",
-      "current_recorded_status": "저장 확인: 개",
+      "current_recorded_status": "사용자 단위 선택 완료·1일차 저장 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C07",
       "stage": 5,
       "official_requirement": "Asia/Seoul 기준으로 서로 다른 실제 날짜 정확히 5일의 기록이 내 계정 안에 있다.",
-      "current_recorded_status": "**미완료: 확정 0/5일**",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "**미완료: 확정 0/5일**",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Exactly five actual Korean dates in user account",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C08",
       "stage": 5,
       "official_requirement": "실제 5일 기록에 같은 지표 계산 규칙이 적용된다.",
-      "current_recorded_status": "기준 저장·합성 검사는 있음. 실제 5일 적용은 미완료",
+      "current_recorded_status": "합성 5일 검사·실제 5일 미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "기준 저장·합성 검사는 있음. 실제 5일 적용은 미완료",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C23",
       "stage": 5,
       "official_requirement": "값이 빠졌을 때 어떻게 처리하는지가 적혀 있다.",
-      "current_recorded_status": "저장 확인: 미기록과 확인한 0을 구분, 미기록 분모 제외",
+      "current_recorded_status": "앱 규칙 구현·사용자 실제 관찰 확정 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C24",
       "stage": 5,
       "official_requirement": "값이 중복될 때 어떻게 처리하는지가 적혀 있다.",
-      "current_recorded_status": "저장 확인: 요청 중복 재사용, 같은 날짜/task 1회",
+      "current_recorded_status": "앱 규칙 구현·사용자 실제 관찰 확정 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C25",
       "stage": 5,
       "official_requirement": "값이 유난히 튈 때 어떻게 처리하는지가 적혀 있다.",
-      "current_recorded_status": "저장 확인: 유지하고 메모로 설명",
+      "current_recorded_status": "앱 규칙 구현·사용자 실제 관찰 확정 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C26",
       "stage": 5,
       "official_requirement": "반올림을 어떻게 하는지가 적혀 있다.",
-      "current_recorded_status": "저장 확인: 정수 합계/평균 원값 및 소수 1자리 half-up",
+      "current_recorded_status": "앱 규칙 구현·사용자 실제 관찰 확정 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C27",
       "stage": 5,
       "official_requirement": "주 시작 요일이 적혀 있다.",
-      "current_recorded_status": "저장 확인: 월요일",
+      "current_recorded_status": "앱 규칙 구현·사용자 실제 관찰 확정 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C09",
       "stage": 5,
       "official_requirement": "계획 규칙 변경 기록은 2일차 기록 뒤이면서 3일차 기록 앞이다.",
-      "current_recorded_status": "**미완료: 2일차 뒤·3일차 앞 변경 0건**",
+      "current_recorded_status": "합성 순서 검사·실제 변경 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "**미완료: 2일차 뒤·3일차 앞 변경 0건**",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C10",
       "stage": 5,
       "official_requirement": "계획 규칙을 바꾼 시각이 기록되어 있다.",
-      "current_recorded_status": "미완료: 실제 변경 시각 없음",
+      "current_recorded_status": "합성 시각 검사·실제 변경 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "미완료: 실제 변경 시각 없음",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C11",
       "stage": 5,
       "official_requirement": "계획 규칙을 바꾼 이유가 기록되어 있다.",
-      "current_recorded_status": "미완료: 실제 1~2일차를 본 이유 없음",
+      "current_recorded_status": "입력/보존 구현·실제 변경 이유 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "미완료: 실제 1~2일차를 본 이유 없음",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C12",
       "stage": 5,
       "official_requirement": "규칙 변경 기록이 1일차와 2일차 기록을 정확히 가리키고, 2일차 뒤·3일차 앞에 놓인다.",
-      "current_recorded_status": "미완료: 실제 두 날짜와 변경 없음",
+      "current_recorded_status": "합성 참조/순서 검사·실제 변경 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "미완료: 실제 두 날짜와 변경 없음",
-      "next_check": "실제 1~2일차 뒤·3일차 전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C13",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 지표가 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "같은 지표 비교 합성 검사·실제 비교 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C14",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 단위가 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "같은 단위 비교 합성 검사·실제 비교 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C15",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 계산 규칙이 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "같은 계산 비교 합성 검사·실제 비교 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C132",
       "stage": 5,
       "official_requirement": "화면에 보이는 합계·평균이 내 5일 기록을 손으로 더한 값과 같다.",
-      "current_recorded_status": "**미완료: 실제 날짜/대조 0건**. 합성 8개/1.6 예를 실제 결과로 쓰지 않음",
+      "current_recorded_status": "합성 합계/평균·대조 입력 검사·실제 손계산 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "**미완료: 실제 날짜/대조 0건**. 합성 8개/1.6 예를 실제 결과로 쓰지 않음",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual user hand calculation and comparison against actual five-day records",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C133",
       "stage": 5,
       "official_requirement": "내 자료 전체를 파일 하나로 내보낼 수 있다.",
-      "current_recorded_status": "실제 현재 계정 schema 3 / 논리 12표 파일 다운로드 확인. 최종 5일 파일은 이후 다시 보관",
+      "current_recorded_status": "공개 본인 계정에서 전체 export 파일 생성 완료·실제 관찰 포함 최종 export 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1229,18 +1068,16 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "verification/actual-migration.json",
-        "verification/production-api.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/production-api.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일·변경·대조까지 포함한 파일 하나 보관",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C134",
       "stage": 5,
       "official_requirement": "내 계정을 지우면 내 자료도 함께 지워지거나, 지워진다는 안내가 화면에 적혀 있다.",
-      "current_recorded_status": "현재 화면의 ‘계정 삭제 시 이 앱의 내 자료도 함께 삭제’ 확인. 합성 삭제 API는 200 뒤 기존 세션 401, 타 계정 불변. 본인 계정은 유지",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1249,18 +1086,16 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C03",
       "stage": 5,
       "official_requirement": "결과물 주소의 첫 화면은 로그인 화면이고, 심사하는 사람이 계정을 만들지 않아도 그 화면까지는 열린다. 로그인 뒤에 보이는 내 기록은 공개되지 않는다.",
-      "current_recorded_status": "기존 격리 공개 HTTPS UI/API 근거 200, 개인 API 익명 401",
+      "current_recorded_status": "공개 HTTPS 합성 API/화면 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1269,54 +1104,48 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "verification/production-api.json",
-        "verification/production-browser.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/production-browser.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "최종 설명/제출 묶음과 연결 재확인",
+      "next_check": "실제 5일 뒤·제출 직전"
     },
     {
       "id": "T07-C39",
       "stage": 5,
       "official_requirement": "짧은 확인 방법에 ① 어디로 가나요, ② 세 단계 안에 무엇을 하나요, ③ 무엇이 보이면 통과인가요, ④ 안 될 때는 무엇이 보이나요가 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "초안에 네 항목 존재. 최종 실제 관찰 근거 연결 필요",
+      "current_recorded_status": "로컬/공개 구현 설명서·근거 작성, 실사용/최종 판단 보완 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "초안에 네 항목 존재. 최종 실제 관찰 근거 연결 필요",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 결과·사용자 판단 최종 반영",
+      "next_check": "5일차 뒤·제출 직전"
     },
     {
       "id": "T07-C40",
       "stage": 5,
       "official_requirement": "제출문에 ① AI에게 맡긴 일, ② 내가 직접 판단한 일, ③ AI 제안을 따르지 않은 일(없다면 왜 없었는지)이 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "**미완료: 실제 최종 판단 및 따르지 않은 일/없었다면 이유 미확정**",
+      "current_recorded_status": "미완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "**미완료: 실제 최종 판단 및 따르지 않은 일/없었다면 이유 미확정**",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Final real user judgment; do not invent a rejected AI proposal",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C46",
       "stage": 5,
       "official_requirement": "공개 화면·소스·제출물 어디에도 비밀값 원문이 남아 있지 않다.",
-      "current_recorded_status": "현재 지정 값/패턴 검사와 가린 증거. 최종 묶음 재대조 필요",
+      "current_recorded_status": "현 소스 문법/비밀값 지정 패턴·알려진 Git credential 검사 완료, 최종 묶음 전",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1325,60 +1154,52 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "verification/history-secret-check.json",
-        "verification/production-api.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/production-api.json"
       ],
-      "remaining": "현재 지정 값/패턴 검사와 가린 증거. 최종 묶음 재대조 필요",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "최종 commit·제출 묶음 기준 재검사. 지정 범위 외 모든 비밀값 부재를 보증하지 않음",
+      "next_check": "최종 commit 고정 뒤·제출 직전"
     },
     {
       "id": "T07-C01",
       "stage": 5,
       "official_requirement": "제출한 모든 URL(결과물·소스)은 계정 생성·로그인·인증·초대·비밀번호·OAuth·CAPTCHA 없이 새 시크릿 창에서 열린다.",
-      "current_recorded_status": "기존 공개 로그인 첫 화면·고정 전체 커밋 URL의 익명 접근 확인. 최종 고정 커밋 선택 뒤 다시 확인",
+      "current_recorded_status": "공개 full commit·익명 200·원격 hash/T06 조상 일치 확인",
       "evidence": [
         "verification/public-delivery.json",
         "verification/t06-preservation-current.json",
-        "verification/source-public-commit.png",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/source-public-commit.png"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 뒤 최종 제출 주소와 대조",
+      "next_check": "제출 직전"
     },
     {
       "id": "T07-C77",
       "stage": 5,
       "official_requirement": "T07 결과물이 이어서 사용한 최종 T06 결과를 명시하고 실제 최종 T06 제출과 일치한다.",
-      "current_recorded_status": "실제 제출된 T06 결과와 고정 b9de0298cd200961eac56286c6a6a55299947a96 명시·보존",
+      "current_recorded_status": "T07 로그인 화면/설명서에 최종 T06 커밋 명시",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
         "docs/SUBMISSION.md",
         "verification/observation-local.json",
         "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "contracts/t07-schema-v3.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "Actual day-one decision and five distinct dates; actual one rule change and hand calculation/export; final public URLs/explanation/judgment/secret review.",
+      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
     },
     {
       "id": "T07-C78",
       "stage": 5,
       "official_requirement": "T07 소스 이력에 제출 당시의 고정 T06 commit이 조상으로 포함되어 있다.",
-      "current_recorded_status": "현재 T07 HEAD에서도 해당 커밋의 조상 관계 확인",
+      "current_recorded_status": "공개 full commit·익명 200·원격 hash/T06 조상 일치 확인",
       "evidence": [
         "verification/public-delivery.json",
         "verification/t06-preservation-current.json",
-        "verification/source-public-commit.png",
-        "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/source-public-commit.png"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
-      "next_check": "실제 5일 진행과 제출 직전"
+      "remaining": "실제 5일 뒤 최종 제출 주소와 대조",
+      "next_check": "제출 직전"
     }
   ],
   "source_check": {
@@ -1391,8 +1212,5 @@
     "actual_behavior": "Keep original high value and explain in note before confirmation; confirmed days cannot be changed; retain incorrect observation and start a new study if necessary",
     "implementation_changed": false
   },
-  "previous_audit": "verification/acceptance-audit-local-20261002.json",
-  "client_review_date": "2026-10-02",
-  "official_source_checked_date": "2026-10-02",
-  "actual_user_app_reloaded_this_review": true
+  "previous_audit": "verification/acceptance-audit-local-20261002.json"
 }

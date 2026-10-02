@@ -49,6 +49,25 @@ B: scrypt$32768$8$3$3bba35a235935c755af3ca78dbf0618d$6cd6864c6e9ff3d490766752c20
 
 DB 비밀번호 등은 서버 환경 변수에 두고 `.env*`를 Git/배포 업로드에서 제외한다. [현재 Git 검사](../verification/history-secret-check-card-3.json)는 기록된 HEAD의 도달 가능한 blob 236개에서 알려진 DB 비밀번호·Vercel OIDC 원문 부재를 확인했다. 실제 배포 bundle을 내려받아 검사한 것은 아니며 미지의 모든 비밀값 부재를 보장하지 않는다. [카드 3 대조표](./CARD-3-REVIEW.md)에 관련 코드·배포 설정·가린 기록을 연결했다.
 
+### 소유자 차단 근거 — 카드 4
+
+공개 HTTPS 합성 검사에서 A/B 시험 계정 각각에 계획 1개와 할 일 1개를 넣었다. 시험 비밀번호는 기재하지 않는다. 자신의 조회는 200이고 Cookie/CSRF를 가린 양방향 요청 결과는 다음과 같다.
+
+| 방향 | 대상 경로 | GET 읽기 | PATCH 수정 | DELETE 삭제 |
+|---|---|---|---|---|
+| A→B | `/api/tasks/d120861b-78b5-461d-91d3-ad00c54d7e51` | 404 | 404 | 404 |
+| B→A | `/api/tasks/a5918981-e019-433f-8711-d54680f4599e` | 404 | 404 | 404 |
+
+6건 모두 `{"ok":false,"error":{"code":"NOT_FOUND","message":"해당 기록을 찾을 수 없습니다."}}`였다. 거절 전후 A/B 전체 state가 같고 할 일 건수 각각 1→1, 새 자료도 없었다. URL·헤더·본문의 B 계정 지정 힌트를 보내도 A의 목록만 200으로 돌아오며 목록/export에 B 자료는 없다. 익명 GET /api/state는 401이다. [가린 실제 요청·전체 응답](../verification/card-4-review.json)에 PATCH 본문, 계정 힌트와 각 응답을 보존했다.
+
+소스 경로는 `src/http.mjs` 인증 gate → `withStore(session.user.id)` → `src/identity-postgres.mjs:withDiary`의 해당 계정 snapshot → 한 건 조회의 ID 확인/`src/store-sqlite.mjs`의 쓰기 전 대상 확인이다. 목록·export에도 같은 계정 경로를 사용한다. [카드 4 대조표](./CARD-4-REVIEW.md).
+
+### 실제 5일 관찰 — 카드 5, 진행 중
+
+본인 계정에 한국 시간 2026-10-02 17:21:52 시작 기록이 있다. 질문은 “하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?”, 지표는 완료한 할 일 수, 단위는 개, 첫 규칙은 “하루 시작에 할 일 3개를 정하고 진행한다”다. 같은 날짜의 고유 완료 할 일 ID를 한 번 세며 미기록은 0으로 채우지 않고, 이상값은 메모와 함께 보존하고, 평균은 소수 1자리 half-up, 주 시작은 월요일이다.
+
+현재 확정 **0/5일**, 관찰 계획 할 일 0개, 변경 0건, 손계산 0건이다. 실제 날짜 5개·2일차 뒤 한 변경·전후 비교·손계산·최종 export·사용자 판단은 미완료다. [현재 실제 상태](../verification/card-5-current-status.json), [카드 5 대조표](./CARD-5-REVIEW.md). 전체 내보내기 한 파일과 삭제 안내는 실제 확인했으며 진행 상태 확인용 원본/화면은 비공개 보관한다. 심사자에게 본인 비밀번호를 보내지 않는다.
+
 ## 재현·통과 확인 4가지 (권장)
 
 - 어디로 가나요: https://skt-aleph-project-7-diary-auth.vercel.app 의 로그인 첫 화면.

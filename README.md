@@ -2,7 +2,7 @@
 
 T06의 Plan → Do → See 앱에 가입·로그인과 계정별 자료 보호를 붙였습니다. [공개 앱](https://skt-aleph-project-7-diary-auth.vercel.app)의 로그인 첫 화면은 누구나 열 수 있고 개인 기록은 로그인한 계정에만 보입니다.
 
-**현재:** 공개 HTTPS·전용 PostgreSQL 배포 및 운영 API 검사 완료. 자동 48개, PostgreSQL 합성 검사 13개, 공개 API 검사 10개 통과. T06 실제 계정 이관은 7표 전체 digest 일치로 확인했습니다. 실제 5일 관찰과 최종 제출은 미완료입니다. 관찰 지표는 사용자가 선택한 **완료한 할 일 수(개)**이며 질문·첫 계획 규칙은 사용자 채택 완료, 계산 동의와 관찰 시작 저장은 확인 전입니다. [해야 할 일 체크](docs/TODO.md).
+**현재:** 공개 HTTPS·전용 PostgreSQL 배포 및 운영 API 검사 완료. 자동 48개, PostgreSQL 합성 검사 13개, 공개 API 검사 10개 통과. T06 실제 계정 이관은 7표 전체 digest 일치로 확인했습니다. 실제 5일 관찰과 최종 제출은 미완료입니다. 관찰 지표는 사용자가 선택한 **완료한 할 일 수(개)**이며 질문·첫 계획 규칙·계산 기준은 본인 계정에 저장됐고 현재 확정 0/5일입니다. [해야 할 일 체크](docs/TODO.md).
 
 [공식 안내와 진행 상태](docs/TASK-READBACK.md) · [충족 여부와 확인 일정](docs/ACCEPTANCE-AUDIT.md) · [인증 구현 설명서](docs/AUTH-IMPLEMENTATION.md) · [5일 관찰 준비](docs/OBSERVATION-PLAN.md) · [전체 자료 이관](docs/DATA-MIGRATION.md) · [다음 작업](HANDOFF.md) · [제출 초안](docs/SUBMISSION.md)
 
@@ -44,7 +44,7 @@ npm run check
 
 [관찰/이관 자동 검사](verification/observation-local.json) · [이관 오류·롤백 검사](verification/migration-local.json) · [관찰 화면 검사](verification/observation-browser.json) · [현재 로컬 계약](contracts/t07-schema-v3.json)
 
-추가 브라우저 검사 10개는 **가상 날짜·합성 개수**로 이관 UI, 5일 화면, 한 번의 규칙 변경, 손계산 입력을 확인한 결과입니다. 실제 사용 5일의 증거가 아닙니다. 실제 사용자 계정 이관은 actual-migration.json으로 확인했습니다. 관찰 질문·첫 규칙은 채택됐고 시작 화면의 계산 동의 답을 기다립니다.
+추가 브라우저 검사 10개는 **가상 날짜·합성 개수**로 이관 UI, 5일 화면, 한 번의 규칙 변경, 손계산 입력을 확인한 결과입니다. 실제 사용 5일의 증거가 아닙니다. 실제 사용자 계정 이관은 actual-migration.json으로 확인했습니다. 관찰 시작 기준은 실제 저장됐고 현재 확정 0/5일입니다. [카드 5 현재 상태](docs/CARD-5-REVIEW.md)를 확인하세요.
 
 ## T06 연속성과 보관
 

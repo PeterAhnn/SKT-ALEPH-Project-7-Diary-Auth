@@ -17,7 +17,7 @@
 
 1. GitHub 공개 commit·push·익명 접근과 T06 17파일/조상 보존을 확인했다. 고정 구현 소스 ccf765df053456161e881e541e4fd177ee7adc03. 최신 제출 초안은 docs/SUBMISSION.md.
 2. 사용자가 직접 가입/로그인했고 현재 T06 전체 자료를 빈 본인 계정으로 이관했다. export의 7표 건수/canonical digest 일치 확인. 원본과 private export 보존. 본인 자료를 시험 계정에 넣지 않는다.
-3. 새 ALEPH 관찰 계획을 만든다. 지표는 사용자 선택 완료한 할 일 수(개). 질문·첫 규칙은 사용자 답과 실제 화면 확정이 필요하다. 시작일 안에 1일차를 확정한다.
+3. 새 ALEPH 관찰 계획과 시작 기준은 이미 저장됐다. 한국 시간 2026-10-02 17:21:52에 본인 계정의 질문·첫 규칙·지표/단위·계산 기준 저장을 확인했다. 실제 확정 날짜는 0/5일이다. 현재 대상 계획의 할 일은 0개다. 실제 할 일 3개를 등록해 진행하고 시작일 안에 1일차를 확정한다.
 4. 서로 다른 한국 날짜에 실제 5일. 2일차 뒤·3일차 앞에 실제 1~2일차를 보고 한 규칙만 변경한다. 그 이유·시각·정확한 참조를 남긴다. 미기록을 0으로 만들지 않는다.
 5. 실제 5일 손계산/전후 비교/전체 export·사용자 판단을 확보한다. 공식 68개·완주 체크리스트·제출 항목·증거 가림을 모두 다시 대조한 뒤 플랫폼 제출·접수 증거를 남긴다. 현재 미제출이다.
 
@@ -25,6 +25,6 @@
 
 로컬: Node 24, npm ci → npm start, http://127.0.0.1:8009, 별도 .data/t07 계정별 SQLite. 공개 자료와 자동 동기화하지 않는다. npm test / npm run check로 로컬 검사.
 
-cloud-integration.json은 실제 PostgreSQL + 로컬 HTTP + 가상 날짜, production-api.json과 production-browser.json은 실제 HTTPS + 합성 계정이다. 실제 5일은 0일이다. 실제 T06 이관은 actual-migration.json의 7표 digest 일치로 확인했다. 사용자 질문·첫 규칙은 채택됐고 계산 규칙 동의는 기다리는 중이다. 운영 검사는 무시된 전용 env와 검증한 CLI/Bun 경로가 필요하며 원문 credential을 출력하지 않는다. 브라우저 helper는 격리된 gstack만 사용한다. 개인 Chrome 상태를 바꾸지 않는다.
+cloud-integration.json은 실제 PostgreSQL + 로컬 HTTP + 가상 날짜, production-api.json과 production-browser.json은 실제 HTTPS + 합성 계정이다. 실제 5일은 0일이다. 실제 T06 이관은 actual-migration.json의 7표 digest 일치로 확인했다. 질문·첫 규칙과 계산 기준의 실제 저장은 card-5-current-status.json으로 확인했고 확정 0/5일이다. 운영 검사는 무시된 전용 env와 검증한 CLI/Bun 경로가 필요하며 원문 credential을 출력하지 않는다. 브라우저 helper는 격리된 gstack만 사용한다. 개인 Chrome 상태를 바꾸지 않는다.
 
 12자는 공식 조건이 아닌 AI 정책이며 아직 변경하지 않았다. MFA 없이 NIST 최소 15자 조건을 충족한다고 주장하지 않는다. 64KB 입력/2MB snapshot/공유 IP 횟수 제한 및 복구·이메일 인증 미구현을 설명서 ⑥에서 유지한다. secrets·실제 비공개 export를 Git에 넣지 않는다.
