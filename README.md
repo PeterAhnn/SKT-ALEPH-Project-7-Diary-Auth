@@ -4,7 +4,7 @@ T06의 Plan → Do → See 앱에 가입·로그인과 계정별 자료 보호�
 
 **현재:** 로컬 인증·5일 관찰·T06 이관 기능·전체 내보내기·계정 삭제 검사 완료. 공개 HTTPS 배포, T06 실제 자료 이관, 실제 5일 사용과 최종 제출은 미완료입니다. 관찰 지표는 사용자가 선택한 **완료한 할 일 수(개)**이며 질문·첫 계획 규칙은 제안 단계입니다.
 
-[공식 안내와 진행 상태](docs/TASK-READBACK.md) · [인증 구현 설명서](docs/AUTH-IMPLEMENTATION.md) · [5일 관찰 준비](docs/OBSERVATION-PLAN.md) · [전체 자료 이관](docs/DATA-MIGRATION.md) · [다음 작업](HANDOFF.md) · [제출 초안](docs/SUBMISSION.md)
+[공식 안내와 진행 상태](docs/TASK-READBACK.md) · [충족 여부와 확인 일정](docs/ACCEPTANCE-AUDIT.md) · [인증 구현 설명서](docs/AUTH-IMPLEMENTATION.md) · [5일 관찰 준비](docs/OBSERVATION-PLAN.md) · [전체 자료 이관](docs/DATA-MIGRATION.md) · [다음 작업](HANDOFF.md) · [제출 초안](docs/SUBMISSION.md)
 
 ## 실행
 
