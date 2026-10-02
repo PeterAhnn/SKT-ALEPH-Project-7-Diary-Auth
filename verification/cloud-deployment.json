@@ -23,11 +23,6 @@
   "anon_schema_access": false,
   "authenticated_schema_access": false,
   "tls_certificate_verification": true,
-  "test_account_cleanup_privileged_counts": {
-    "users": 0,
-    "sessions": 0,
-    "diaries": 0
-  },
   "security_advisor_lints": [],
   "initial_production_failure": {
     "status": 503,
@@ -35,8 +30,20 @@
     "resolved": true,
     "proof": "tests/cloud-contract.test.mjs and verification/production-api.json"
   },
-  "actual_user_migration": false,
+  "actual_user_migration": true,
   "actual_observation_days": 0,
   "platform_submitted": false,
-  "credentials": "[EXCLUDED]"
+  "credentials": "[EXCLUDED]",
+  "pre_user_fixture_baseline_counts": {
+    "users": 0,
+    "sessions": 0,
+    "diaries": 0
+  },
+  "latest_privileged_counts": {
+    "users": 1,
+    "synthetic_users": 0,
+    "diaries": 1,
+    "migration_receipts": 1,
+    "confirmed_observation_dates": 0
+  }
 }

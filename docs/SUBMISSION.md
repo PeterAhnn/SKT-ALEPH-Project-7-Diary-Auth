@@ -10,7 +10,9 @@ https://skt-aleph-project-7-diary-auth.vercel.app
 
 ## 소스 저장소 URL (필수)
 
-미준비. `https://github.com/OWNER/REPO/commit/FULL_COMMIT` 형식의 실제 확인된 40/64자리 소문자 전체 커밋 URL을 입력한다. T07 Git 이력에는 T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`가 조상으로 있다. 공개 GitHub 원격은 아직 없다.
+https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df053456161e881e541e4fd177ee7adc03
+
+실제 40자리 소문자 commit, 공개 원격 branch 일치와 익명 화면 200을 확인했다. T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`는 조상이다. 구현 고정 커밋이며 이후 진행/제출 문서 커밋과 구분한다.
 
 ## 인증 구현 설명서
 

@@ -49,7 +49,7 @@ T06이 이미 Node 24와 SQLite로 동작하므로 기존 ID·관계·수정 이
 
 [server.mjs](../server.mjs)는 로컬 T07 전용 디렉터리와 loopback 서버를 사용한다. 기존 T06 공개 Supabase 환경이 지정되면 시작을 거절한다. [api/index.mjs](../api/index.mjs)는 전용 PostgreSQL adapter를 사용하고 미구성·잘못된 T06 설정에는 503을 반환한다. 기존 공개 어댑터 [store-supabase.mjs](../src/store-supabase.mjs)와 과거 SQL은 이력 보존 자료이며 T07 서버가 호출하지 않는다. 운영 계정 삭제는 user 삭제와 FK cascade로 세션·해당 전체 snapshot을 제거하며 타 계정 자료는 유지한다.
 
-T06 실제 최종 제출은 `b9de0298cd200961eac56286c6a6a55299947a96`, T07의 출발 HEAD는 후속 문서 커밋 `db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93`다. 최종 제출 커밋이 T07의 조상임을 로컬 Git으로 확인했다. 이관 미리보기/가져오기를 구현하고 합성 자료로 확인했다. 현재 T06 공개 자료와 보존 export가 달랐으며 사용자가 현재 T06 전체 자료를 이관 기준으로 선택했다. 실제 사용자 계정으로 UI 이관 후 전체 export를 받아 7표 건수와 모든 값의 canonical digest가 일치함을 확인했다. [actual-migration.json](../verification/actual-migration.json).
+T06 실제 최종 제출은 `b9de0298cd200961eac56286c6a6a55299947a96`, T07의 출발 HEAD는 후속 문서 커밋 `db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93`다. 고정 [공개 구현 소스](https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df053456161e881e541e4fd177ee7adc03)와 공개 push·익명 접근을 확인했다. 최종 제출 커밋이 T07의 조상임을 로컬 Git으로 확인했다. 이관 미리보기/가져오기를 구현하고 합성 자료로 확인했다. 현재 T06 공개 자료와 보존 export가 달랐으며 사용자가 현재 T06 전체 자료를 이관 기준으로 선택했다. 실제 사용자 계정으로 UI 이관 후 전체 export를 받아 7표 건수와 모든 값의 canonical digest가 일치함을 확인했다. [actual-migration.json](../verification/actual-migration.json).
 
 ## ④ 안 열리는 것을 확인한 기록
 
@@ -69,7 +69,7 @@ T06 실제 최종 제출은 `b9de0298cd200961eac56286c6a6a55299947a96`, T07의 �
 
 `registration-and-password-storage`에는 같은 비밀번호로 만든 합성 두 계정의 실제 DB hash 두 개가 있다. 저장 모양은 `scrypt$32768$8$3$<16바이트 salt의 hex>$<32바이트 hash의 hex>`이며 두 salt/hash가 다르다. 입력 원문은 증거에 없다. 로그인을 실패시킨 두 경우의 상태와 문구가 모두 같다. 입력 비밀번호를 서버 로그·HTML·응답에 출력하는 코드를 두지 않았고 검사 응답과 생성 증거에 원문이 없음을 확인했다. 자동 소스 패턴 검사는 모든 가능한 유출 경로 부재의 증명은 아니다.
 
-`disposable-account-deletion`은 합성 계정 DB 및 WAL/SHM 파일 제거, 이전 세션·로그인 거절, 반대 계정 state 불변을 확인했다. [브라우저 화면](../verification/authenticated-synthetic.png)은 실제 검사용 합성 계정이며 사용자 실제 다이어리 화면이 아니다. 자동 검사 45개, 인증 화면 검사 10개, 관찰/이관 화면 검사 10개가 통과했다. 후자는 가상 날짜·합성 개수이며 실제 5일 사용이 아니다.
+`disposable-account-deletion`은 합성 계정 DB 및 WAL/SHM 파일 제거, 이전 세션·로그인 거절, 반대 계정 state 불변을 확인했다. [브라우저 화면](../verification/authenticated-synthetic.png)은 실제 검사용 합성 계정이며 사용자 실제 다이어리 화면이 아니다. 초기 로컬 자동 검사 45개, 인증 화면 10개, 관찰/이관 화면 10개가 통과했다. cloud 경계 검사를 추가한 현재 자동 검사는 48개다. 후자는 가상 날짜·합성 개수이며 실제 5일 사용이 아니다.
 
 공개 운영에서도 [production-api.json](../verification/production-api.json)의 10개 합성 검사로 가입/서로 다른 저장 hash, 같은 오류, Secure/HttpOnly/SameSite cookie, 익명/CSRF/origin 거절, 양방향 6건 404·전체 불변·위조 무효·export 분리, 자기 수정/삭제 성공, 같은 인증값의 로그아웃 뒤 401, 비밀번호 변경 후 두 세션 401, 시험 세션 만료 후 401, 자기 계정 삭제·타 계정 불변을 확인했다. 만료는 시험 계정의 만료시각을 앞당긴 검사이며 실제 8시간을 기다린 결과가 아니다.
 

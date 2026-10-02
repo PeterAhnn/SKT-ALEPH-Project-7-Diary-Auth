@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-02T07:05:29.363Z",
-  "reviewed_source_head": "ebf584cdc2297e5cbc321a50a72bf3be2217001a",
+  "checked_at": "2026-10-02T07:12:24.155Z",
+  "reviewed_source_head": "ccf765df053456161e881e541e4fd177ee7adc03",
   "scope": "Current source + actual public HTTPS synthetic API/UI checks + actual T06 user-account import/export + official 68 preserved requirements. Real five-day observations and platform submission pending.",
   "official_source": "docs/TASK-SOURCE.md",
   "latest_page_reloaded_this_review": false,
@@ -30,7 +30,8 @@
     "public_signup_form_verified_separately": true,
     "actual_t06_user_import_seven_table_digest_match": true,
     "actual_observation_days": 0,
-    "platform_submitted": false
+    "platform_submitted": false,
+    "public_source_commit": "ccf765df053456161e881e541e4fd177ee7adc03"
   },
   "password_length": {
     "official_minimum_specified": false,
@@ -51,27 +52,27 @@
     },
     {
       "path": "docs/TASK-READBACK.md",
-      "sha256": "4c5e9d20f6a881e411a95db0392339ff1b6dad827c9455c344322c41377eeeab"
+      "sha256": "b42478f5eead975cb4196f784d140f81f6acc039b0d36b76433c4aabb483e5d0"
     },
     {
       "path": "docs/AUTH-IMPLEMENTATION.md",
-      "sha256": "8683c3e5c598f12cdab0f49c4bca000439aaefeaf6c9a873b3852952c5970a3d"
+      "sha256": "dff7d1def3060c94946613b89a24a77dd4a7958286f2ad5e398a3ccc4966a26f"
     },
     {
       "path": "docs/SUBMISSION.md",
-      "sha256": "9e6df8337635ffa1472706d12eaf81bd91a7e6445155b43f35feeb6033b56d06"
+      "sha256": "d38f0bf3fac7d75390b0144aa24b9310e7e20c07b498c312b044bf04811e2b25"
     },
     {
       "path": "docs/TODO.md",
-      "sha256": "4ca95fd77f0100f96c83d6ff2277fa8902119fa3e38c3b32da99112f37a57622"
+      "sha256": "886637b3264a46efdb790c7c8e4552117dfdbba5097be05ab73435eb07436f3e"
     },
     {
       "path": "docs/OBSERVATION-PLAN.md",
-      "sha256": "0eeffb964ecf69eefbf64b497791d67147cab86f2a58ffd02f521496a57e96a0"
+      "sha256": "97eddf97bd0de2e85487245aaa85c72bd8d1c7dffbc64c08e667aab28e53d047"
     },
     {
       "path": "docs/DATA-MIGRATION.md",
-      "sha256": "a9ecd5e102aa1118ac687f04666933a89e9c1435c9f3c1d79eeab4b17025de25"
+      "sha256": "8dc95698466636b1dde30f5fa63c128eb0d842686e4c45969ad5025726f9b239"
     },
     {
       "path": "verification/auth-local.json",
@@ -107,7 +108,7 @@
     },
     {
       "path": "verification/cloud-deployment.json",
-      "sha256": "c0dbd502bd279e388978ef578cf1fcaa9e4c553349fc974fab309e47f2b9910c"
+      "sha256": "25bad1d1eba2d5a07ed67d43082beae9faad1860babbdff0be263523e776743e"
     },
     {
       "path": "verification/production-api.json",
@@ -119,7 +120,7 @@
     },
     {
       "path": "verification/history-secret-check.json",
-      "sha256": "48d1fcedaa91f50b422d391681f4f34a6ecb7a33ad6b4e7cca9d1a928adae88b"
+      "sha256": "0a69b7d1b8890ce8f0e953e610d96325cc33d790121b1b37bcf85a810a06f831"
     },
     {
       "path": "verification/t06-preservation-current.json",
@@ -128,6 +129,10 @@
     {
       "path": "contracts/t07-schema-v3.json",
       "sha256": "835f5e3e07b785eddda33782cf10169e0ec428a919eed8c551d16025fc3e92bc"
+    },
+    {
+      "path": "verification/public-delivery.json",
+      "sha256": "5e4951b7344aeaa65f914464711140705655bd5888816744e4f805d11d23ca7c"
     }
   ],
   "criteria": [
@@ -1158,17 +1163,14 @@
       "id": "T07-C01",
       "stage": 5,
       "official_requirement": "제출한 모든 URL(결과물·소스)은 계정 생성·로그인·인증·초대·비밀번호·OAuth·CAPTCHA 없이 새 시크릿 창에서 열린다.",
-      "current_recorded_status": "미완료",
+      "current_recorded_status": "공개 full commit·익명 200·원격 hash/T06 조상 일치 확인",
       "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json"
+        "verification/public-delivery.json",
+        "verification/t06-preservation-current.json",
+        "verification/source-public-commit.png"
       ],
-      "remaining": "Public HTTPS result and source access in fresh incognito",
-      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+      "remaining": "실제 5일 뒤 최종 제출 주소와 대조",
+      "next_check": "제출 직전"
     },
     {
       "id": "T07-C77",
@@ -1190,17 +1192,14 @@
       "id": "T07-C78",
       "stage": 5,
       "official_requirement": "T07 소스 이력에 제출 당시의 고정 T06 commit이 조상으로 포함되어 있다.",
-      "current_recorded_status": "로컬 T07 조상 확인 완료·공개 소스 URL 전",
+      "current_recorded_status": "공개 full commit·익명 200·원격 hash/T06 조상 일치 확인",
       "evidence": [
-        "docs/AUTH-IMPLEMENTATION.md",
-        "docs/OBSERVATION-PLAN.md",
-        "docs/SUBMISSION.md",
-        "verification/observation-local.json",
-        "verification/observation-browser.json",
-        "contracts/t07-schema-v3.json"
+        "verification/public-delivery.json",
+        "verification/t06-preservation-current.json",
+        "verification/source-public-commit.png"
       ],
-      "remaining": "Local ancestor verified; publish source and verify accessible full commit URL",
-      "next_check": "Day 1; after day 2 before day 3; after day 5; immediately before submission"
+      "remaining": "실제 5일 뒤 최종 제출 주소와 대조",
+      "next_check": "제출 직전"
     }
   ],
   "source_check": {

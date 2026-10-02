@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-02T07:12:24.151Z",
+  "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app",
+  "result_anonymous_login_page_status": 200,
+  "result_private_anonymous_api_status": 401,
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df053456161e881e541e4fd177ee7adc03",
+  "source_commit": "ccf765df053456161e881e541e4fd177ee7adc03",
+  "source_anonymous_status": 200,
+  "source_commit_title_verified": true,
+  "repository_visibility": "PUBLIC",
+  "remote_ref": "refs/heads/t07-auth",
+  "remote_full_hash": "ccf765df053456161e881e541e4fd177ee7adc03",
+  "submitted_t06_ancestor": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "ancestor_verified": true,
+  "source_screenshot": "verification/source-public-commit.png",
+  "actual_t06_user_migration_verified": true,
+  "actual_confirmed_observation_dates": 0,
+  "platform_submitted": false,
+  "subsequent_document_commits_may_follow": true
+}

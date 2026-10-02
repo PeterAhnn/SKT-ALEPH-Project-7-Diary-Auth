@@ -44,10 +44,10 @@ npm run check
 
 [관찰/이관 자동 검사](verification/observation-local.json) · [이관 오류·롤백 검사](verification/migration-local.json) · [관찰 화면 검사](verification/observation-browser.json) · [현재 로컬 계약](contracts/t07-schema-v3.json)
 
-추가 브라우저 검사 10개는 **가상 날짜·합성 개수**로 이관 UI, 5일 화면, 한 번의 규칙 변경, 손계산 입력을 확인한 결과입니다. 실제 사용 5일의 증거가 아닙니다. 실제 사용자 계정 이관과 첫 관찰은 아직 시작하지 않았습니다.
+추가 브라우저 검사 10개는 **가상 날짜·합성 개수**로 이관 UI, 5일 화면, 한 번의 규칙 변경, 손계산 입력을 확인한 결과입니다. 실제 사용 5일의 증거가 아닙니다. 실제 사용자 계정 이관은 actual-migration.json으로 확인했습니다. 관찰 질문·첫 규칙은 채택됐고 시작 화면의 계산 동의 답을 기다립니다.
 
 ## T06 연속성과 보관
 
-실제 최종 T06 제출 커밋은 `b9de0298cd200961eac56286c6a6a55299947a96`이며 T07 Git 이력의 조상으로 유지했습니다. 출발 HEAD는 후속 문서 커밋 `db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93`입니다. T07에 원격 GitHub 저장소·고정 공개 소스 URL은 아직 없습니다.
+실제 최종 T06 제출 커밋은 `b9de0298cd200961eac56286c6a6a55299947a96`이며 T07 Git 이력의 조상으로 유지했습니다. 출발 HEAD는 후속 문서 커밋 `db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93`입니다. T07 공개 소스와 push를 확인했습니다. 고정 구현 소스: [ccf765df053456161e881e541e4fd177ee7adc03](https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/ccf765df053456161e881e541e4fd177ee7adc03). 이후 문서 커밋과 구분합니다.
 
 상속한 `records/`, `contracts/pds-schema-v2.json`, 기존 `docs/`와 `verification/`의 T06 자료는 역사적 기준 자료입니다. **T07 사용·검사 결과로 재분류하지 않습니다.** 원래 안내는 [T06 README](docs/T06-README.md), [T06 인수인계](docs/T06-HANDOFF.md), [T06 제출 기록](docs/T06-SUBMISSION.md)에 보존했습니다. T06 원본 저장소는 이 작업에서 변경하지 않았습니다.
