@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-02T08:59:49.639Z",
+  "client_review_date": "2026-10-02",
+  "scope": "Read-only anonymous public page verification in restarted isolated gstack Chromium; no personal IAB credentials imported",
+  "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app/",
+  "public_login_visible": true,
+  "private_diary_hidden": true,
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/87c688c43c5440c3315dd82bff78e9e6717dcc5c",
+  "source_commit": "87c688c43c5440c3315dd82bff78e9e6717dcc5c",
+  "source_title": "docs: review cards 4 and 5 with current user observation status · PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth@87c688c · GitHub",
+  "commit_and_review_title_visible": true,
+  "anonymous_sign_in_link_visible": true,
+  "remote_branch_hash_matched": true,
+  "screenshot": "verification/source-card-45-public.png",
+  "navigation_wait_timeouts": true,
+  "verification_method": "goto reported timeout for app/commit, then read-only DOM checks confirmed loaded pages. No HTTP status inferred from timeout.",
+  "initial_isolated_browser_restart_failure": true,
+  "platform_submitted": false
+}

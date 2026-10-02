@@ -1,6 +1,6 @@
 {
   "checked_at": "2026-10-02T08:52:38.580Z",
-  "reviewed_source_head": "760a38e69d3560967d566612e7d97adf40c180c6",
+  "reviewed_source_head": "87c688c43c5440c3315dd82bff78e9e6717dcc5c",
   "scope": "Ordered cards 1-5 source/document/evidence review; preserved actual HTTPS synthetic tests plus current actual logged-in IAB export. Initial study setup saved; real confirmed dates 0/5. Documentation updates in current working tree. Platform submission pending.",
   "official_source": "docs/TASK-SOURCE.md",
   "latest_page_reloaded_this_review": false,
@@ -31,7 +31,7 @@
     "actual_t06_user_import_seven_table_digest_match": true,
     "actual_observation_days": 0,
     "platform_submitted": false,
-    "public_source_commit": "ccf765df053456161e881e541e4fd177ee7adc03",
+    "public_source_commit": "87c688c43c5440c3315dd82bff78e9e6717dcc5c",
     "actual_observation_initial_setup_saved": true,
     "actual_observation_started_at": "2026-10-02T08:21:52.942Z",
     "actual_observation_plan_tasks": 0,
@@ -66,7 +66,7 @@
     },
     {
       "path": "docs/SUBMISSION.md",
-      "sha256": "5d1df8438f5f5cdf845d9b1cfe346b6a4052b41df3ef593fb25407388b184fa2"
+      "sha256": "c34bb40903521b6b010e1b075a60f68985cf5b58e4009004e063a29de67c6dd4"
     },
     {
       "path": "docs/TODO.md",
@@ -171,6 +171,14 @@
     {
       "path": "verification/history-secret-check-card-3.json",
       "sha256": "1b57f8913570eb5ff2eb0c9a821d91b464f8f86e22b3c9c2f05c760dd9f05967"
+    },
+    {
+      "path": "verification/card-45-public-access.json",
+      "sha256": "db7178f11f98598394217f27db2f5c2df436361e4d5dbc3836b87317ff3c4ea6"
+    },
+    {
+      "path": "verification/source-card-45-public.png",
+      "sha256": "7e5cfb697d583dee668d1ef16e59d1738a0711137d01341a27e0c3d6ea690d8f"
     }
   ],
   "criteria": [
@@ -1336,15 +1344,16 @@
       "id": "T07-C01",
       "stage": 5,
       "official_requirement": "제출한 모든 URL(결과물·소스)은 계정 생성·로그인·인증·초대·비밀번호·OAuth·CAPTCHA 없이 새 시크릿 창에서 열린다.",
-      "current_recorded_status": "기존 공개 로그인 첫 화면·고정 전체 커밋 URL의 익명 접근 확인. 최종 고정 커밋 선택 뒤 다시 확인",
+      "current_recorded_status": "새 격리 브라우저에서 공개 로그인 화면/개인 화면 숨김 및 카드 1~5 검토 포함 고정 커밋의 익명 화면 확인. 네비게이션 대기는 timeout, 실제 DOM 검토로 확인",
       "evidence": [
         "verification/public-delivery.json",
         "verification/t06-preservation-current.json",
         "verification/source-public-commit.png",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/card-45-public-access.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
+      "remaining": "실제 5일 뒤 최종 제출 커밋을 다시 고정·공개 접근 확인",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
