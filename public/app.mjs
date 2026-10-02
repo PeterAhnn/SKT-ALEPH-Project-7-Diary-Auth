@@ -68,7 +68,7 @@ function showConnectionError(message) {
 async function api(path, options = {}) {
   let response;
   try {
-    response = await fetch(path, { ...options, headers: { ...options.headers, ...(options.body ? { 'Content-Type': 'application/json' } : {}) }, cache: 'no-store' });
+    response = await fetch(path, { ...options, headers: { ...options.headers, ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...(options.method && options.method !== 'GET' ? { 'X-CSRF-Token': ui.csrf || '' } : {}) }, cache: 'no-store' });
   } catch {
     throw new Error('서버에 연결하지 못했습니다. 연결을 확인한 뒤 다시 시도해 주세요.');
   }
@@ -77,6 +77,7 @@ async function api(path, options = {}) {
   if (!response.ok || result.ok !== true) {
     const error = new Error(result.error?.message || '저장하지 못했습니다. 입력 내용을 확인한 뒤 다시 시도해 주세요.');
     error.status = response.status;
+    if (response.status === 401) window.dispatchEvent(new Event('pds-session-ended'));
     throw error;
   }
   return result;
@@ -137,7 +138,7 @@ function render() {
   const plan = selectedPlan();
   $('workspace-title').textContent = plan?.title || '내 기록을 시작해 보세요';
   $('plan-period').textContent = plan ? `선택한 계획 · ${periodText(plan)}` : 'PLAN → DO → SEE';
-  $('today-label').textContent = `서울 오늘 ${dateText(today())}`;
+  $('today-label').textContent = `한국 시간 오늘 ${dateText(today())}`;
   renderPlan();
   renderDo();
   renderSee();
@@ -227,7 +228,7 @@ function renderPlan() {
   panel.replaceChildren();
   const plan = selectedPlan();
   if (!plan) {
-    panel.append(emptyState('작은 계획 하나부터', '공개해도 괜찮은 나의 실제 계획을 적으세요. 계획을 세운 뒤 할 일과 실제 기록을 연결할 수 있어요.', '첫 계획 세우기', () => openPlanForm()));
+    panel.append(emptyState('작은 계획 하나부터', '내 계정에 실제 계획을 적으세요. 계획을 세운 뒤 할 일과 실제 기록을 연결할 수 있어요.', '첫 계획 세우기', () => openPlanForm()));
     return;
   }
   const stack = el('div', null, 'panel-stack');
@@ -240,14 +241,14 @@ function renderPlan() {
   if (plan.description) current.append(readableMemo(plan.description, { className: 'plan-description', threshold: 220, label: '계획 설명' }));
   current.append(planDetails(plan));
   const metadata = el('p', null, 'metadata');
-  metadata.append(document.createTextNode('계획 ID '), el('code', plan.id), el('br'), document.createTextNode(`처음 저장 ${timestampText(plan.created_at)} · 마지막 수정 ${timestampText(plan.updated_at)} (서울)`));
+  metadata.append(document.createTextNode('계획 ID '), el('code', plan.id), el('br'), document.createTextNode(`처음 저장 ${timestampText(plan.created_at)} · 마지막 수정 ${timestampText(plan.updated_at)} (한국 시간)`));
   current.append(metadata);
   const histories = ui.state.plan_history.filter((history) => history.plan_id === plan.id).sort((a, b) => b.version - a.version);
   const historyCard = card('계획의 발자취', `같은 계획 ID의 수정 이력 ${number(histories.length)}개. 저장된 이전 버전은 그대로 보존됩니다.`);
   const historyList = el('div', null, 'history-list');
   for (const history of histories) {
     const entry = el('details', null, 'history-entry');
-    const label = `v${history.version} ${history.version === plan.version ? '· 현재 계획' : '· 이전 계획'} — ${timestampText(history.created_at)} (서울)`;
+    const label = `v${history.version} ${history.version === plan.version ? '· 현재 계획' : '· 이전 계획'} — ${timestampText(history.created_at)} (한국 시간)`;
     entry.append(el('summary', label));
     const snapshot = history.snapshot || {};
     entry.append(el('p', snapshot.title || '', 'plan-description'));
@@ -318,7 +319,7 @@ function renderDo() {
     }
     tasksCard.append(details);
   }
-  const executionCard = card('실제로 한 일', '시작·종료는 서울 시각입니다. 실행을 적어도 원래 예상 시간은 바뀌지 않아요.', button('＋ 실행 기록', 'secondary small', () => openExecutionForm()));
+  const executionCard = card('실제로 한 일', '시작·종료는 한국 시간입니다. 실행을 적어도 원래 예상 시간은 바뀌지 않아요.', button('＋ 실행 기록', 'secondary small', () => openExecutionForm()));
   const taskIds = new Set(ui.state.tasks.filter((task) => task.plan_id === plan.id && !task.deleted_at).map((task) => task.id));
   const executions = ui.state.executions.filter((execution) => taskIds.has(execution.task_id)).sort((a, b) => b.started_at.localeCompare(a.started_at) || a.id.localeCompare(b.id));
   if (!executions.length) executionCard.append(emptyState('아직 실제 기록이 없어요', '실제로 수행한 시작·종료 시각과 소요 시간을 해당 할 일에 연결하세요.', '실행 기록하기', () => openExecutionForm(), true));
@@ -384,7 +385,7 @@ function executionRow(execution) {
   row.dataset.executionId = execution.id;
   const labels = el('div');
   labels.append(el('strong', taskById(execution.task_id)?.title || '연결된 할 일'));
-  const time = el('time', `${timestampText(execution.started_at)} → ${timestampText(execution.ended_at)} (서울)`);
+  const time = el('time', `${timestampText(execution.started_at)} → ${timestampText(execution.ended_at)} (한국 시간)`);
   time.dateTime = execution.started_at;
   labels.append(time);
   const duration = el('div', null, 'execution-time');
@@ -441,7 +442,7 @@ function renderSee() {
     bars.append(line);
   }
   timeCard.append(bars, el('p', values.delta_minutes > 0 ? `예상보다 ${number(values.delta_minutes)}분 더 사용했어요. 다음 계획에서는 이 간격을 참고해 보세요.` : values.delta_minutes < 0 ? `현재 실제 시간은 예상보다 ${number(Math.abs(values.delta_minutes))}분 적어요. 진행 상태와 함께 확인하세요.` : '예상 시간과 현재 실제 시간의 합계가 같아요.', 'delta-note'),
-    el('p', '집계 기준: 선택한 계획의 삭제되지 않은 모든 할 일과 연결된 실행 기록. 지연은 서울의 오늘보다 이전인 미완료 마감일, 막힘은 이유가 있는 할 일을 한 번씩 셉니다. 빈 합계는 0입니다.', 'formula-note'));
+    el('p', '집계 기준: 선택한 계획의 삭제되지 않은 모든 할 일과 연결된 실행 기록. 지연은 한국 시간 오늘보다 이전인 미완료 마감일, 막힘은 이유가 있는 할 일을 한 번씩 셉니다. 빈 합계는 0입니다.', 'formula-note'));
   const reviewCard = card('다음에는, 이 한 가지', '돌아보기에서 정한 개선을 다음 계획으로 이어 보세요.', button('＋ 개선 남기기', 'primary small', () => openReviewForm()));
   const reviews = ui.state.reviews.filter((review) => review.plan_id === plan.id).sort((a, b) => b.created_at.localeCompare(a.created_at) || a.id.localeCompare(b.id));
   if (!reviews.length) reviewCard.append(emptyState('나의 판단 한 줄을 남기세요', '기록에서 무엇을 발견했나요? 다음 계획에서 직접 바꿀 한 가지를 적어 보세요.', '개선 한 가지 적기', () => openReviewForm(), true));
@@ -449,7 +450,7 @@ function renderSee() {
     const list = el('div', null, 'review-list');
     for (const review of reviews) {
       const row = el('article', null, 'review-row');
-      row.append(el('p', review.improvement), el('time', `${timestampText(review.created_at)} (서울)`));
+      row.append(el('p', review.improvement), el('time', `${timestampText(review.created_at)} (한국 시간)`));
       if (review.next_plan_id) {
         const next = ui.state.plans.find((item) => item.id === review.next_plan_id);
         row.append(button(`다음 계획 보기 · ${next?.title || '연결된 계획'} ↗`, 'secondary small', () => pickPlan(review.next_plan_id, 'plan')));
@@ -597,8 +598,8 @@ function openExecutionForm(task = null) {
   });
   editor.form.append(formField('연결할 할 일', 'task_id', { value: task?.id || tasks[0].id, required: true, options: tasks.map((item) => [item.id, item.title]) }).wrapper);
   const grid = el('div', null, 'form-grid');
-  const start = formField('시작 시각 (서울)', 'started_at', { type: 'datetime-local', value: localSeoul(), required: true });
-  const end = formField('끝난 시각 (서울)', 'ended_at', { type: 'datetime-local', value: localSeoul(), required: true });
+  const start = formField('시작 시각 (한국 시간)', 'started_at', { type: 'datetime-local', value: localSeoul(), required: true });
+  const end = formField('끝난 시각 (한국 시간)', 'ended_at', { type: 'datetime-local', value: localSeoul(), required: true });
   // Date-time controls have minute precision; the offset is explicit regardless of browser locale.
   start.control.step = '60';
   end.control.step = '60';
@@ -660,7 +661,7 @@ function openTaskDetails(task) {
   const events = ui.state.completion_events.filter((event) => event.task_id === task.id).sort((a, b) => b.cycle - a.cycle);
   const currentEvents = events.filter((event) => event.cycle === task.completion_cycle);
   body.append(el('p', `현재 완료 주기 ${task.completion_cycle}의 완료 기록 ${number(currentEvents.length)}건 · 전체 완료 이력 ${number(events.length)}건. See 완료 수에는 현재 완료 상태만 반영합니다.`, 'evidence-summary'));
-  for (const event of events) body.append(el('p', `주기 ${event.cycle} · ${timestampText(event.completed_at)} (서울) · 요청 ${event.request_id}`, 'evidence-minor'));
+  for (const event of events) body.append(el('p', `주기 ${event.cycle} · ${timestampText(event.completed_at)} (한국 시간) · 요청 ${event.request_id}`, 'evidence-minor'));
   const executions = ui.state.executions.filter((execution) => execution.task_id === task.id).sort((a, b) => a.started_at.localeCompare(b.started_at) || a.id.localeCompare(b.id));
   body.append(el('h4', `실행 기록 ${number(executions.length)}건`));
   if (!executions.length) body.append(el('p', '아직 이 할 일에 연결된 실행 기록이 없습니다.', 'evidence-empty'));
@@ -675,7 +676,7 @@ function openMetricDetails(key, values) {
   const descriptions = {
     planned: '선택한 계획에 연결된 삭제되지 않은 할 일을 셉니다.',
     completed: '삭제되지 않은 할 일 중 현재 완료 상태만 셉니다. 과거 완료 이력 수와 다를 수 있습니다.',
-    overdue: `미완료이며 마감일이 서울 오늘 ${dateText(today())}보다 이전인 할 일을 셉니다.`,
+    overdue: `미완료이며 마감일이 한국 시간 오늘 ${dateText(today())}보다 이전인 할 일을 셉니다.`,
     blocked: '막힌 이유가 비어 있지 않은 실행이 하나라도 있는 할 일을 한 번씩 셉니다.',
     expected_minutes: '삭제되지 않은 할 일에 저장된 예상 시간을 모두 합합니다. 계획 자체의 예상 시간을 더하지 않습니다.',
     actual_minutes: '대상 할 일에 연결된 아래 실행 기록의 실제 소요 시간을 모두 합합니다.',
@@ -711,6 +712,7 @@ async function exportAll() {
   control.disabled = true;
   try {
     const response = await fetch('/api/export', { cache: 'no-store' });
+    if (response.status === 401) window.dispatchEvent(new Event('pds-session-ended'));
     if (!response.ok) throw new Error('내보내지 못했습니다. 서버 연결을 확인하고 다시 시도해 주세요.');
     if (!/^\s*attachment(?:;|$)/i.test(response.headers.get('Content-Disposition') || '')) {
       throw new Error('파일 다운로드 응답을 확인하지 못했습니다. 잠시 뒤 다시 시도해 주세요.');
@@ -746,5 +748,8 @@ for (const stage of ['plan', 'do', 'see']) {
     setStage(stages[index], true);
   });
 }
-render();
-await loadState();
+export async function bootDiary(csrf) {
+  ui.csrf = csrf;
+  render();
+  return loadState();
+}

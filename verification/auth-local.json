@@ -1,0 +1,2229 @@
+{
+  "checked_at": "2026-10-02T04:58:35.545Z",
+  "data_origin": "synthetic",
+  "scope": "Local Node HTTP + isolated SQLite, not live cloud, not actual five-day use",
+  "password_method": "Node 24 node:crypto scrypt N=32768 r=8 p=3, 16-byte random salt",
+  "session_seconds": 28800,
+  "checks": [
+    {
+      "name": "registration-and-password-storage",
+      "requests": [
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 201,
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "901643d9-29da-4b08-bb19-58946e233875",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "901643d9-29da-4b08-bb19-58946e233875",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T08:00:00.000Z"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "beta@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 201,
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "79e1bb3d-605a-47aa-bb50-c759976193bf",
+                "email": "beta@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/auth/register",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "ALPHA@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 409,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "REGISTRATION",
+              "message": "가입을 완료할 수 없습니다. 기존 계정으로 로그인하거나 다른 아이디를 사용해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "absent@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        }
+      ],
+      "stored_test_password_hashes": [
+        "scrypt$32768$8$3$684786c682a244a748cdb8e32d2040f0$0128c5e813ff8d0d211706335ce417b150edcebc8cc0d00dd2fc8fea400bfb21",
+        "scrypt$32768$8$3$22be125cd9cf9133e5d335466487f1be$63b67afbe7b1dfe34e4d858983232d63588684bf4b7766e1e54317a2eb00cf80"
+      ],
+      "different_hashes_for_same_password": true,
+      "session_tokens_stored_as_hashes": true,
+      "source": [
+        "src/identity-sqlite.mjs:hashPassword",
+        "src/http.mjs:cookie"
+      ]
+    },
+    {
+      "name": "anonymous-access-and-csrf",
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "47bf109a-8bae-4bf4-8a4a-a96caa61066d",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {},
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/export",
+          "method": "GET",
+          "headers": {},
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 계획",
+            "description": "인증 기능 시험 자료",
+            "start_date": "2026-10-02",
+            "end_date": "2026-10-06",
+            "priority": "medium",
+            "success_criteria": "양방향 차단 시험",
+            "expected_minutes": 20
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 계획",
+            "description": "인증 기능 시험 자료",
+            "start_date": "2026-10-02",
+            "end_date": "2026-10-06",
+            "priority": "medium",
+            "success_criteria": "양방향 차단 시험",
+            "expected_minutes": 20
+          },
+          "status": 403,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "CSRF",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json",
+            "Origin": "https://untrusted.example"
+          },
+          "input": {
+            "title": "합성 계획",
+            "description": "인증 기능 시험 자료",
+            "start_date": "2026-10-02",
+            "end_date": "2026-10-06",
+            "priority": "medium",
+            "success_criteria": "양방향 차단 시험",
+            "expected_minutes": 20
+          },
+          "status": 403,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "ORIGIN",
+              "message": "앱 화면을 다시 열고 저장해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 계획",
+            "description": "인증 기능 시험 자료",
+            "start_date": "2026-10-02",
+            "end_date": "2026-10-06",
+            "priority": "medium",
+            "success_criteria": "양방향 차단 시험",
+            "expected_minutes": 20
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "c6fa53e4-1f62-4211-bb42-c76bdb99ba04",
+                "title": "합성 계획",
+                "description": "인증 기능 시험 자료",
+                "start_date": "2026-10-02",
+                "end_date": "2026-10-06",
+                "priority": "medium",
+                "success_criteria": "양방향 차단 시험",
+                "expected_minutes": 20,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z"
+              },
+              "changed": true
+            }
+          }
+        }
+      ],
+      "login_screen_public": true,
+      "anonymous_diary_redirects_to_login": true,
+      "denied_writes_preserve_state_before_positive_write_control": true,
+      "source": [
+        "src/http.mjs:authentication gate",
+        "src/http.mjs:checkCsrf",
+        "src/http.mjs:checkOrigin"
+      ]
+    },
+    {
+      "name": "same-value-after-logout",
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "1e67d3bb-afc8-4235-b3b0-21079b983799",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/logout",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "same_url_method_and_credential": true,
+      "old_value_rejected": true,
+      "source": [
+        "src/identity-sqlite.mjs:authenticate",
+        "src/identity-sqlite.mjs:logout"
+      ]
+    },
+    {
+      "name": "password-change-revokes-all-sessions",
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "55393d58-62bb-4976-920b-1629e3c6565c",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/auth/password",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "current_password": "[REDACTED]",
+            "password": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "logged_out": true,
+              "all_sessions_revoked": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "55393d58-62bb-4976-920b-1629e3c6565c",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T08:00:00.000Z"
+            }
+          }
+        }
+      ],
+      "source": [
+        "src/identity-sqlite.mjs:changePassword"
+      ]
+    },
+    {
+      "name": "expiry-boundary",
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [],
+              "plan_history": [],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "6104a54d-f4c6-477c-bf86-39c87ced02b0",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        }
+      ],
+      "test_clock": true,
+      "configured_test_seconds": 60,
+      "production_seconds": 28800
+    },
+    {
+      "name": "bidirectional-ownership",
+      "requests": [
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "PATCH",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5,
+            "expected_version": 1
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85/complete",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "request_id": "e421a589-38e5-4920-ba77-1a44bc764b2d"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85/restore",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {},
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85/executions",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "started_at": "2026-10-02T00:00:00Z",
+            "ended_at": "2026-10-02T00:01:00Z",
+            "actual_minutes": 1
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/plans/378ba771-e6f2-4e73-aa98-b601c41a4179/tasks",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/plans/378ba771-e6f2-4e73-aa98-b601c41a4179/reviews",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "improvement": "합성 위조 시도"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "PATCH",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5,
+            "expected_version": 1
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3/complete",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "request_id": "b4aa4f21-1f0d-482e-8890-cb623f4a3eaa"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3/restore",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {},
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/94bc6251-7fdc-4b4d-8750-c5e70cd5ead3/executions",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "started_at": "2026-10-02T00:00:00Z",
+            "ended_at": "2026-10-02T00:01:00Z",
+            "actual_minutes": 1
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/plans/41370ca6-857b-45fc-a338-ea4ba6e0a6d2/tasks",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 할 일",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "02f1e6c6-9b4e-4e1a-aa18-80c4d04dda85",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "합성 할 일",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 1,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/api/plans/41370ca6-857b-45fc-a338-ea4ba6e0a6d2/reviews",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "improvement": "합성 위조 시도"
+          },
+          "status": 404,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "해당 기록을 찾을 수 없습니다."
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6d0e0899-6204-46bf-bc2e-1a805312181d",
+          "method": "PATCH",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "내 기록 수정 성공 대조",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5,
+            "expected_version": 1
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "6d0e0899-6204-46bf-bc2e-1a805312181d",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "내 기록 수정 성공 대조",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 2,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/6d0e0899-6204-46bf-bc2e-1a805312181d",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "6d0e0899-6204-46bf-bc2e-1a805312181d",
+                "plan_id": "41370ca6-857b-45fc-a338-ea4ba6e0a6d2",
+                "title": "내 기록 수정 성공 대조",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 3,
+                "deleted_at": "2026-10-02T00:00:00.000Z",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/dd5c424e-e496-47cf-81c0-cabdabd207d8",
+          "method": "PATCH",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "내 기록 수정 성공 대조",
+            "notes": "실사용 기록 아님",
+            "due_date": "2026-10-02",
+            "priority": "medium",
+            "tags": [
+              "synthetic"
+            ],
+            "expected_minutes": 5,
+            "expected_version": 1
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "dd5c424e-e496-47cf-81c0-cabdabd207d8",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "내 기록 수정 성공 대조",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 2,
+                "deleted_at": null,
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/tasks/dd5c424e-e496-47cf-81c0-cabdabd207d8",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "dd5c424e-e496-47cf-81c0-cabdabd207d8",
+                "plan_id": "378ba771-e6f2-4e73-aa98-b601c41a4179",
+                "title": "내 기록 수정 성공 대조",
+                "notes": "실사용 기록 아님",
+                "due_date": "2026-10-02",
+                "priority": "medium",
+                "expected_minutes": 5,
+                "status": "pending",
+                "completion_cycle": 0,
+                "version": 3,
+                "deleted_at": "2026-10-02T00:00:00.000Z",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z",
+                "tags": [
+                  "synthetic"
+                ]
+              },
+              "changed": true
+            }
+          }
+        }
+      ],
+      "directions": [
+        "A-to-B",
+        "B-to-A"
+      ],
+      "required_read_update_delete_denials": 6,
+      "tested_related_denials": 10,
+      "both_diaries_unchanged_during_denial_tests": true,
+      "own_patch_and_delete_controls_run_after_comparison": true,
+      "before_counts": [
+        1,
+        1
+      ],
+      "after_counts": [
+        1,
+        1
+      ],
+      "source": [
+        "src/http.mjs:withStore",
+        "src/identity-sqlite.mjs:withDiary",
+        "src/store-sqlite.mjs:requireRow"
+      ]
+    },
+    {
+      "name": "account-hints-list-and-export",
+      "requests": [
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "title": "alpha@example.test",
+                  "description": "인증 기능 시험 자료",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-10-06",
+                  "priority": "medium",
+                  "success_criteria": "양방향 차단 시험",
+                  "expected_minutes": 20,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "updated_at": "2026-10-02T00:00:00.000Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "0d78690a-5681-419a-a1fb-6d3fbc693041",
+                  "plan_id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "version": 1,
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "snapshot": {
+                    "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                    "title": "alpha@example.test",
+                    "description": "인증 기능 시험 자료",
+                    "start_date": "2026-10-02",
+                    "end_date": "2026-10-06",
+                    "priority": "medium",
+                    "success_criteria": "양방향 차단 시험",
+                    "expected_minutes": 20,
+                    "version": 1,
+                    "source_review_id": null,
+                    "carried_improvement": "",
+                    "record_origin": "synthetic",
+                    "created_at": "2026-10-02T00:00:00.000Z",
+                    "updated_at": "2026-10-02T00:00:00.000Z"
+                  }
+                }
+              ],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "37b1da50-5a0c-4199-9edb-1840883701b2",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state?user_id=463fe83d-33a9-431d-bdf9-082baa9e4c7f",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "title": "alpha@example.test",
+                  "description": "인증 기능 시험 자료",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-10-06",
+                  "priority": "medium",
+                  "success_criteria": "양방향 차단 시험",
+                  "expected_minutes": 20,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "updated_at": "2026-10-02T00:00:00.000Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "0d78690a-5681-419a-a1fb-6d3fbc693041",
+                  "plan_id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "version": 1,
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "snapshot": {
+                    "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                    "title": "alpha@example.test",
+                    "description": "인증 기능 시험 자료",
+                    "start_date": "2026-10-02",
+                    "end_date": "2026-10-06",
+                    "priority": "medium",
+                    "success_criteria": "양방향 차단 시험",
+                    "expected_minutes": 20,
+                    "version": 1,
+                    "source_review_id": null,
+                    "carried_improvement": "",
+                    "record_origin": "synthetic",
+                    "created_at": "2026-10-02T00:00:00.000Z",
+                    "updated_at": "2026-10-02T00:00:00.000Z"
+                  }
+                }
+              ],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "37b1da50-5a0c-4199-9edb-1840883701b2",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "X-User-ID": "463fe83d-33a9-431d-bdf9-082baa9e4c7f"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "title": "alpha@example.test",
+                  "description": "인증 기능 시험 자료",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-10-06",
+                  "priority": "medium",
+                  "success_criteria": "양방향 차단 시험",
+                  "expected_minutes": 20,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "updated_at": "2026-10-02T00:00:00.000Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "0d78690a-5681-419a-a1fb-6d3fbc693041",
+                  "plan_id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "version": 1,
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "snapshot": {
+                    "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                    "title": "alpha@example.test",
+                    "description": "인증 기능 시험 자료",
+                    "start_date": "2026-10-02",
+                    "end_date": "2026-10-06",
+                    "priority": "medium",
+                    "success_criteria": "양방향 차단 시험",
+                    "expected_minutes": 20,
+                    "version": 1,
+                    "source_review_id": null,
+                    "carried_improvement": "",
+                    "record_origin": "synthetic",
+                    "created_at": "2026-10-02T00:00:00.000Z",
+                    "updated_at": "2026-10-02T00:00:00.000Z"
+                  }
+                }
+              ],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "37b1da50-5a0c-4199-9edb-1840883701b2",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "user_id": "463fe83d-33a9-431d-bdf9-082baa9e4c7f"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "plans": [
+                {
+                  "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "title": "alpha@example.test",
+                  "description": "인증 기능 시험 자료",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-10-06",
+                  "priority": "medium",
+                  "success_criteria": "양방향 차단 시험",
+                  "expected_minutes": 20,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "updated_at": "2026-10-02T00:00:00.000Z"
+                }
+              ],
+              "plan_history": [
+                {
+                  "id": "0d78690a-5681-419a-a1fb-6d3fbc693041",
+                  "plan_id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "version": 1,
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "snapshot": {
+                    "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                    "title": "alpha@example.test",
+                    "description": "인증 기능 시험 자료",
+                    "start_date": "2026-10-02",
+                    "end_date": "2026-10-06",
+                    "priority": "medium",
+                    "success_criteria": "양방향 차단 시험",
+                    "expected_minutes": 20,
+                    "version": 1,
+                    "source_review_id": null,
+                    "carried_improvement": "",
+                    "record_origin": "synthetic",
+                    "created_at": "2026-10-02T00:00:00.000Z",
+                    "updated_at": "2026-10-02T00:00:00.000Z"
+                  }
+                }
+              ],
+              "tasks": [],
+              "executions": [],
+              "completion_events": [],
+              "request_receipts": [],
+              "reviews": []
+            },
+            "meta": {
+              "storage": "sqlite",
+              "timezone": "Asia/Seoul",
+              "time_unit": "minutes",
+              "today": "2026-10-02",
+              "authentication": true,
+              "user": {
+                "id": "37b1da50-5a0c-4199-9edb-1840883701b2",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "record_origin": "synthetic"
+            }
+          }
+        },
+        {
+          "path": "/api/export",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "schema_version": 2,
+            "exported_at": "2026-10-02T00:00:00.000Z",
+            "timezone": "Asia/Seoul",
+            "time_unit": "minutes",
+            "record_origin": "synthetic",
+            "plans": [
+              {
+                "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                "title": "alpha@example.test",
+                "description": "인증 기능 시험 자료",
+                "start_date": "2026-10-02",
+                "end_date": "2026-10-06",
+                "priority": "medium",
+                "success_criteria": "양방향 차단 시험",
+                "expected_minutes": 20,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z"
+              }
+            ],
+            "plan_history": [
+              {
+                "id": "0d78690a-5681-419a-a1fb-6d3fbc693041",
+                "plan_id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                "version": 1,
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "snapshot": {
+                  "id": "b808a05f-aabc-4055-8482-e75869358e3e",
+                  "title": "alpha@example.test",
+                  "description": "인증 기능 시험 자료",
+                  "start_date": "2026-10-02",
+                  "end_date": "2026-10-06",
+                  "priority": "medium",
+                  "success_criteria": "양방향 차단 시험",
+                  "expected_minutes": 20,
+                  "version": 1,
+                  "source_review_id": null,
+                  "carried_improvement": "",
+                  "record_origin": "synthetic",
+                  "created_at": "2026-10-02T00:00:00.000Z",
+                  "updated_at": "2026-10-02T00:00:00.000Z"
+                }
+              }
+            ],
+            "tasks": [],
+            "executions": [],
+            "completion_events": [],
+            "request_receipts": [],
+            "reviews": []
+          }
+        }
+      ],
+      "own_records_only": true,
+      "source": [
+        "src/http.mjs:state and export",
+        "src/identity-sqlite.mjs:withDiary"
+      ]
+    },
+    {
+      "name": "disposable-account-deletion",
+      "requests": [
+        {
+          "path": "/api/plans",
+          "method": "POST",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "title": "합성 계획",
+            "description": "인증 기능 시험 자료",
+            "start_date": "2026-10-02",
+            "end_date": "2026-10-06",
+            "priority": "medium",
+            "success_criteria": "양방향 차단 시험",
+            "expected_minutes": 20
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "entity": {
+                "id": "fb5121bd-8286-405a-a509-a60d2b5f01c1",
+                "title": "합성 계획",
+                "description": "인증 기능 시험 자료",
+                "start_date": "2026-10-02",
+                "end_date": "2026-10-06",
+                "priority": "medium",
+                "success_criteria": "양방향 차단 시험",
+                "expected_minutes": 20,
+                "version": 1,
+                "source_review_id": null,
+                "carried_improvement": "",
+                "record_origin": "synthetic",
+                "created_at": "2026-10-02T00:00:00.000Z",
+                "updated_at": "2026-10-02T00:00:00.000Z"
+              },
+              "changed": true
+            }
+          }
+        },
+        {
+          "path": "/api/auth/account",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "current_password": "[REDACTED]",
+            "confirm": "beta@example.test"
+          },
+          "status": 400,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "VALIDATION",
+              "message": "계정 아이디를 정확히 입력해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/account",
+          "method": "DELETE",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]",
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "current_password": "[REDACTED]",
+            "confirm": "alpha@example.test"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "account_deleted": true,
+              "diary_deleted": true
+            }
+          }
+        },
+        {
+          "path": "/api/state",
+          "method": "GET",
+          "headers": {
+            "Cookie": "[REDACTED]",
+            "X-CSRF-Token": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "UNAUTHENTICATED",
+              "message": "로그인한 뒤 내 기록을 열어 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        }
+      ],
+      "data_origin": "synthetic disposable fixture",
+      "own_database_and_sidecar_files_removed": true,
+      "other_account_unchanged": true
+    },
+    {
+      "name": "login-rate-limit-window",
+      "requests": [
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 401,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "LOGIN",
+              "message": "아이디 또는 비밀번호를 확인해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 429,
+          "response": {
+            "ok": false,
+            "error": {
+              "code": "RATE_LIMIT",
+              "message": "요청이 많습니다. 잠시 뒤 다시 시도해 주세요."
+            }
+          }
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "input": {
+            "email": "alpha@example.test",
+            "password": "[REDACTED]"
+          },
+          "status": 200,
+          "response": {
+            "ok": true,
+            "data": {
+              "user": {
+                "id": "368f8261-d3eb-4ad5-83f5-bd64a11da79c",
+                "email": "alpha@example.test",
+                "created_at": "2026-10-02T00:00:00.000Z"
+              },
+              "csrf": "[REDACTED]",
+              "expires_at": "2026-10-02T08:05:00.000Z"
+            }
+          }
+        }
+      ],
+      "limit": "10 attempts per account per 5 minutes",
+      "clock": "synthetic window advance"
+    }
+  ]
+}

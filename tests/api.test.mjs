@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, randomBytes } from 'node:crypto';
 import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHandler } from '../src/http.mjs';
-import { createSqliteStore } from '../src/store-sqlite.mjs';
+import { createIdentityStore } from '../src/identity-sqlite.mjs';
 import { aggregate } from '../public/core.mjs';
 
 const clock = () => '2026-09-30T12:34:56.789Z';
@@ -34,6 +34,9 @@ async function fixture(t) {
   let server;
   let store;
   let base;
+  let authCookie;
+  let csrf;
+  const fixturePassword = randomBytes(18).toString('base64url');
   async function stop() {
     if (server) {
       const current = server;
@@ -44,13 +47,19 @@ async function fixture(t) {
       });
     }
     if (store) {
-      await store.close();
+      store.close();
       store = null;
     }
   }
   async function start() {
-    store = await createSqliteStore({ filename, clock, recordOrigin: 'synthetic' });
-    server = createServer(createHandler({ store, publicDir, clock, recordOrigin: 'synthetic' }));
+    store = createIdentityStore({ directory: join(directory, 'identity'), clock, recordOrigin: 'synthetic' });
+    if (!authCookie) {
+      await store.register({ email: 'fixture@example.test', password: fixturePassword });
+      const loggedIn = await store.login({ email: 'fixture@example.test', password: fixturePassword });
+      authCookie = `pds_session=${loggedIn.token}`;
+      csrf = loggedIn.csrf;
+    }
+    server = createServer(createHandler({ identity: store, publicDir, clock, recordOrigin: 'synthetic', secureCookies: false }));
     await new Promise((resolve, reject) => {
       server.once('error', reject);
       server.listen(0, '127.0.0.1', resolve);
@@ -62,7 +71,7 @@ async function fixture(t) {
   async function request(path, { method = 'GET', data, raw, headers = {} } = {}) {
     const response = await fetch(`${base}${path}`, {
       method,
-      headers: { ...((data !== undefined || raw !== undefined) ? { 'content-type': 'application/json' } : {}), ...headers },
+      headers: { cookie: authCookie, 'x-csrf-token': csrf, ...((data !== undefined || raw !== undefined) ? { 'content-type': 'application/json' } : {}), ...headers },
       body: raw ?? (data === undefined ? undefined : JSON.stringify(data)),
     });
     const text = await response.text();
@@ -104,7 +113,7 @@ test('HTTP state and one-file export retain IDs, dates, values and units after D
   assert.equal(beforeResponse.body.meta.timezone, 'Asia/Seoul');
   assert.equal(beforeResponse.body.meta.time_unit, 'minutes');
   assert.equal(beforeResponse.body.meta.today, '2026-09-30');
-  assert.equal(beforeResponse.body.meta.authentication, false);
+  assert.equal(beforeResponse.body.meta.authentication, true);
   assert.equal(beforeResponse.body.meta.record_origin, 'synthetic');
   assert.equal(updated.id, plan.id);
   assert.equal(updated.version, 2);

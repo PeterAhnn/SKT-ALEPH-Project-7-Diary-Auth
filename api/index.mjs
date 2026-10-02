@@ -1,22 +1,7 @@
-import { createSupabaseStore } from '../src/store-supabase.mjs';
-import { createHandler } from '../src/http.mjs';
-// Generic @vercel/node helpers consume the IncomingMessage body before this handler.
-// Keep the raw stream for the shared JSON parser and its 64KB limit.
+// T06's public Supabase adapter must not be reused for private T07 records.
+// A persistent authenticated cloud adapter is pending; serverless fails closed.
 export const config = { helpers: false };
-let handler;
 export default async function api(req, res) {
-  if (!handler) {
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_PUBLISHABLE_KEY;
-    if (!url || !key) {
-      res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify({ ok: false, error: { code: 'UNAVAILABLE', message: '저장소 연결을 준비하고 있습니다. 잠시 뒤 다시 열어 주세요.' } }));
-    }
-    handler = createHandler({ store: createSupabaseStore({ url, key, recordOrigin: 'user' }), recordOrigin: 'user' });
-  }
-  const parsed = new URL(req.url, 'http://diary.invalid');
-  if (parsed.searchParams.has('route')) {
-    req.url = `/api/${parsed.searchParams.get('route').replace(/^\/+/, '')}`;
-  }
-  return handler(req, res);
+  res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+  res.end(JSON.stringify({ ok: false, error: { code: 'UNAVAILABLE', message: '인증된 저장소 연결을 준비하고 있습니다. 아직 공개 배포를 사용할 수 없습니다.' } }));
 }

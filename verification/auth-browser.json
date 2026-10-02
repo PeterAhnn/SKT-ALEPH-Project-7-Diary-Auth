@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-02T05:00:15.119Z",
+  "data_origin": "synthetic",
+  "scope": "Isolated gstack Chromium + local synthetic server; not live deployment or actual five-day use",
+  "checks": [
+    {
+      "name": "anonymous login screen, private diary hidden",
+      "passed": true
+    },
+    {
+      "name": "mobile login has no horizontal overflow at 375px",
+      "passed": true
+    },
+    {
+      "name": "synthetic account registered through the form",
+      "passed": true
+    },
+    {
+      "name": "login opens only the synthetic account diary",
+      "passed": true
+    },
+    {
+      "name": "authenticated UI creates a plan with CSRF-protected storage",
+      "passed": true
+    },
+    {
+      "name": "browser reload preserves both session and own saved plan",
+      "passed": true
+    },
+    {
+      "name": "authenticated diary has no horizontal overflow at 375px",
+      "passed": true
+    },
+    {
+      "name": "logout returns to public login screen",
+      "passed": true
+    },
+    {
+      "name": "direct private page after logout redirects to login",
+      "passed": true
+    },
+    {
+      "name": "wrong login gives generic error and clears password field",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "verification/login-desktop.png",
+    "verification/login-mobile.png",
+    "verification/authenticated-synthetic.png"
+  ],
+  "credentials": "[REDACTED; disposable test account only]"
+}

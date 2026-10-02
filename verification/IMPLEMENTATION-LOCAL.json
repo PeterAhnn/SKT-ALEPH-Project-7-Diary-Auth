@@ -1,0 +1,138 @@
+{
+  "checked_at": "2026-10-02T14:01:22.6762348+09:00",
+  "scope": "T07 local implementation checkpoint; not live deployment, data migration, actual five-day use or submission",
+  "runtime": {
+    "node": "24.18.0",
+    "openssl": "3.5.7",
+    "app_version": "0.2.0"
+  },
+  "git": {
+    "branch": "t07-auth",
+    "starting_head": "db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93",
+    "submitted_t06_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+    "submitted_t06_is_ancestor": true,
+    "github_origin_prepared": false,
+    "t06_original_worktree_clean": true
+  },
+  "inherited_t06_manifest_checks": [
+    {
+      "path": "contracts/pds-schema-v2.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/postgres-catalog.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "records/user-approved-recommendation.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/current-export.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/browser-export.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/delivery.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-inputs.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/platform-submission.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-success.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/submission-pending.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/plan-history-public.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-screen-evidence.json",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-task-edit-reopen.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-task-delete.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-search-filter-sort.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/synthetic-execution-link.png",
+      "original_matches": true,
+      "copy_matches": true
+    },
+    {
+      "path": "verification/pre-submission-public.json",
+      "original_matches": true,
+      "copy_matches": true
+    }
+  ],
+  "tests": {
+    "command": "npm test",
+    "total": 36,
+    "passed": 36,
+    "failed": 0,
+    "duration_ms": 9920.4746,
+    "evidence": "verification/auth-local.json",
+    "data_origin": "synthetic"
+  },
+  "browser": {
+    "command": "node scripts/verify-auth-browser.mjs",
+    "passed": 10,
+    "evidence": "verification/auth-browser.json",
+    "data_origin": "synthetic"
+  },
+  "source_check": {
+    "command": "npm run check",
+    "passed": true,
+    "files_checked": 80,
+    "scope": "JavaScript syntax and named credential patterns; not exhaustive absence of secrets"
+  },
+  "user_choice": {
+    "topic": "ALEPH 공부·과제 진행",
+    "metric": "완료한 할 일 수",
+    "unit": "개",
+    "actual_question_and_first_rule": "not confirmed"
+  },
+  "pending": [
+    "Persistent authenticated cloud backend and HTTPS deployment",
+    "Read-only T06 export comparison and real account migration",
+    "Five-day observation storage, rule change, aggregation and export extension",
+    "Actual five distinct days and real change after day two before day three",
+    "Public GitHub full commit URL and final submission"
+  ]
+}

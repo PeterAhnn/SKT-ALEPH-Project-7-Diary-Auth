@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-02",
+  "timezone": "Asia/Seoul",
+  "recordType": "T07 preparation observations, not implementation or submission proof",
+  "officialTask": {
+    "url": "https://aleph-omega.vercel.app/cortex?panel=tasks",
+    "browser": "Authenticated Codex in-app browser",
+    "readSections": ["full description", "purpose", "deliverables", "completion checklist", "guidance cards 1-5", "submission screen"],
+    "unreadSections": [],
+    "criteriaCount": 68,
+    "sourceFile": "docs/TASK-SOURCE.md",
+    "submitted": false
+  },
+  "currentPlatformObservation": {
+    "t06StatusText": "최종 확인 완료",
+    "masterApprovedTaskCount": 6,
+    "t07StatusText": "T07 실습 진행 중",
+    "t06SubmittedResultUrl": "https://skt-aleph-project-6-diary.vercel.app/",
+    "t06SubmittedSourceUrl": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+    "verificationMethod": "Read dashboard and expanded stored T06 submission content"
+  },
+  "t06LocalBaseline": {
+    "directory": "../SKT-ALEPH-Project-6-Diary",
+    "branch": "main",
+    "head": "db3de5dcc8a0d5d99da7a0f7e5908c7fd0ddad93",
+    "submittedAppCommit": "b9de0298cd200961eac56286c6a6a55299947a96",
+    "submittedCommitMatchesCurrentStoredPlatformSubmission": true,
+    "submittedCommitIsAncestorOfCurrentHead": true,
+    "workingTreeClean": true,
+    "baselineManifest": "../SKT-ALEPH-Project-6-Diary/verification/t07-baseline.json",
+    "manifestFilesChecked": 17,
+    "manifestFilesWithMatchingSha256": 17,
+    "sourceCodeChanged": false,
+    "databaseChanged": false
+  },
+  "t07Preparation": {
+    "directoryPurpose": "Task documents and preparation evidence only; repository and application not initialized",
+    "authenticationChoice": "undecided",
+    "authenticationImplementation": "not started",
+    "dataMigration": "not started",
+    "authenticationRequestResponseEvidence": "not collected",
+    "actualFiveDayRecords": "not started",
+    "dayOneQuestionMetricUnitCalculationAndPlanRule": "undecided",
+    "deployment": "not started",
+    "submission": "not started"
+  },
+  "notVerifiedThisTurn": [
+    "Current T06 public deployment runtime",
+    "Current live T06 database contents versus preserved export",
+    "Current remote Git head",
+    "Historical T06 test results were not rerun",
+    "Any T07 authentication, ownership, export, deletion or five-day criterion"
+  ]
+}

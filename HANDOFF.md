@@ -1,62 +1,41 @@
-# T06 인수인계
+# T07 다음 작업 · 2026-10-02
 
-정리일: 2026-09-30
+현재 로컬 인증 구현과 합성 검사를 마쳤다. 공식 원문은 `docs/TASK-SOURCE.md`, 전체 기준과 최신 상태는 `docs/TASK-READBACK.md`, 구현과 한계는 `docs/AUTH-IMPLEMENTATION.md`를 읽는다. 상속한 T06 보고서·제출·검증 파일을 T07 완료 증거로 쓰지 않는다.
 
-## 1. 목표
+## 현재 구현
 
-「플랜두씨 다이어리 1 — 내 계획과 실제를 담는 앱」의 실제 DB·Plan/Do/See·공개 결과물·검증한 전체 커밋을 완성하고 T07 기준점을 보존한다. 공식 전체 설명·카드 1~5·제출 화면 대조는 [docs/TASK-READBACK.md](docs/TASK-READBACK.md)에 있다.
+- Node 24.18.0, `crypto.scrypt` N=32768/r=8/p=3, 16바이트 random salt, 32바이트 저장 hash.
+- 직접 작성한 인증 라우팅 + 서버 DB 세션. 세션 token 32바이트 random, DB에는 SHA256만 저장. 로그인 후 최대 8시간. 매 요청 DB 확인, 로그아웃은 해당 세션 삭제, 비밀번호 변경은 모든 세션 삭제.
+- 기본 실행 `npm start`, `127.0.0.1:8009`. `.data/t07`만 사용한다. 환경 예시는 `.env.example`.
+- 로그인 계정 UUID로만 계정별 SQLite를 열고 기존 7표 동작을 유지한다. 브라우저 계정 지정은 무시한다.
+- 자동 36개, 브라우저 합성 10개 통과. 상세는 `verification/auth-local.json`, `auth-browser.json`.
+- 기존 T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`가 조상. 현재 branch `t07-auth`, local remote `t06-baseline`; GitHub origin 미준비.
 
-## 2. 현재 상태
+## 다음 순서
 
-Node.js 24 기본 HTTP/ES modules 앱, 실제 SQLite, Vercel API/Supabase PostgreSQL 저장 계층을 구현했다. 실사용 DB에는 자동 합성 seed가 없다. 로그인 기능 없이 공식 공개 안내를 첫 화면에 표시한다.
+1. **공개 운영 저장소를 정하고 구현한다.** 현재 Vercel entry는 503이다. 계정별 SQLite가 살아 있는 Node 서버/지속 볼륨 또는 서버 세션을 매 요청 확인하는 PostgreSQL 저장소가 필요하다. 기존 T06 공개 Supabase 스키마와 `.env/.vercel`을 가져오지 않는다. managed Auth를 선택한다면 로그아웃 뒤 JWT 잔여 유효 시간을 서버 검사로 막아야 한다.
+2. **T06 실제 자료 이관을 준비한다.** 기존 운영 export와 보존 export를 읽기 전용으로 대조하고 실제 계정은 사용자가 만든다. source ID·날짜·값·7표 관계를 그대로 보존해 빈 T07 개인 계정에 연결하고 원본은 보존한다. 이관·삭제는 아직 실제 계정에서 수행하지 않았다.
+3. **5일 관찰 기능을 구현한다.** 사용자 선택 지표 `완료한 할 일 수(개)`. 질문·첫 규칙은 `docs/OBSERVATION-PLAN.md` 제안과 사용자 답을 반영한다. 날짜별 확인 기록, 계산 규칙 고정, 2일차 뒤·3일차 앞 단 한 번의 계획 규칙 변경, 합계·평균·기여 기록, 전체 한 파일 export를 저장 구조에 추가한다. 현재 기존 See는 T06 분 집계이며 5일 관찰 화면이 아니다.
+4. **실제 5일 사용**을 사용자 기록으로 확보한다. 합성 시험/과거 T06 자료를 대신 쓰지 않는다. 실제 1~2일차를 본 다음 변경 이유·참조·시각을 사용자와 정한다.
+5. 공개 HTTPS·시크릿 창 로그인 첫 화면, 공개 소스 full commit·T06 ancestry, 최종 비밀값 검사를 확인한다. 설명서의 로컬 근거를 실제 운영 근거와 구분해 갱신하고 제출 문안의 미완료를 해소한다. 플랫폼 제출은 아직 하지 않았다.
 
-승인 원계획 **ALEPH 과제 진행·검증 정리**에 Task7·현재 완료4·실측 실행3을 저장했다. 실행은 T05 실제 AI 협업 구간이며 예상300분은 승인된 AI 추천이다. 원자료 초·반올림 분·원시 시각은 [승인 자료](records/user-approved-recommendation.json)에 보존했다. 원계획 집계는 7/4/0/3, 예상300·실제18·차이−282분이다.
+## 브라우저 검사 재현
 
-승인 자료를 빈 Supabase 프로젝트 **yynsaokvquggrbdrmalr**로 옮겼고 이전 시점의 7표·모든 필드·export 동일성을 확인했다. [verification/cloud-transfer.json](verification/cloud-transfer.json)을 따른다. 회고/다음 계획 추가 뒤 최신 전체 수량은 [docs/FINAL-REPORT.md](docs/FINAL-REPORT.md)를 확인한다.
+다음 명령은 전용 합성 저장소를 사용한다. 실제 계정/운영 환경을 대상으로 실행하지 않는다.
 
-사용자가 고른 개선 **작업 전에 파일 읽기와 검사 실행 권한부터 확인한다**를 cloud UI로 저장하고 다음 계획 **ALEPH 남은 검증 마무리**(2026-10-01~02, 예상135분)에 연결했다. 다음 계획에는 아직 할 일이 없다. 전체 cloud 수량은 Plan2/history3/Task7/Execution3/completion4/receipt4/review1이다.
+```powershell
+$env:PORT='8010'
+$env:DIARY_RECORD_ORIGIN='synthetic'
+$env:DIARY_AUTH_DIRECTORY='.test-data/browser-auth'
+node server.mjs
+```
 
-앱/T07 기준점은 [b9de0298cd200961eac56286c6a6a55299947a96](https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96)이다. push·원격 해시·로그인하지 않은 GitHub 화면·HTTP/API200을 확인했다. 최종 Vercel 배포 dpl_EzpXjtay3cRvFr1vJXV2rPwV8JpM는 READY·Node24.x이며 메타데이터의3가지 전체해시가 기준점과 같다. [공개 앱](https://skt-aleph-project-6-diary.vercel.app)은 무인증 HTTP200·실제 PostgreSQL이며 내장 브라우저에 열어 두었다.
+다른 터미널에서 설치된 gstack 소스 CLI를 지정한다. Windows compiled browse 실행이 EEXIST로 실패해 같은 설치의 Bun source entry를 사용했다. `.gstack`은 무시된 격리 검사 상태다.
 
-## 3. 실행 명령
+```powershell
+$env:T07_BROWSE_BUN='C:\Users\Administrator\.bun\bin\bun.exe'
+$env:T07_BROWSE_CLI='C:\Users\Administrator\.agents\skills\gstack\browse\src\cli.ts'
+node scripts/verify-auth-browser.mjs
+```
 
-Node.js 24가 필요하다. 외부 런타임 패키지 의존성은 없다.
-
-    npm start
-    npm test
-    npm run check
-
-기본 포트는 8006이다. .env의 Supabase URL/publishable 키가 있으면 PostgreSQL, 없으면 .data/diary.sqlite를 사용한다. 8006의 승인 자료 SQLite는 cloud 이전 시점 백업이며 이후 추가된 회고/다음 계획은 공개DB와 최종export에 보존했다. 일시적인 합성검사8007·cloud검사8008 서버는 작업 후 정리한다. 재개 시 실제 서버/포트 상태를 확인한다.
-
-    node scripts/write-schema.mjs
-    node scripts/transfer-to-cloud.mjs verify
-
-스키마 생성은 실제 SQLite PRAGMA를 새로 읽고 저장된 운영 PostgreSQL 7표·58필드 카탈로그와 비교한다. 운영 조회 시각은 유지하며 새 cloud 검사로 표시하지 않는다. 이전 검증은 당시8006/8008의7표·export 동일성을 검사한 근거다. 회고 추가 뒤 local/cloud가 달라져 실패할 수 있고 자동 덮어쓰기를 하지 않는다. 승인 자료 가져오기를 다시 실행하려면 출처 해시와 현재 기록을 확인한다.
-
-작업 폴더: C:\Users\Administrator\Desktop\SKT ALEPH\SKT-ALEPH\SKT-ALEPH-Project-6-Diary.
-
-## 4. 통과 검사
-
-- 로컬 자동 검사 27/27: 디스크 재시작, Plan 이력/충돌, 완료 중복/다시열기, Do 분리, 집계 경계/정렬, 삭제 복구, 다음 계획 단일 생성, 입력 거절, HTTP 안전성.
-- 실제 PostgreSQL 익명 역할 35/35: RPC·중복/충돌·이력, 원시 테이블 쓰기/DELETE 제한, 잘못된 입력 거절. 최초 검사 [verify-postgres-result.json](db/verify-postgres-result.json)은 ROLLBACK 전후0건, 최적화 후 [verify-postgres-optimized-result.json](db/verify-postgres-optimized-result.json)은 실제 자료를 보존한35/35 결과다.
-- Supabase security advisors 0건. 해당 검사 범위의 결과이며 모든 안전성 보증으로 확대하지 않는다.
-- 승인 자료의 local/PG 7표 deep equality·ID/UTC 시각/버전/숫자 보존·한 파일 export 동일.
-- 합성 UI 입력/완료/검색/상태 필터·See 기여 기록·삭제/복구 뒤 실행 유지·스크립트 모양 문자열의 문자 표시/미실행. 사용자 회고/다음 계획은 실제 cloud UI와 API 연결을 확인했다.
-
-## 5. 남은 문제
-
-구현·DB·공개 접근·모바일·다운로드·고정 소스와 배포 대조는 완료했다. [verification/delivery.json](verification/delivery.json), [public-verification.json](verification/public-verification.json), [public-write-validation.json](verification/public-write-validation.json)을 따른다. 최신 전체 설명·5단계와 현재 공개 자료를 다시 대조해 2026-09-30 18:10 서울에 공식 폼 제출을 마쳤다. [verification/platform-submission.json](verification/platform-submission.json)과 성공/대기 화면을 보존했다. 현재 **강사 승인 대기**이며 강사/마스터 승인·채점은 아직 완료되지 않았다.
-
-## 6. 다음 행동
-
-1. 사용자 검토는 [docs/REQUIREMENTS-CHECK.md](docs/REQUIREMENTS-CHECK.md)·[docs/FINAL-REPORT.md](docs/FINAL-REPORT.md)·[docs/SUBMISSION.md](docs/SUBMISSION.md)를 사용한다. 제출 완료와 강사/마스터 승인은 구분한다.
-2. T07은 마스터 승인으로 실제 안내가 열린 뒤 최신 페이지를 먼저 읽고 시작한다. 위 앱 기준 전체 커밋·[contracts/pds-schema-v2.json](contracts/pds-schema-v2.json)·승인 정본·[verification/current-export.json](verification/current-export.json)·[browser-export.json](verification/browser-export.json)·T06 접수 기록을 보존한다.
-3. 공개 자료는 편집 가능하므로 제출/다음 과제 전에 현재 상태와 보존된 export의 차이를 확인한다. 이후 보고서·근거 커밋은 앱 기준점을 대체하지 않는다.
-
-## 7. 건드리지 말 것
-
-- 공식 수량·집계·날짜 규칙, 제출 항목명과 실제 소문자 전체 커밋 /commit/ URL.
-- 승인 원자료·원본 초/시각/해시와 T05 동결 근거. AI 협업을 직접 공부 시간으로 바꾸지 않는다.
-- T06 로그인 없음·정확한 공개 안내, Plan 불변 이력·실행 분리·DB 요청 중복 방지.
-- .env, .data, .test-data, .vercel은 Git 제외. 키를 제품 화면·보고서·제출·Git에 넣지 않는다. service-role/secret 키를 사용하지 않는다.
-- 기존 인증 내장 브라우저 우선. 공개 접근/반복 QA는 격리된 gstack 세션이며 개인 Chrome 탭/탭 그룹을 만들지 않는다.
+helper가 무작위 합성 계정을 UI로 생성하며 원문 credential을 출력/보고서에 저장하지 않는다. 서버를 종료한 뒤 합성 DB의 보관·정리는 실제 확인 결과대로 기록한다. 아직 삭제하지 않은 테스트 계정을 삭제했다고 적지 않는다.

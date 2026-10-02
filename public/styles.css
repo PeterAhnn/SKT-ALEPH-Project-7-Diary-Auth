@@ -6,6 +6,17 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; }
+.auth-panel { width: min(440px, calc(100% - 40px)); margin: 8vh auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; }
+.auth-panel h1 { font-size: 32px; line-height: 1.35; margin: 14px 0; }
+.auth-panel p { margin-top: 12px; }
+.auth-tabs { display: flex; gap: 10px; margin: 24px 0 18px; }
+#auth-form, #account-form { display: grid; gap: 10px; }
+#auth-form input, #account-form input { width: 100%; min-height: 44px; border: 1px solid #b9c7b5; border-radius: 8px; padding: 9px 12px; background: white; }
+#auth-help, .auth-foot { font-size: 12px; color: #637063; }
+#auth-message, #account-message { color: #883a2b; overflow-wrap: anywhere; }
+#account-label { font-size: 12px; overflow-wrap: anywhere; }
+.header-actions { flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 600px) { .auth-panel { padding: 24px; } .header-actions { justify-content: flex-start; } }
 button, input, select, textarea { font: inherit; }
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; color: inherit; }

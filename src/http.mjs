@@ -1,11 +1,27 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { timingSafeEqual } from 'node:crypto';
 import { seoulToday } from '../public/core.mjs';
 import { problem, validate } from './validation.mjs';
 
 const assets = { '/': ['index.html', 'text/html; charset=utf-8'], '/index.html': ['index.html', 'text/html; charset=utf-8'],
   '/app.mjs': ['app.mjs', 'text/javascript; charset=utf-8'], '/core.mjs': ['core.mjs', 'text/javascript; charset=utf-8'], '/styles.css': ['styles.css', 'text/css; charset=utf-8'] };
 const csp = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'";
+assets['/auth.mjs'] = ['auth.mjs', 'text/javascript; charset=utf-8'];
+assets['/diary'] = assets['/'];
+function sessionToken(req) {
+  const matches = (req.headers.cookie || '').split(';').map(part => part.trim()).filter(part => part.startsWith('pds_session='));
+  return matches.length === 1 ? matches[0].slice('pds_session='.length) : null;
+}
+function cookie(value, secure, maxAge = 8 * 60 * 60) {
+  return `pds_session=${value}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${maxAge}${secure ? '; Secure' : ''}`;
+}
+function checkCsrf(req, expected) {
+  const value = req.headers['x-csrf-token'];
+  if (typeof value !== 'string' || !/^[0-9a-f]{64}$/.test(value) || !timingSafeEqual(Buffer.from(value, 'hex'), Buffer.from(expected, 'hex'))) {
+    throw problem(403, '앱 화면을 다시 열고 저장해 주세요.', 'CSRF');
+  }
+}
 function json(res, status, data) {
   res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(data));
@@ -48,7 +64,7 @@ function route(method, path) {
   }
   return null;
 }
-export function createHandler({ store, publicDir, clock = () => new Date().toISOString(), recordOrigin = 'user' }) {
+export function createHandler({ identity, publicDir, secureCookies = true, clock = () => new Date().toISOString(), recordOrigin = 'user' }) {
   return async function handler(req, res) {
     res.setHeader('Content-Security-Policy', csp);
     res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -57,13 +73,63 @@ export function createHandler({ store, publicDir, clock = () => new Date().toISO
     res.setHeader('X-Frame-Options', 'DENY');
     try {
       const path = new URL(req.url, 'http://diary.invalid').pathname;
-      if (req.method === 'GET' && path === '/api/health') return json(res, 200, { ok: true, storage: store.kind, authentication: false });
-      if (req.method === 'GET' && path === '/api/state') return json(res, 200, { ok: true, data: await store.state(), meta: {
-        storage: store.kind, timezone: 'Asia/Seoul', time_unit: 'minutes', today: seoulToday(new Date(clock())), authentication: false, record_origin: recordOrigin } });
+      if (req.method === 'GET' && path === '/api/health') return json(res, 200, { ok: true, storage: identity?.kind || 'unconfigured', authentication: true });
+      if (path.startsWith('/api/') && !identity) throw problem(503, '인증 저장소 연결을 준비하고 있습니다.', 'UNAVAILABLE');
+      const token = sessionToken(req);
+      const session = identity?.authenticate(token);
+      if (req.method === 'GET' && path === '/api/auth/session') return json(res, 200, { ok: true, data: session || { user: null } });
+      if (req.method === 'POST' && ['/api/auth/register', '/api/auth/login'].includes(path)) {
+        checkOrigin(req);
+        const input = await body(req);
+        if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k => !['email', 'password'].includes(k))) throw problem(400, '가입·로그인 입력을 확인해 주세요.', 'VALIDATION');
+        if (path.endsWith('/register')) return json(res, 201, { ok: true, data: { user: await identity.register(input, req.socket.remoteAddress) } });
+        const loggedIn = await identity.login(input, req.socket.remoteAddress);
+        if (token) identity.logout(token); // Re-login rotates an existing browser session.
+        res.setHeader('Set-Cookie', cookie(loggedIn.token, secureCookies));
+        return json(res, 200, { ok: true, data: { user: loggedIn.user, csrf: loggedIn.csrf, expires_at: loggedIn.expires_at } });
+      }
+      if (path.startsWith('/api/') && !session) throw problem(401, '로그인한 뒤 내 기록을 열어 주세요.', 'UNAUTHENTICATED');
+      if (path.startsWith('/api/') && !['GET', 'HEAD'].includes(req.method)) { checkOrigin(req); checkCsrf(req, session.csrf); }
+      if (req.method === 'POST' && path === '/api/auth/logout') {
+        identity.logout(token);
+        res.setHeader('Set-Cookie', cookie('', secureCookies, 0));
+        return json(res, 200, { ok: true, data: { logged_out: true } });
+      }
+      if (req.method === 'POST' && path === '/api/auth/password') {
+        const input = await body(req);
+        if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k => !['current_password', 'password'].includes(k))) throw problem(400, '비밀번호 변경 입력을 확인해 주세요.', 'VALIDATION');
+        await identity.changePassword(session.user.id, input);
+        res.setHeader('Set-Cookie', cookie('', secureCookies, 0));
+        return json(res, 200, { ok: true, data: { logged_out: true, all_sessions_revoked: true } });
+      }
+      if (req.method === 'DELETE' && path === '/api/auth/account') {
+        const input = await body(req);
+        if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k => !['current_password', 'confirm'].includes(k))) throw problem(400, '계정 삭제 입력을 확인해 주세요.', 'VALIDATION');
+        await identity.deleteAccount(session.user.id, input);
+        res.setHeader('Set-Cookie', cookie('', secureCookies, 0));
+        return json(res, 200, { ok: true, data: { account_deleted: true, diary_deleted: true } });
+      }
+      const withStore = callback => identity.withDiary(session.user.id, callback);
+      if (['GET', 'POST'].includes(req.method) && path === '/api/state') {
+        if (req.method === 'POST') {
+          const input = await body(req);
+          if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k => !['user_id', 'account_id'].includes(k))) throw problem(400, '목록 입력을 확인해 주세요.', 'VALIDATION');
+          // Client-supplied ownership hints are deliberately ignored. Only the session chooses the diary.
+        }
+        return json(res, 200, { ok: true, data: await withStore(store => store.state()), meta: {
+          storage: identity.kind, timezone: 'Asia/Seoul', time_unit: 'minutes', today: seoulToday(new Date(clock())), authentication: true, user: session.user, record_origin: recordOrigin } });
+      }
       if (req.method === 'GET' && path === '/api/export') {
         const exportedAt = clock();
         res.setHeader('Content-Disposition', `attachment; filename="pds-diary-${seoulToday(new Date(exportedAt))}.json"`);
-        return json(res, 200, { schema_version: 2, exported_at: exportedAt, timezone: 'Asia/Seoul', time_unit: 'minutes', record_origin: recordOrigin, ...await store.state() });
+        return json(res, 200, { schema_version: 2, exported_at: exportedAt, timezone: 'Asia/Seoul', time_unit: 'minutes', record_origin: recordOrigin, ...await withStore(store => store.state()) });
+      }
+      const single = path.match(/^\/api\/(plans|tasks|executions|reviews)\/([^/]+)$/);
+      if (req.method === 'GET' && single) {
+        const state = await withStore(store => store.state());
+        const entity = state[single[1]].find(row => row.id === single[2]);
+        if (!entity) throw problem(404, '해당 기록을 찾을 수 없습니다.', 'NOT_FOUND');
+        return json(res, 200, { ok: true, data: { entity } });
       }
       const operation = route(req.method, path);
       if (operation) {
@@ -72,8 +138,12 @@ export function createHandler({ store, publicDir, clock = () => new Date().toISO
         const input = req.method === 'DELETE' ? {} : await body(req);
         if (!input || typeof input !== 'object' || Array.isArray(input)) throw problem(400, '입력 형식은 JSON 객체여야 합니다.', 'VALIDATION');
         if (Object.keys(reference).some(k => Object.hasOwn(input, k) && input[k] !== reference[k])) throw problem(400, '요청 경로와 기록 ID가 다릅니다.', 'VALIDATION');
-        const data = await store.mutate(action, validate(action, { ...input, ...reference }));
+        const data = await withStore(store => store.mutate(action, validate(action, { ...input, ...reference })));
         return json(res, 200, { ok: true, data });
+      }
+      if (req.method === 'GET' && path === '/diary' && !session) {
+        res.writeHead(303, { Location: '/' });
+        return res.end();
       }
       const asset = assets[path];
       if (asset && ['GET', 'HEAD'].includes(req.method) && publicDir) {
@@ -83,7 +153,7 @@ export function createHandler({ store, publicDir, clock = () => new Date().toISO
       }
       return json(res, 404, { ok: false, error: { code: 'NOT_FOUND', message: '요청한 화면이나 기록을 찾을 수 없습니다.' } });
     } catch (error) {
-      const status = [400, 403, 404, 409, 413, 415].includes(error.status) ? error.status : 503;
+      const status = [400, 401, 403, 404, 409, 413, 415, 429].includes(error.status) ? error.status : 503;
       const message = status === 503 ? '저장소에 연결하지 못했습니다. 입력을 유지한 채 잠시 뒤 다시 시도해 주세요.' : error.message;
       const code = error.code || ({ 400: 'VALIDATION', 403: 'ORIGIN', 404: 'NOT_FOUND', 409: 'CONFLICT', 413: 'PAYLOAD_TOO_LARGE', 415: 'UNSUPPORTED_MEDIA_TYPE' }[status] || 'UNAVAILABLE');
       if (!res.headersSent) json(res, status, { ok: false, error: { code, message } });
