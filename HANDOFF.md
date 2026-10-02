@@ -13,6 +13,8 @@
 
 ## 다음 순서
 
+2026-10-02 공개 운영 준비를 읽기 전용으로 확인했다. Supabase에는 T06만 있고 조직은 PeterAhn's Org(Free)다. 사용자의 조직 선택을 요청했고 새 프로젝트 비용은 아직 조회하지 않았다. Vercel connector의 scope 403은 기존 CLI 인증/프로젝트 조회로 해결 가능한 경로를 확인했다. T07 공개 프로젝트는 아직 없다. docs/CLOUD-DEPLOYMENT-PLAN.md와 verification/cloud-prerequisites.json을 읽고 조직 선택 → 실제 비용 조회·확인 → 전용 DB와 API 구현 → 배포/운영 검사 순서로 진행한다.
+
 전체 충족 대조는 docs/ACCEPTANCE-AUDIT.md와 verification/acceptance-audit.json을 먼저 읽는다. 로컬만으로 최종 제출은 충족하지 않는다. 12자는 공식 조건이 아닌 AI 정책이며 현재 길이 기준은 바꾸지 않았다. 실제 관찰은 공개 운영 확인 뒤 시작하는 순서를 권한다. 이는 공식에 없는 로컬 관찰 금지 조건을 추가하는 것이 아니다.
 
 1. **공개 운영 저장소를 정하고 구현한다.** 현재 Vercel entry는 503이다. 계정별 SQLite가 살아 있는 Node 서버/지속 볼륨 또는 서버 세션을 매 요청 확인하는 PostgreSQL 저장소가 필요하다. 기존 T06 공개 Supabase 스키마와 `.env/.vercel`을 가져오지 않는다. managed Auth를 선택한다면 로그아웃 뒤 JWT 잔여 유효 시간을 서버 검사로 막아야 한다.

@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-02T06:25:16.654Z",
+  "scope": "Read-only deployment prerequisites; not deployment or project creation",
+  "supabase": {
+    "organization_name": "PeterAhn's Org",
+    "organization_plan": "free",
+    "existing_project_names": [
+      "skt-aleph-t06-diary"
+    ],
+    "t07_project_exists": false,
+    "user_organization_selection_requested": true,
+    "user_organization_selection_received": false,
+    "new_project_cost_queried": false,
+    "new_project_created": false
+  },
+  "vercel": {
+    "connector_team_list_count": 0,
+    "connector_existing_scope_project_list_status": 403,
+    "connector_error": "Missing scope access",
+    "fallback": "Existing Vercel CLI 61.1.0 through cached offline npm exec",
+    "cli_identity_check_passed": true,
+    "cli_existing_scope_project_list_passed": true,
+    "t07_project_exists": false,
+    "existing_t06_node_version": "24.x"
+  },
+  "local": {
+    "private_persistent_cloud_adapter_implemented": false,
+    "public_entry_fail_closed_status": 503,
+    "actual_user_migration_performed": false,
+    "actual_observation_days": 0
+  },
+  "next": [
+    "Receive Supabase organization selection; query and show exact cost; confirm cost before creation",
+    "Implement dedicated private persistent cloud storage and repeat meaningful auth/ownership checks",
+    "Deploy T07 HTTPS login screen and publish full source revision",
+    "Create real user account, migrate whole selected T06 data and begin actual five-day observation"
+  ],
+  "side_effects": {
+    "external_projects_created": false,
+    "t06_database_changed": false,
+    "external_source_pushed": false,
+    "public_deployment_performed": false,
+    "paid_action_performed": false
+  }
+}
