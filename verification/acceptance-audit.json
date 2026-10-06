@@ -1421,5 +1421,17 @@
     "official_requirements_rechecked_date": "2026-10-06",
     "all_68_requirement_texts_match": true,
     "verified_source_commit": "6a8191405bbdeb6724bedb83f0f76a8246689580"
+  },
+  "observation_restart_update": {
+    "date": "2026-10-06",
+    "started_at": "2026-10-06T00:48:47.113Z",
+    "evidence": "verification/observation-restart-20261006.json",
+    "prior_records_preserved": true,
+    "user_approved_tasks": 3,
+    "tasks_all_pending": true,
+    "confirmed_days": 0,
+    "rule_changes": 0,
+    "manual_checks": 0,
+    "platform_submitted": false
   }
 }

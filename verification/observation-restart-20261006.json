@@ -1,0 +1,75 @@
+{
+  "client_review_date": "2026-10-06",
+  "checked_at": "2026-10-06T00:50:41.268Z",
+  "data_origin": "actual-user-export",
+  "exported_at": "2026-10-06T00:50:23.664Z",
+  "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
+  "planned_start_date": "2026-10-06",
+  "planned_end_date": "2026-10-10",
+  "planned_period_is_not_actual_days": true,
+  "started_at": "2026-10-06T00:48:47.113Z",
+  "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
+  "first_rule": "하루 시작에 할 일 3개를 정하고 진행한다",
+  "metric": "완료한 할 일 수",
+  "unit": "개",
+  "rules": {
+    "days": 5,
+    "unit": "개",
+    "metric": "완료한 할 일 수",
+    "missing": "확정하지 않은 날은 미기록이다. 확인한 0개만 실제 0으로 센다. 미기록은 평균 분모와 5일 수에서 제외한다.",
+    "outlier": "큰 값도 그대로 보존하고 메모로 설명한다. 임의로 제거하거나 다른 값으로 바꾸지 않는다.",
+    "rounding": "합계는 정수, 평균은 합계/확정 일수의 원값과 소수 1자리 half-up 표시값을 함께 보존한다.",
+    "timezone": "Asia/Seoul",
+    "duplicate": "중복 요청 ID는 기존 결과를 반환한다. 같은 날짜의 같은 할 일 ID는 한 번만 센다.",
+    "comparison": "변경 전 2일과 변경 후 3일을 같은 지표·단위·계산으로 비교한다.",
+    "week_start": "월요일",
+    "calculation": "관찰 시작 이후 선택한 계획의 완료 이벤트를 한국 날짜별 고유 할 일 ID로 센다. 같은 날 재완료는 한 번, 다른 날 재완료는 그 날짜에 한 번 센다. 삭제해도 과거 완료는 유지한다."
+  },
+  "confirmed_days": 0,
+  "confirmed_dates": [],
+  "rule_changes": 0,
+  "manual_checks": 0,
+  "observation_plan_tasks": 3,
+  "tasks": [
+    {
+      "title": "ALEPH 과제 안내 읽기",
+      "due_date": "2026-10-06",
+      "expected_minutes": 0,
+      "status": "pending"
+    },
+    {
+      "title": "인증 앱 기능 1개 직접 확인",
+      "due_date": "2026-10-06",
+      "expected_minutes": 0,
+      "status": "pending"
+    },
+    {
+      "title": "확인한 내용 다이어리에 정리",
+      "due_date": "2026-10-06",
+      "expected_minutes": 0,
+      "status": "pending"
+    }
+  ],
+  "prior_rows_unchanged": {
+    "plans": true,
+    "plan_history": true,
+    "tasks": true,
+    "executions": true,
+    "completion_events": true,
+    "request_receipts": true,
+    "reviews": true,
+    "observation_studies": true,
+    "observation_days": true,
+    "observation_changes": true,
+    "observation_checks": true,
+    "migration_receipts": true
+  },
+  "user_approved_recommended_tasks": true,
+  "actual_completions_entered_by_agent": false,
+  "observation_day_confirmed_by_agent": false,
+  "private_export_sha256": "6e6b0eb3191db92a5f0d41cbcf13c644f6357b3ac0f915564a30ac1bb31c2844",
+  "account_identifiers_excluded": true,
+  "raw_export": ".test-data/user-evidence/observation-restart-export-20261006.json (ignored/private)",
+  "platform_submitted": false,
+  "conclusion": "New observation started today; three user-approved planned tasks saved. All incomplete; no day confirmed. Prior records preserved."
+}
