@@ -15,7 +15,7 @@ git('merge-base', '--is-ancestor', 'b9de0298cd200961eac56286c6a6a55299947a96', c
 const repo = 'https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth';
 const result = 'https://skt-aleph-project-7-diary-auth.vercel.app/';
 const source = `${repo}/commit/${commit}`;
-const actual = JSON.parse(git('show', `${commit}:verification/observation-restart-20261006.json`));
+const actual = JSON.parse(git('show', `${commit}:verification/observation-current-status.json`));
 const submission = git('show', `${commit}:docs/SUBMISSION.md`);
 const section = title => {
   const body = submission.split(`## ${title}\n`)[1];
@@ -37,11 +37,11 @@ explanation = explanation.replace(/\]\((\.{1,2}\/[^)]+)\)/g, (_, relative) => {
   git('cat-file', '-e', `${commit}:${target}`);
   return `](${repo}/blob/${commit}/${target})`;
 });
-const report = `# T07 인증 구현 설명서 · 제출 준비본\n\n**미제출·실제 관찰 미완료.** ${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 기존 기록을 보존하고 오늘 새 관찰을 시작했다. 등록한 할 일은 미완료 계획이며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
+const report = `# T07 인증 구현 설명서 · 제출 준비본\n\n**미제출·실제 관찰 진행 중.** ${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 현재 완료 여부와 날짜 수는 실제 저장 기록을 기준으로 하며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
 const paste = `T07 미제출 준비본 — 실제 5일 최종 확인 전 제출하지 않음\n\n결과물 URL (필수)\n${result}\n\n소스 저장소 URL (필수)\n${source}\n\n재현·통과 확인 4가지\n${confirmation}\n\nAI와 내 판단 3줄\n${judgment}\n`;
 for (const file of ['.env.local', '.env.cloud.local']) if (existsSync(file)) process.loadEnvFile(file);
 const known = ['VERCEL_OIDC_TOKEN', 'T07_PG_PASSWORD'].map(k => process.env[k]).filter(v => v?.length > 16);
-for (const privatePath of ['.test-data/user-evidence/card-5-current-export-20261002.json', '.test-data/user-evidence/card-5-current-export-20261006.json', '.test-data/user-evidence/observation-restart-export-20261006.json']) if (existsSync(privatePath)) {
+for (const privatePath of ['.test-data/user-evidence/card-5-current-export-20261002.json', '.test-data/user-evidence/card-5-current-export-20261006.json', '.test-data/user-evidence/observation-restart-export-20261006.json', '.test-data/user-evidence/observation-day-1-export-20261006.json']) if (existsSync(privatePath)) {
   const data = JSON.parse(await readFile(privatePath, 'utf8'));
   for (const study of data.observation_studies ?? []) {
     for (const key of ['id', 'plan_id', 'user_id']) if (study[key]) known.push(study[key]);

@@ -1,0 +1,72 @@
+{
+  "client_review_date": "2026-10-06",
+  "checked_at": "2026-10-06T06:08:47.585Z",
+  "data_origin": "actual-user-export",
+  "exported_at": "2026-10-06T06:08:10.156Z",
+  "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
+  "started_at": "2026-10-06T00:48:47.113Z",
+  "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
+  "first_rule": "하루 시작에 할 일 3개를 정하고 진행한다",
+  "metric": "완료한 할 일 수",
+  "unit": "개",
+  "rules": {
+    "days": 5,
+    "unit": "개",
+    "metric": "완료한 할 일 수",
+    "missing": "확정하지 않은 날은 미기록이다. 확인한 0개만 실제 0으로 센다. 미기록은 평균 분모와 5일 수에서 제외한다.",
+    "outlier": "큰 값도 그대로 보존하고 메모로 설명한다. 임의로 제거하거나 다른 값으로 바꾸지 않는다.",
+    "rounding": "합계는 정수, 평균은 합계/확정 일수의 원값과 소수 1자리 half-up 표시값을 함께 보존한다.",
+    "timezone": "Asia/Seoul",
+    "duplicate": "중복 요청 ID는 기존 결과를 반환한다. 같은 날짜의 같은 할 일 ID는 한 번만 센다.",
+    "comparison": "변경 전 2일과 변경 후 3일을 같은 지표·단위·계산으로 비교한다.",
+    "week_start": "월요일",
+    "calculation": "관찰 시작 이후 선택한 계획의 완료 이벤트를 한국 날짜별 고유 할 일 ID로 센다. 같은 날 재완료는 한 번, 다른 날 재완료는 그 날짜에 한 번 센다. 삭제해도 과거 완료는 유지한다."
+  },
+  "confirmed_days": 1,
+  "confirmed_dates": [
+    "2026-10-06"
+  ],
+  "day_records": [
+    {
+      "ordinal": 1,
+      "date": "2026-10-06",
+      "count": 3,
+      "confirmed_at": "2026-10-06T06:07:22.261Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    }
+  ],
+  "observation_plan_tasks": 3,
+  "tasks": [
+    {
+      "title": "ALEPH 과제 안내 읽기",
+      "status": "completed"
+    },
+    {
+      "title": "인증 앱 기능 1개 직접 확인",
+      "status": "completed"
+    },
+    {
+      "title": "확인한 내용 다이어리에 정리",
+      "status": "completed"
+    }
+  ],
+  "rule_changes": 0,
+  "manual_checks": 0,
+  "assistant_arithmetic_crosscheck": {
+    "sum": 3,
+    "mean": 3,
+    "display_mean": "3.0",
+    "matches_visible_ui": true,
+    "is_user_manual_check": false
+  },
+  "initial_definition_unchanged": true,
+  "contribution_chronology_matches": true,
+  "completed_or_confirmed_by_agent": false,
+  "private_export_sha256": "8a7ace90d80fb4eeda00362d8406270241248753cdfbcddbc8f2bacdf6fb31d5",
+  "raw_export": ".test-data/user-evidence/observation-day-1-export-20261006.json (ignored/private)",
+  "account_identifiers_excluded": true,
+  "platform_submitted": false,
+  "comparison_complete": false
+}

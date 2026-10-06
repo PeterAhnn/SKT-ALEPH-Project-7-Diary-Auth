@@ -958,7 +958,7 @@
       "id": "T07-C07",
       "stage": 5,
       "official_requirement": "Asia/Seoul 기준으로 서로 다른 실제 날짜 정확히 5일의 기록이 내 계정 안에 있다.",
-      "current_recorded_status": "**미완료: 확정 0/5일**",
+      "current_recorded_status": "진행 중: 실제 10월 6일 완료 3개로 확정 1/5일",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -968,9 +968,10 @@
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
         "verification/card-5-current-status.json",
-        "verification/card-5-current-status-20261006.json"
+        "verification/card-5-current-status-20261006.json",
+        "verification/observation-day-1-20261006.json"
       ],
-      "remaining": "**미완료: 확정 0/5일**",
+      "remaining": "서로 다른 실제 날짜 4일 추가 필요",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
@@ -1430,6 +1431,18 @@
     "user_approved_tasks": 3,
     "tasks_all_pending": true,
     "confirmed_days": 0,
+    "rule_changes": 0,
+    "manual_checks": 0,
+    "platform_submitted": false
+  },
+  "actual_day_one_update": {
+    "client_date": "2026-10-06",
+    "date": "2026-10-06",
+    "count": 3,
+    "confirmed_days": 1,
+    "confirmed_at": "2026-10-06T06:07:22.261Z",
+    "evidence": "verification/observation-day-1-20261006.json",
+    "day_confirmed_by_agent": false,
     "rule_changes": 0,
     "manual_checks": 0,
     "platform_submitted": false
