@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-06T00:27:52.038Z",
+  "client_date": "2026-10-06",
+  "status": "draft-not-submitted",
+  "official_source": "https://aleph-omega.vercel.app/cortex?panel=tasks",
+  "official_stage_counts": {
+    "1": 10,
+    "2": 7,
+    "3": 8,
+    "4": 11,
+    "5": 32
+  },
+  "official_criteria_count": 68,
+  "official_requirements_match_previous_audit": true,
+  "mismatched_criteria": [],
+  "current_form_result_and_source_required": true,
+  "current_form_attachment_optional": true,
+  "attachment_max_count": 10,
+  "attachment_combined_max_bytes": 8388608,
+  "public_source_verified": {
+    "url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/6a8191405bbdeb6724bedb83f0f76a8246689580",
+    "navigation_http_status": 200,
+    "title": "docs: resume T07 submission preparation with actual October 6 evidence",
+    "short_commit_shown": true,
+    "anonymous_sign_in_shown": true,
+    "method": "isolated gstack browse"
+  },
+  "preparation": {
+    "prepared_at": "2026-10-06T00:26:37.881Z",
+    "status": "draft-not-submitted",
+    "source_commit": "6a8191405bbdeb6724bedb83f0f76a8246689580",
+    "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app/",
+    "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/6a8191405bbdeb6724bedb83f0f76a8246689580",
+    "confirmation_chars": 375,
+    "judgment_chars": 296,
+    "optional_attachment": "T07-AUTH-EXPLANATION-DRAFT.md",
+    "attachment_count": 1,
+    "attachment_bytes": 36449,
+    "attachment_limits_passed": true,
+    "six_explanation_sections": true,
+    "pinned_relative_links_resolve_in_git": true,
+    "known_credential_and_prior_study_identifier_scan_passed": true,
+    "scan_limit": "Selected patterns and locally available known credential/prior study identifier values; not proof of absence of every secret.",
+    "actual_record_status": "2026-10-06: 0/5 confirmed days; actual observation incomplete.",
+    "files": [
+      {
+        "name": "T07-AUTH-EXPLANATION-DRAFT.md",
+        "bytes": 36449,
+        "sha256": "a1043072b81490d85b8e647bc219e1773df305af1cf61d67e5dad4fc1823cfa6"
+      },
+      {
+        "name": "T07-PASTE-FIELDS.txt",
+        "bytes": 1804,
+        "sha256": "a3657ef4efc1d0bbbe0470bd4c140d8ca8eb13bd489e956ee3fabb484f9b41a4"
+      }
+    ]
+  },
+  "actual_record_evidence": "verification/card-5-current-status-20261006.json",
+  "platform_submitted": false,
+  "user_observation_restarted": false
+}

@@ -10,9 +10,9 @@ https://skt-aleph-project-7-diary-auth.vercel.app
 
 ## 소스 저장소 URL (필수)
 
-https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/87c688c43c5440c3315dd82bff78e9e6717dcc5c
+https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/6a8191405bbdeb6724bedb83f0f76a8246689580
 
-실제 40자리 소문자 commit, 공개 원격 branch 일치와 익명 화면의 커밋 제목·해시 표시를 확인했다. 이 화면 확인에서 HTTP 200을 별도로 측정한 것은 아니다. T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`는 조상이다. 카드 1~5 검토와 10월 2일 관찰 상태까지 포함한 고정 커밋이다. 초기 구현 고정 커밋은 ccf765df053456161e881e541e4fd177ee7adc03이며 최종 실제 5일 뒤 소스 상태를 다시 고정한다. 이번 새 커밋 화면은 격리된 익명 브라우저에서 확인했다.
+실제 40자리 소문자 커밋이다. 2026-10-06 공개 원격 push와 격리된 익명 브라우저의 HTTP 200·커밋 제목·해시 표시를 확인했다. T06 최종 제출 `b9de0298cd200961eac56286c6a6a55299947a96`는 조상이다. 카드 1~5 검토, 사용자 판단, 10월 6일 실제 관찰 상태와 준비 스크립트를 포함한다. 초기 구현 고정 커밋은 ccf765df053456161e881e541e4fd177ee7adc03이다. 실제 5일 완료 후 최종 소스 상태를 다시 고정한다. [이번 제출 준비 근거](../verification/submission-preparation-20261006.json).
 
 ## 인증 구현 설명서
 

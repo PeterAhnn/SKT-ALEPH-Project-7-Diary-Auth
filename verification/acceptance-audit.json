@@ -1417,6 +1417,9 @@
     "last_actual_observation_verified_date": "2026-10-06",
     "actual_evidence": "verification/card-5-current-status-20261006.json",
     "current_confirmed_days": 0,
-    "requires_new_observation": true
+    "requires_new_observation": true,
+    "official_requirements_rechecked_date": "2026-10-06",
+    "all_68_requirement_texts_match": true,
+    "verified_source_commit": "6a8191405bbdeb6724bedb83f0f76a8246689580"
   }
 }
