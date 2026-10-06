@@ -967,8 +967,7 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json",
-        "verification/card-5-current-status-20261006.json"
+        "verification/card-5-current-status.json"
       ],
       "remaining": "**미완료: 확정 0/5일**",
       "next_check": "실제 1~2일차 뒤·3일차 전"
@@ -1307,7 +1306,7 @@
       "id": "T07-C40",
       "stage": 5,
       "official_requirement": "제출문에 ① AI에게 맡긴 일, ② 내가 직접 판단한 일, ③ AI 제안을 따르지 않은 일(없다면 왜 없었는지)이 각각 나뉘어 적혀 있다.",
-      "current_recorded_status": "준비: 실제 사용자 판단 3항목 반영. AI의 임의 선택·검증을 직접 확인하고 수정했다고 답함.",
+      "current_recorded_status": "**미완료: 실제 최종 판단 및 따르지 않은 일/없었다면 이유 미확정**",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1316,10 +1315,9 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json",
-        "docs/SUBMISSION-PREPARATION.md"
+        "verification/card-5-current-status.json"
       ],
-      "remaining": "실제 5일 결과 해석은 별도 보완. 현재 판단을 뒷받침할 구체 사례는 만들지 않음.",
+      "remaining": "**미완료: 실제 최종 판단 및 따르지 않은 일/없었다면 이유 미확정**",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
@@ -1405,18 +1403,5 @@
   "previous_audit": "verification/acceptance-audit-local-20261002.json",
   "client_review_date": "2026-10-02",
   "official_source_checked_date": "2026-10-02",
-  "actual_user_app_reloaded_this_review": true,
-  "submission_preparation_update": {
-    "client_date": "2026-10-06",
-    "updated_at": "2026-10-06T00:24:15.298Z",
-    "public_login_screen_visible": true,
-    "current_user_record_verified": true,
-    "reason": "User logged in directly; actual whole export and UI reviewed.",
-    "human_answer": "선택과 검증을 마음대로 해서 직접 확인하고 수정함",
-    "platform_submitted": false,
-    "last_actual_observation_verified_date": "2026-10-06",
-    "actual_evidence": "verification/card-5-current-status-20261006.json",
-    "current_confirmed_days": 0,
-    "requires_new_observation": true
-  }
+  "actual_user_app_reloaded_this_review": true
 }

@@ -1,5 +1,7 @@
 # T07 현재 상태와 다음 작업 · 2026-10-02
 
+2026-10-06 제출 준비 재개: 사용자 판단 3항목은 반영했다. 재로그인 후 실제 전체 export와 화면에서 확정 0/5일·할 일 0개·변경 0건·손계산 0건을 확인했다. 시작일 미확정으로 기존 기록을 보존하고 새 관찰이 필요하다. 이전 10월 2일 점검 본문은 당시 기록으로 남긴다. [제출 준비 체크](docs/SUBMISSION-PREPARATION.md)에서 남은 조건을 관리한다.
+
 [해야 할 일 체크](docs/TODO.md) · [전체 공식 기준](docs/TASK-READBACK.md) · [충족 대조](docs/ACCEPTANCE-AUDIT.md) · [인증 설명](docs/AUTH-IMPLEMENTATION.md)
 
 공개 앱: https://skt-aleph-project-7-diary-auth.vercel.app
