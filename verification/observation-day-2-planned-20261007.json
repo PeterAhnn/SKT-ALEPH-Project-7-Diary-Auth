@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-07T04:00:59.673Z",
+  "exported_at": "2026-10-07T04:00:34.537Z",
+  "date": "2026-10-07",
+  "registered_by_agent": true,
+  "user_authorized_exact_tasks": true,
+  "pending_tasks": [
+    "어제 1일차 기록·완료 근거 확인",
+    "인증 설명서의 ⑥ 아직 못 막은 것 읽기",
+    "오늘 확인한 내용 다이어리에 정리"
+  ],
+  "expected_minutes": 0,
+  "expected_minutes_meaning": "unset placeholder, not actual duration",
+  "confirmed": false,
+  "visible_current_count": 0,
+  "day_one_unchanged": true,
+  "previous_tasks_unchanged": true,
+  "initial_definition_unchanged": true,
+  "confirmed_days": 1,
+  "private_export_sha256": "2367afc32279c33cd4715029de1f3cdc798d1b503aee7b7d9759b7a43e657033",
+  "account_identifiers_excluded": true
+}
