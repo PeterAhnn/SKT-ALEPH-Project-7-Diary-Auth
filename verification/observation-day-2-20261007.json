@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-07T05:02:07.994Z",
+  "exported_at": "2026-10-07T05:01:43.481Z",
+  "day_record": {
+    "ordinal": 2,
+    "date": "2026-10-07",
+    "count": 3,
+    "confirmed_at": "2026-10-07T05:01:10.827Z",
+    "note_present": false,
+    "contribution_unique_task_count": 3,
+    "contribution_event_count": 3
+  },
+  "all_six_tasks_completed": true,
+  "initial_definition_unchanged": true,
+  "day_one_unchanged": true,
+  "contribution_chronology_matches": true,
+  "rule_changes": 0,
+  "manual_checks": 0,
+  "completed_or_confirmed_by_agent": false,
+  "private_export_sha256": "cb7bb45055d1d906a0c48f98776856cf76ea075801215b2c08b9edcf27c81cc6",
+  "raw_export": ".test-data/user-evidence/observation-day-2-confirmed-export-20261007.json (ignored/private)",
+  "account_identifiers_excluded": true
+}

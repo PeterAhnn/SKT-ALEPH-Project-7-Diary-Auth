@@ -1,8 +1,8 @@
 {
   "client_review_date": "2026-10-07",
-  "checked_at": "2026-10-07T04:00:59.673Z",
+  "checked_at": "2026-10-07T05:02:07.994Z",
   "data_origin": "actual-user-export",
-  "exported_at": "2026-10-07T04:00:34.537Z",
+  "exported_at": "2026-10-07T05:01:43.481Z",
   "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
   "started_at": "2026-10-06T00:48:47.113Z",
   "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
@@ -22,9 +22,10 @@
     "week_start": "월요일",
     "calculation": "관찰 시작 이후 선택한 계획의 완료 이벤트를 한국 날짜별 고유 할 일 ID로 센다. 같은 날 재완료는 한 번, 다른 날 재완료는 그 날짜에 한 번 센다. 삭제해도 과거 완료는 유지한다."
   },
-  "confirmed_days": 1,
+  "confirmed_days": 2,
   "confirmed_dates": [
-    "2026-10-06"
+    "2026-10-06",
+    "2026-10-07"
   ],
   "day_records": [
     {
@@ -32,6 +33,15 @@
       "date": "2026-10-06",
       "count": 3,
       "confirmed_at": "2026-10-06T06:07:22.261Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 2,
+      "date": "2026-10-07",
+      "count": 3,
+      "confirmed_at": "2026-10-07T05:01:10.827Z",
       "note_present": false,
       "contribution_unique_task_count": 3,
       "contribution_event_count": 3
@@ -56,24 +66,24 @@
     },
     {
       "title": "어제 1일차 기록·완료 근거 확인",
-      "status": "pending",
+      "status": "completed",
       "due_date": "2026-10-07"
     },
     {
       "title": "인증 설명서의 ⑥ 아직 못 막은 것 읽기",
-      "status": "pending",
+      "status": "completed",
       "due_date": "2026-10-07"
     },
     {
       "title": "오늘 확인한 내용 다이어리에 정리",
-      "status": "pending",
+      "status": "completed",
       "due_date": "2026-10-07"
     }
   ],
   "rule_changes": 0,
   "manual_checks": 0,
   "assistant_arithmetic_crosscheck": {
-    "sum": 3,
+    "sum": 6,
     "mean": 3,
     "display_mean": "3.0",
     "matches_visible_ui": true,
@@ -82,8 +92,8 @@
   "initial_definition_unchanged": true,
   "contribution_chronology_matches": true,
   "completed_or_confirmed_by_agent": false,
-  "private_export_sha256": "2367afc32279c33cd4715029de1f3cdc798d1b503aee7b7d9759b7a43e657033",
-  "raw_export": ".test-data/user-evidence/observation-day-2-planned-export-20261007.json (ignored/private)",
+  "private_export_sha256": "cb7bb45055d1d906a0c48f98776856cf76ea075801215b2c08b9edcf27c81cc6",
+  "raw_export": ".test-data/user-evidence/observation-day-2-confirmed-export-20261007.json (ignored/private)",
   "account_identifiers_excluded": true,
   "platform_submitted": false,
   "comparison_complete": false,
@@ -91,17 +101,16 @@
     "date": "2026-10-07",
     "registered_by_agent": true,
     "user_authorized_exact_tasks": true,
-    "pending_tasks": [
+    "expected_minutes": 0,
+    "expected_minutes_meaning": "unset placeholder, not actual duration",
+    "confirmed": true,
+    "day_one_unchanged": true,
+    "previous_tasks_unchanged": true,
+    "initial_definition_unchanged": true,
+    "pending_tasks_at_registration": [
       "어제 1일차 기록·완료 근거 확인",
       "인증 설명서의 ⑥ 아직 못 막은 것 읽기",
       "오늘 확인한 내용 다이어리에 정리"
-    ],
-    "expected_minutes": 0,
-    "expected_minutes_meaning": "unset placeholder, not actual duration",
-    "confirmed": false,
-    "visible_current_count": 0,
-    "day_one_unchanged": true,
-    "previous_tasks_unchanged": true,
-    "initial_definition_unchanged": true
+    ]
   }
 }
