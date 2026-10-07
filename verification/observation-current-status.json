@@ -1,8 +1,8 @@
 {
   "client_review_date": "2026-10-07",
-  "checked_at": "2026-10-07T05:02:07.994Z",
+  "checked_at": "2026-10-07T05:03:50.735Z",
   "data_origin": "actual-user-export",
-  "exported_at": "2026-10-07T05:01:43.481Z",
+  "exported_at": "2026-10-07T05:03:28.875Z",
   "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
   "started_at": "2026-10-06T00:48:47.113Z",
   "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
@@ -80,7 +80,7 @@
       "due_date": "2026-10-07"
     }
   ],
-  "rule_changes": 0,
+  "rule_changes": 1,
   "manual_checks": 0,
   "assistant_arithmetic_crosscheck": {
     "sum": 6,
@@ -92,8 +92,8 @@
   "initial_definition_unchanged": true,
   "contribution_chronology_matches": true,
   "completed_or_confirmed_by_agent": false,
-  "private_export_sha256": "cb7bb45055d1d906a0c48f98776856cf76ea075801215b2c08b9edcf27c81cc6",
-  "raw_export": ".test-data/user-evidence/observation-day-2-confirmed-export-20261007.json (ignored/private)",
+  "private_export_sha256": "95acaea26e909c9293cec3a6581f37434b18920d60acbfd1c7db5e6c5aef4a77",
+  "raw_export": ".test-data/user-evidence/observation-rule-change-export-20261007.json (ignored/private)",
   "account_identifiers_excluded": true,
   "platform_submitted": false,
   "comparison_complete": false,
@@ -112,5 +112,21 @@
       "인증 설명서의 ⑥ 아직 못 막은 것 읽기",
       "오늘 확인한 내용 다이어리에 정리"
     ]
+  },
+  "current_rule": "하루 시작에 할 일 3개를 정하고, 각각 언제 할지 시간을 정한다",
+  "rule_change": {
+    "previous_rule": "하루 시작에 할 일 3개를 정하고 진행한다",
+    "next_rule": "하루 시작에 할 일 3개를 정하고, 각각 언제 할지 시간을 정한다",
+    "reason": "기존 규칙으로 1일차(2026-10-06)와 2일차(2026-10-07) 모두 3개를 완료했으므로, 할 일 수를 유지하며 시간 정하기가 이후 완료 수에 어떤 차이를 만드는지 관찰한다.",
+    "changed_at": "2026-10-07T05:03:16.059Z",
+    "reference_dates": [
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "exact_day_references_verified": true,
+    "after_day_two_confirmation": true,
+    "before_day_three": true,
+    "user_accepted_recommendation": true,
+    "saved_by_agent": true
   }
 }
