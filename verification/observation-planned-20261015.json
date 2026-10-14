@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-14T06:05:34.705Z",
+  "exported_at": "2026-10-14T06:05:11.679Z",
+  "date": "2026-10-15",
+  "registered_by_agent": true,
+  "user_authorized_exact_tasks": true,
+  "tasks": [
+    {
+      "title": "인증 설명서의 설명·코드 연결 확인",
+      "planned_time_kst": "10:00",
+      "status": "pending"
+    },
+    {
+      "title": "제출 체크리스트의 남은 항목 확인",
+      "planned_time_kst": "14:00",
+      "status": "pending"
+    },
+    {
+      "title": "오늘 확인한 내용과 규칙 사용 소감 정리",
+      "planned_time_kst": "18:00",
+      "status": "pending"
+    }
+  ],
+  "expected_minutes_meaning": "미정용 0분이며 실제 소요 시간이 아님",
+  "previous_tasks_and_records_unchanged": true,
+  "confirmed": false,
+  "confirmed_days": 4,
+  "private_export_sha256": "9b519605798029fbf2966ddde1eabbecd5f879ee47a12fd268794fa032cced2b",
+  "raw_export": ".test-data/user-evidence/observation-planned-20261015-export-20261014.json (ignored/private)",
+  "account_identifiers_excluded": true
+}

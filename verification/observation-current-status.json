@@ -1,8 +1,8 @@
 {
-  "client_review_date": "2026-10-07",
-  "checked_at": "2026-10-07T05:03:50.735Z",
+  "client_review_date": "2026-10-14",
+  "checked_at": "2026-10-14T06:05:34.705Z",
   "data_origin": "actual-user-export",
-  "exported_at": "2026-10-07T05:03:28.875Z",
+  "exported_at": "2026-10-14T06:05:11.679Z",
   "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
   "started_at": "2026-10-06T00:48:47.113Z",
   "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
@@ -22,10 +22,12 @@
     "week_start": "월요일",
     "calculation": "관찰 시작 이후 선택한 계획의 완료 이벤트를 한국 날짜별 고유 할 일 ID로 센다. 같은 날 재완료는 한 번, 다른 날 재완료는 그 날짜에 한 번 센다. 삭제해도 과거 완료는 유지한다."
   },
-  "confirmed_days": 2,
+  "confirmed_days": 4,
   "confirmed_dates": [
     "2026-10-06",
-    "2026-10-07"
+    "2026-10-07",
+    "2026-10-13",
+    "2026-10-14"
   ],
   "day_records": [
     {
@@ -45,9 +47,27 @@
       "note_present": false,
       "contribution_unique_task_count": 3,
       "contribution_event_count": 3
+    },
+    {
+      "ordinal": 3,
+      "date": "2026-10-13",
+      "count": 3,
+      "confirmed_at": "2026-10-13T00:38:07.788Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 4,
+      "date": "2026-10-14",
+      "count": 3,
+      "confirmed_at": "2026-10-14T05:49:48.405Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
     }
   ],
-  "observation_plan_tasks": 6,
+  "observation_plan_tasks": 18,
   "tasks": [
     {
       "title": "ALEPH 과제 안내 읽기",
@@ -78,22 +98,92 @@
       "title": "오늘 확인한 내용 다이어리에 정리",
       "status": "completed",
       "due_date": "2026-10-07"
+    },
+    {
+      "title": "1·2일차 기록과 변경 규칙 확인",
+      "status": "completed",
+      "due_date": "2026-10-12"
+    },
+    {
+      "title": "인증 앱의 저장 유지 확인",
+      "status": "completed",
+      "due_date": "2026-10-12"
+    },
+    {
+      "title": "오늘 확인한 내용 다이어리에 정리",
+      "status": "completed",
+      "due_date": "2026-10-12"
+    },
+    {
+      "title": "인증 설명서의 남은 한계 확인",
+      "status": "completed",
+      "due_date": "2026-10-13"
+    },
+    {
+      "title": "전체 내보내기 파일을 받아 기록 확인",
+      "status": "completed",
+      "due_date": "2026-10-13"
+    },
+    {
+      "title": "확인 결과와 예정 시간 준수 여부 정리",
+      "status": "completed",
+      "due_date": "2026-10-13"
+    },
+    {
+      "title": "인증 설명서와 실제 앱 기능 비교",
+      "status": "completed",
+      "due_date": "2026-10-14"
+    },
+    {
+      "title": "관찰 기록의 날짜별 완료 수 확인",
+      "status": "completed",
+      "due_date": "2026-10-14"
+    },
+    {
+      "title": "시간 정하기 규칙을 사용한 소감 정리",
+      "status": "completed",
+      "due_date": "2026-10-14"
+    },
+    {
+      "title": "인증 설명서의 설명·코드 연결 확인",
+      "status": "pending",
+      "due_date": "2026-10-15"
+    },
+    {
+      "title": "제출 체크리스트의 남은 항목 확인",
+      "status": "pending",
+      "due_date": "2026-10-15"
+    },
+    {
+      "title": "오늘 확인한 내용과 규칙 사용 소감 정리",
+      "status": "pending",
+      "due_date": "2026-10-15"
     }
   ],
   "rule_changes": 1,
   "manual_checks": 0,
   "assistant_arithmetic_crosscheck": {
-    "sum": 6,
+    "sum": 12,
     "mean": 3,
     "display_mean": "3.0",
     "matches_visible_ui": true,
-    "is_user_manual_check": false
+    "is_user_manual_check": false,
+    "pre_change": {
+      "days": 2,
+      "sum": 6,
+      "mean": 3
+    },
+    "post_change": {
+      "days": 2,
+      "sum": 6,
+      "mean": 3
+    }
   },
   "initial_definition_unchanged": true,
   "contribution_chronology_matches": true,
   "completed_or_confirmed_by_agent": false,
-  "private_export_sha256": "95acaea26e909c9293cec3a6581f37434b18920d60acbfd1c7db5e6c5aef4a77",
-  "raw_export": ".test-data/user-evidence/observation-rule-change-export-20261007.json (ignored/private)",
+  "private_export_sha256": "9b519605798029fbf2966ddde1eabbecd5f879ee47a12fd268794fa032cced2b",
+  "raw_export": ".test-data/user-evidence/observation-planned-20261015-export-20261014.json (ignored/private)",
   "account_identifiers_excluded": true,
   "platform_submitted": false,
   "comparison_complete": false,
@@ -128,5 +218,35 @@
     "before_day_three": true,
     "user_accepted_recommendation": true,
     "saved_by_agent": true
+  },
+  "actual_usage_days_reported_by_user": 5,
+  "missing_confirmation_dates": [
+    "2026-10-12"
+  ],
+  "previous_confirmed_records_unchanged": true,
+  "next_day_preparation": {
+    "date": "2026-10-15",
+    "registered_by_agent": true,
+    "user_authorized_exact_tasks": true,
+    "tasks": [
+      {
+        "title": "인증 설명서의 설명·코드 연결 확인",
+        "planned_time_kst": "10:00",
+        "status": "pending"
+      },
+      {
+        "title": "제출 체크리스트의 남은 항목 확인",
+        "planned_time_kst": "14:00",
+        "status": "pending"
+      },
+      {
+        "title": "오늘 확인한 내용과 규칙 사용 소감 정리",
+        "planned_time_kst": "18:00",
+        "status": "pending"
+      }
+    ],
+    "expected_minutes_meaning": "미정용 0분이며 실제 소요 시간이 아님",
+    "previous_tasks_and_records_unchanged": true,
+    "confirmed": false
   }
 }

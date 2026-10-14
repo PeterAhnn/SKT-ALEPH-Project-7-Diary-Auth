@@ -1,0 +1,75 @@
+{
+  "checked_at": "2026-10-14T06:04:16.626Z",
+  "exported_at": "2026-10-14T06:03:16.875Z",
+  "day_records": [
+    {
+      "ordinal": 1,
+      "date": "2026-10-06",
+      "count": 3,
+      "confirmed_at": "2026-10-06T06:07:22.261Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 2,
+      "date": "2026-10-07",
+      "count": 3,
+      "confirmed_at": "2026-10-07T05:01:10.827Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 3,
+      "date": "2026-10-13",
+      "count": 3,
+      "confirmed_at": "2026-10-13T00:38:07.788Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 4,
+      "date": "2026-10-14",
+      "count": 3,
+      "confirmed_at": "2026-10-14T05:49:48.405Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    }
+  ],
+  "confirmed_days": 4,
+  "actual_usage_days_reported_by_user": 5,
+  "missing_confirmation_dates": [
+    "2026-10-12"
+  ],
+  "arithmetic": {
+    "sum": 12,
+    "mean": 3,
+    "display_mean": "3.0",
+    "matches_visible_ui": true,
+    "is_user_manual_check": false,
+    "pre_change": {
+      "days": 2,
+      "sum": 6,
+      "mean": 3
+    },
+    "post_change": {
+      "days": 2,
+      "sum": 6,
+      "mean": 3
+    }
+  },
+  "initial_definition_unchanged": true,
+  "previous_confirmed_records_unchanged": true,
+  "contribution_chronology_matches": true,
+  "rule_changes": 1,
+  "exact_rule_change_references_verified": true,
+  "manual_checks": 0,
+  "completed_or_confirmed_by_agent": false,
+  "private_export_sha256": "e078035df8633e7a8dcf029d911393d378b3f7aaf8fdb51fec532c8274932609",
+  "raw_export": ".test-data/user-evidence/observation-four-confirmed-export-20261014.json (ignored/private)",
+  "account_identifiers_excluded": true,
+  "platform_submitted": false
+}
