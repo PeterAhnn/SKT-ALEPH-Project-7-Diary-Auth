@@ -1,0 +1,35 @@
+{
+  "prepared_at": "2026-10-15T01:08:25.925Z",
+  "status": "ready-not-submitted",
+  "source_commit": "b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+  "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app/",
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+  "confirmation_chars": 377,
+  "judgment_chars": 352,
+  "optional_attachment": "T07-AUTH-EXPLANATION-FINAL.md",
+  "attachment_count": 1,
+  "attachment_bytes": 37923,
+  "attachment_limits_passed": true,
+  "six_explanation_sections": true,
+  "pinned_relative_links_resolve_in_git": true,
+  "known_credential_and_prior_study_identifier_scan_passed": true,
+  "scan_limit": "Selected patterns and locally available known credential/prior study identifier values; not proof of absence of every secret.",
+  "actual_record_status": "2026-10-15: 5/5 confirmed days; user manual calculation and interpretation verified.",
+  "files": [
+    {
+      "name": "T07-AUTH-EXPLANATION-FINAL.md",
+      "bytes": 37923,
+      "sha256": "e4dfbdcb0ba0b4f5e794b84748cd00f246a370c21165f63f49ba825704ee6aa4"
+    },
+    {
+      "name": "T07-PASTE-FIELDS.txt",
+      "bytes": 1889,
+      "sha256": "2566ee2ee49a4b37f356d00e760dde28f07fde8f334d83260ff6b63e4566f861"
+    }
+  ],
+  "public_source_http_status": 200,
+  "public_result_http_status": 200,
+  "user_statement": "직접 계산한 합계 15개·평균 3.0개가 화면과 같았고, 시간을 정해도 체감한 차이는 없었다.",
+  "private_raw_export_excluded": true,
+  "platform_submitted": false
+}

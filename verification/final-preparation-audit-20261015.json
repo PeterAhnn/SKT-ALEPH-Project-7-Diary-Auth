@@ -24,7 +24,7 @@
   },
   "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
   "actual_confirmed_days": 5,
-  "overall_acceptance": "사용자 계산·소감 반영 완료; 최종 파일 생성·공개 커밋 확인 및 플랫폼 제출 대기",
+  "overall_acceptance": "최종 제출본 준비·검증 완료; 플랫폼 미제출",
   "platform_submitted": false,
   "public_result_check": {
     "checked_date": "2026-10-15",
@@ -46,8 +46,8 @@
     "checked_date": "2026-10-15",
     "browser": "gstack isolated anonymous browser",
     "http_status": 200,
-    "url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/30bd30f9ef598ef27c74ee73a03350e1a127f0f4",
-    "source_commit": "30bd30f9ef598ef27c74ee73a03350e1a127f0f4",
+    "url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+    "source_commit": "b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
     "t06_submitted_commit_is_ancestor": true
   },
   "user_manual_check": {
@@ -84,5 +84,37 @@
     ],
     "user_manual_check_pending": true,
     "user_interpretation_pending": true
+  },
+  "prepared_artifacts": {
+    "prepared_at": "2026-10-15T01:08:25.925Z",
+    "status": "ready-not-submitted",
+    "source_commit": "b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+    "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app/",
+    "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+    "confirmation_chars": 377,
+    "judgment_chars": 352,
+    "optional_attachment": "T07-AUTH-EXPLANATION-FINAL.md",
+    "attachment_count": 1,
+    "attachment_bytes": 37923,
+    "attachment_limits_passed": true,
+    "six_explanation_sections": true,
+    "pinned_relative_links_resolve_in_git": true,
+    "known_credential_and_prior_study_identifier_scan_passed": true,
+    "scan_limit": "Selected patterns and locally available known credential/prior study identifier values; not proof of absence of every secret.",
+    "actual_record_status": "2026-10-15: 5/5 confirmed days; user manual calculation and interpretation verified.",
+    "files": [
+      {
+        "name": "T07-AUTH-EXPLANATION-FINAL.md",
+        "bytes": 37923,
+        "sha256": "e4dfbdcb0ba0b4f5e794b84748cd00f246a370c21165f63f49ba825704ee6aa4"
+      },
+      {
+        "name": "T07-PASTE-FIELDS.txt",
+        "bytes": 1889,
+        "sha256": "2566ee2ee49a4b37f356d00e760dde28f07fde8f334d83260ff6b63e4566f861"
+      }
+    ],
+    "user_manual_check_pending": false,
+    "user_interpretation_pending": false
   }
 }
