@@ -1,0 +1,100 @@
+{
+  "checked_at": "2026-10-15T00:36:46.950Z",
+  "exported_at": "2026-10-15T00:34:53.929Z",
+  "day_records": [
+    {
+      "ordinal": 1,
+      "date": "2026-10-06",
+      "count": 3,
+      "confirmed_at": "2026-10-06T06:07:22.261Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 2,
+      "date": "2026-10-07",
+      "count": 3,
+      "confirmed_at": "2026-10-07T05:01:10.827Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 3,
+      "date": "2026-10-13",
+      "count": 3,
+      "confirmed_at": "2026-10-13T00:38:07.788Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 4,
+      "date": "2026-10-14",
+      "count": 3,
+      "confirmed_at": "2026-10-14T05:49:48.405Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    },
+    {
+      "ordinal": 5,
+      "date": "2026-10-15",
+      "count": 3,
+      "confirmed_at": "2026-10-15T00:32:51.603Z",
+      "note_present": false,
+      "contribution_unique_task_count": 3,
+      "contribution_event_count": 3
+    }
+  ],
+  "confirmed_days": 5,
+  "missing_confirmation_dates": [
+    "2026-10-12"
+  ],
+  "arithmetic": {
+    "sum": 15,
+    "mean": 3,
+    "display_mean": "3.0",
+    "matches_visible_ui": true,
+    "is_user_manual_check": false,
+    "pre_change": {
+      "days": 2,
+      "sum": 6,
+      "mean": 3
+    },
+    "post_change": {
+      "days": 3,
+      "sum": 9,
+      "mean": 3
+    },
+    "mean_difference": 0
+  },
+  "rule_change": {
+    "previous_rule": "하루 시작에 할 일 3개를 정하고 진행한다",
+    "next_rule": "하루 시작에 할 일 3개를 정하고, 각각 언제 할지 시간을 정한다",
+    "reason": "기존 규칙으로 1일차(2026-10-06)와 2일차(2026-10-07) 모두 3개를 완료했으므로, 할 일 수를 유지하며 시간 정하기가 이후 완료 수에 어떤 차이를 만드는지 관찰한다.",
+    "changed_at": "2026-10-07T05:03:16.059Z",
+    "reference_dates": [
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "exact_day_references_verified": true,
+    "after_day_two_confirmation": true,
+    "before_day_three": true,
+    "user_accepted_recommendation": true,
+    "saved_by_agent": true
+  },
+  "initial_definition_unchanged": true,
+  "previous_confirmed_records_unchanged": true,
+  "contribution_chronology_matches": true,
+  "completion_event_dates_verified_kst": true,
+  "manual_checks": 0,
+  "user_manual_check_pending": true,
+  "user_interpretation_pending": true,
+  "completed_or_confirmed_by_agent": false,
+  "private_export_sha256": "dfe58c3bfd8bf6c329e46a35180c0932879db9344e42655032b94ac5b7c433e3",
+  "raw_export": ".test-data/user-evidence/observation-five-confirmed-export-20261015.json (ignored/private)",
+  "account_identifiers_excluded": true,
+  "platform_submitted": false
+}

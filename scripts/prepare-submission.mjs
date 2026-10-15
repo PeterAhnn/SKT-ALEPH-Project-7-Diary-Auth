@@ -37,11 +37,11 @@ explanation = explanation.replace(/\]\((\.{1,2}\/[^)]+)\)/g, (_, relative) => {
   git('cat-file', '-e', `${commit}:${target}`);
   return `](${repo}/blob/${commit}/${target})`;
 });
-const report = `# T07 인증 구현 설명서 · 제출 준비본\n\n**미제출·실제 관찰 진행 중.** ${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 현재 완료 여부와 날짜 수는 실제 저장 기록을 기준으로 하며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
-const paste = `T07 미제출 준비본 — 실제 5일 최종 확인 전 제출하지 않음\n\n결과물 URL (필수)\n${result}\n\n소스 저장소 URL (필수)\n${source}\n\n재현·통과 확인 4가지\n${confirmation}\n\nAI와 내 판단 3줄\n${judgment}\n`;
+const report = `# T07 인증 구현 설명서 · 제출 준비본\n\n**미제출·사용자 직접 계산과 소감 확인 대기.** ${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 현재 완료 여부와 날짜 수는 실제 저장 기록을 기준으로 하며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
+const paste = `T07 미제출 준비본 — 사용자 직접 계산과 소감 확인 전 제출하지 않음\n\n결과물 URL (필수)\n${result}\n\n소스 저장소 URL (필수)\n${source}\n\n재현·통과 확인 4가지\n${confirmation}\n\nAI와 내 판단 3줄\n${judgment}\n`;
 for (const file of ['.env.local', '.env.cloud.local']) if (existsSync(file)) process.loadEnvFile(file);
 const known = ['VERCEL_OIDC_TOKEN', 'T07_PG_PASSWORD'].map(k => process.env[k]).filter(v => v?.length > 16);
-for (const privatePath of ['.test-data/user-evidence/card-5-current-export-20261002.json', '.test-data/user-evidence/card-5-current-export-20261006.json', '.test-data/user-evidence/observation-restart-export-20261006.json', '.test-data/user-evidence/observation-day-1-export-20261006.json']) if (existsSync(privatePath)) {
+for (const privatePath of ['.test-data/user-evidence/observation-five-confirmed-export-20261015.json', '.test-data/user-evidence/card-5-current-export-20261002.json', '.test-data/user-evidence/card-5-current-export-20261006.json', '.test-data/user-evidence/observation-restart-export-20261006.json', '.test-data/user-evidence/observation-day-1-export-20261006.json']) if (existsSync(privatePath)) {
   const data = JSON.parse(await readFile(privatePath, 'utf8'));
   for (const study of data.observation_studies ?? []) {
     for (const key of ['id', 'plan_id', 'user_id']) if (study[key]) known.push(study[key]);
@@ -71,7 +71,7 @@ const manifest = {
   six_explanation_sections: true, pinned_relative_links_resolve_in_git: true,
   known_credential_and_prior_study_identifier_scan_passed: true,
   scan_limit: 'Selected patterns and locally available known credential/prior study identifier values; not proof of absence of every secret.',
-  actual_record_status: `${actual.client_review_date}: ${actual.confirmed_days}/5 confirmed days; actual observation incomplete.`,
+  actual_record_status: `${actual.client_review_date}: ${actual.confirmed_days}/5 confirmed days; user manual calculation and interpretation pending.`,
   files: metadata
 };
 await writeFile(`${out}/manifest.json`, `${JSON.stringify(manifest, null, 2)}\n`);

@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-15T00:37:01.329Z",
+  "official_source_url": "https://aleph-omega.vercel.app/cortex?panel=tasks",
+  "official_criteria_count": 68,
+  "stage_counts": {
+    "1": 10,
+    "2": 7,
+    "3": 8,
+    "4": 11,
+    "5": 32
+  },
+  "all_criterion_texts_match_preserved_source": true,
+  "full_cards_1_to_5_read": true,
+  "submission_fields": {
+    "result_url_required": true,
+    "source_full_commit_required": true,
+    "confirmation_lines": 4,
+    "judgment_lines": 3,
+    "each_text_max_chars": 1500,
+    "attachment_optional": true,
+    "attachment_max_count": 10,
+    "attachment_max_total_bytes": 8388608,
+    "markdown_allowed": true
+  },
+  "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
+  "actual_confirmed_days": 5,
+  "overall_acceptance": "사용자 손계산·소감 및 최종 공개 커밋 확인 대기",
+  "platform_submitted": false,
+  "public_result_check": {
+    "checked_date": "2026-10-15",
+    "browser": "gstack isolated anonymous browser",
+    "http_status": 200,
+    "login_screen_visible": true,
+    "account_creation_or_login_required_for_first_screen": false
+  },
+  "final_document_checks": {
+    "private_identifiers_excluded": true,
+    "six_auth_sections": true,
+    "source_scan_files": 150,
+    "source_scan_passed": true,
+    "user_manual_values_not_filled": true,
+    "raw_export_ignored": true
+  }
+}

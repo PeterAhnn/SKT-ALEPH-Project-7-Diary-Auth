@@ -958,7 +958,7 @@
       "id": "T07-C07",
       "stage": 5,
       "official_requirement": "Asia/Seoul 기준으로 서로 다른 실제 날짜 정확히 5일의 기록이 내 계정 안에 있다.",
-      "current_recorded_status": "진행 중: 실제 10월 6일 완료 3개로 확정 1/5일",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -969,16 +969,17 @@
         "docs/CARD-5-REVIEW.md",
         "verification/card-5-current-status.json",
         "verification/card-5-current-status-20261006.json",
-        "verification/observation-day-1-20261006.json"
+        "verification/observation-day-1-20261006.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "서로 다른 실제 날짜 4일 추가 필요",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
       "id": "T07-C08",
       "stage": 5,
       "official_requirement": "실제 5일 기록에 같은 지표 계산 규칙이 적용된다.",
-      "current_recorded_status": "기준 저장·합성 검사는 있음. 실제 5일 적용은 미완료",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -987,9 +988,10 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "기준 저장·합성 검사는 있음. 실제 5일 적용은 미완료",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
@@ -1086,7 +1088,7 @@
       "id": "T07-C09",
       "stage": 5,
       "official_requirement": "계획 규칙 변경 기록은 2일차 기록 뒤이면서 3일차 기록 앞이다.",
-      "current_recorded_status": "**미완료: 2일차 뒤·3일차 앞 변경 0건**",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1095,16 +1097,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "**미완료: 2일차 뒤·3일차 앞 변경 0건**",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
       "id": "T07-C10",
       "stage": 5,
       "official_requirement": "계획 규칙을 바꾼 시각이 기록되어 있다.",
-      "current_recorded_status": "미완료: 실제 변경 시각 없음",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1113,16 +1116,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "미완료: 실제 변경 시각 없음",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
       "id": "T07-C11",
       "stage": 5,
       "official_requirement": "계획 규칙을 바꾼 이유가 기록되어 있다.",
-      "current_recorded_status": "미완료: 실제 1~2일차를 본 이유 없음",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1131,16 +1135,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "미완료: 실제 1~2일차를 본 이유 없음",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
       "id": "T07-C12",
       "stage": 5,
       "official_requirement": "규칙 변경 기록이 1일차와 2일차 기록을 정확히 가리키고, 2일차 뒤·3일차 앞에 놓인다.",
-      "current_recorded_status": "미완료: 실제 두 날짜와 변경 없음",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1149,16 +1154,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "미완료: 실제 두 날짜와 변경 없음",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 1~2일차 뒤·3일차 전"
     },
     {
       "id": "T07-C13",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 지표가 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1167,16 +1173,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
       "id": "T07-C14",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 단위가 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1185,16 +1192,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
       "id": "T07-C15",
       "stage": 5,
       "official_requirement": "규칙 변경 전후 비교에 같은 계산 규칙이 사용된다.",
-      "current_recorded_status": "기준·기능 있음. 실제 비교 미완료",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1203,16 +1211,17 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "기준·기능 있음. 실제 비교 미완료",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
       "id": "T07-C132",
       "stage": 5,
       "official_requirement": "화면에 보이는 합계·평균이 내 5일 기록을 손으로 더한 값과 같다.",
-      "current_recorded_status": "**미완료: 실제 날짜/대조 0건**. 합성 8개/1.6 예를 실제 결과로 쓰지 않음",
+      "current_recorded_status": "AI 산술 검증 완료; 사용자 직접 합계·평균 확인 대기",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1223,14 +1232,14 @@
         "docs/CARD-5-REVIEW.md",
         "verification/card-5-current-status.json"
       ],
-      "remaining": "**미완료: 실제 날짜/대조 0건**. 합성 8개/1.6 예를 실제 결과로 쓰지 않음",
+      "remaining": "사용자가 직접 계산한 결과를 받은 뒤 저장·대조한다.",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
       "id": "T07-C133",
       "stage": 5,
       "official_requirement": "내 자료 전체를 파일 하나로 내보낼 수 있다.",
-      "current_recorded_status": "실제 현재 계정 schema 3 / 논리 12표 파일 다운로드 확인. 최종 5일 파일은 이후 다시 보관",
+      "current_recorded_status": "2026-10-15 최종 실제 내보내기로 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1241,9 +1250,10 @@
         "verification/actual-migration.json",
         "verification/production-api.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "현재 준비/확인. 실제 5일과 최종 제출 묶음은 미완료",
+      "remaining": "최종 제출 준비본·가림·고정 소스 확인 및 제출 대기",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
@@ -1446,5 +1456,35 @@
     "rule_changes": 0,
     "manual_checks": 0,
     "platform_submitted": false
+  },
+  "final_preparation_update": {
+    "checked_at": "2026-10-15T00:37:01.329Z",
+    "official_source_url": "https://aleph-omega.vercel.app/cortex?panel=tasks",
+    "official_criteria_count": 68,
+    "stage_counts": {
+      "1": 10,
+      "2": 7,
+      "3": 8,
+      "4": 11,
+      "5": 32
+    },
+    "all_criterion_texts_match_preserved_source": true,
+    "full_cards_1_to_5_read": true,
+    "submission_fields": {
+      "result_url_required": true,
+      "source_full_commit_required": true,
+      "confirmation_lines": 4,
+      "judgment_lines": 3,
+      "each_text_max_chars": 1500,
+      "attachment_optional": true,
+      "attachment_max_count": 10,
+      "attachment_max_total_bytes": 8388608,
+      "markdown_allowed": true
+    },
+    "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
+    "actual_confirmed_days": 5,
+    "overall_acceptance": "사용자 손계산·소감 및 최종 공개 커밋 확인 대기",
+    "platform_submitted": false,
+    "actual_evidence": "verification/observation-final-20261015.json"
   }
 }
