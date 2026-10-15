@@ -196,7 +196,7 @@
   "private_export_sha256": "217f088566b219d023f70cd145f58ee7c8cba281b0c6602d1d9831bdbd62824f",
   "raw_export": ".test-data/user-evidence/observation-human-check-export-20261015.json (ignored/private)",
   "account_identifiers_excluded": true,
-  "platform_submitted": false,
+  "platform_submitted": true,
   "comparison_complete": true,
   "day_two_preparation": {
     "date": "2026-10-07",
@@ -272,5 +272,6 @@
     "saved_by_agent": true,
     "values_and_interpretation_provided_by_user": true,
     "matches_five_day_sum_and_mean": true
-  }
+  },
+  "platform_submission_evidence": "verification/platform-submission.json"
 }

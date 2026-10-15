@@ -1,24 +1,26 @@
 {
-  "checked_at": "2026-09-30T09:11:06.546Z",
-  "task": "T06",
+  "checked_at": "2026-10-15T01:11:23.859Z",
+  "client_date": "2026-10-15",
+  "task": "T07",
   "platform_url": "https://aleph-omega.vercel.app/cortex?panel=tasks",
   "platform_submitted": true,
-  "submission_success_observed_at": "2026-09-30T09:10:45.090Z",
-  "success_heading": "T06 제출을 마쳤습니다",
-  "current_status": "강사 승인 대기",
-  "current_status_message": "과제를 제출했습니다. 강사 승인을 기다려 주세요.",
-  "teacher_approved": false,
+  "success_message": "T07 제출을 마쳤습니다",
+  "platform_status": "강사 승인 대기",
+  "instructor_approved": false,
   "master_approved": false,
-  "grading_complete": false,
-  "source_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
-  "result_url": "https://skt-aleph-project-6-diary.vercel.app",
-  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
-  "verification_characters": 465,
-  "judgment_characters": 318,
-  "files_attached": [],
-  "screenshots": [
-    "verification/submission-success.png",
-    "verification/submission-pending.png"
-  ],
-  "verification_method": "Authorized official form submission via existing logged-in in-app browser; observed success modal, then instructor approval waiting state. No approval or grading inferred."
+  "grading_completed": false,
+  "result_url": "https://skt-aleph-project-7-diary-auth.vercel.app/",
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+  "source_commit": "b6fc8b8a43c8e8963d573d46a86c57d2de5b6f10",
+  "confirmation_chars": 377,
+  "judgment_chars": 352,
+  "attachment": {
+    "name": "T07-AUTH-EXPLANATION-FINAL.md",
+    "bytes": 37923,
+    "sha256": "e4dfbdcb0ba0b4f5e794b84748cd00f246a370c21165f63f49ba825704ee6aa4"
+  },
+  "screenshot": ".test-data/user-evidence/platform-submitted-20261015.jpg (비공개 보관)",
+  "private_receipt": ".test-data/user-evidence/platform-receipt-20261015.txt (비공개 보관)",
+  "actual_account_export_uploaded": false,
+  "credentials_uploaded": false
 }

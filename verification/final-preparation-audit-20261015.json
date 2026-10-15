@@ -24,8 +24,8 @@
   },
   "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
   "actual_confirmed_days": 5,
-  "overall_acceptance": "최종 제출본 준비·검증 완료; 플랫폼 미제출",
-  "platform_submitted": false,
+  "overall_acceptance": "최종 제출 접수 완료; 강사·마스터 승인 및 채점 대기",
+  "platform_submitted": true,
   "public_result_check": {
     "checked_date": "2026-10-15",
     "browser": "gstack isolated anonymous browser",
@@ -116,5 +116,7 @@
     ],
     "user_manual_check_pending": false,
     "user_interpretation_pending": false
-  }
+  },
+  "platform_status": "강사 승인 대기",
+  "platform_submission_evidence": "verification/platform-submission.json"
 }
