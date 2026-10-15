@@ -24,7 +24,7 @@
   },
   "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
   "actual_confirmed_days": 5,
-  "overall_acceptance": "사용자 손계산·소감 및 최종 공개 커밋 확인 대기",
+  "overall_acceptance": "준비본 검증 완료; 사용자 직접 계산·소감과 최종 제출 대기",
   "platform_submitted": false,
   "public_result_check": {
     "checked_date": "2026-10-15",
@@ -40,5 +40,37 @@
     "source_scan_passed": true,
     "user_manual_values_not_filled": true,
     "raw_export_ignored": true
+  },
+  "public_source_check": {
+    "checked_date": "2026-10-15",
+    "browser": "gstack isolated anonymous browser",
+    "http_status": 200,
+    "url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/30bd30f9ef598ef27c74ee73a03350e1a127f0f4",
+    "source_commit": "30bd30f9ef598ef27c74ee73a03350e1a127f0f4",
+    "t06_submitted_commit_is_ancestor": true
+  },
+  "prepared_artifacts": {
+    "status": "draft-not-submitted",
+    "confirmation_chars": 377,
+    "judgment_chars": 322,
+    "attachment_count": 1,
+    "attachment_bytes": 37102,
+    "six_explanation_sections": true,
+    "pinned_links_resolve": true,
+    "selected_secret_scan_passed": true,
+    "files": [
+      {
+        "name": "T07-AUTH-EXPLANATION-DRAFT.md",
+        "bytes": 37102,
+        "sha256": "bdd3d5da4987b6382653007d4b5d9ce9a619fe85609caa628fe10799b6559e54"
+      },
+      {
+        "name": "T07-PASTE-FIELDS.txt",
+        "bytes": 1881,
+        "sha256": "a58097c848fbd1df732858922368286769ae8cd6bd3a60e9265080d11b1b387f"
+      }
+    ],
+    "user_manual_check_pending": true,
+    "user_interpretation_pending": true
   }
 }

@@ -10,6 +10,14 @@
 
 [진행 및 근거](./OBSERVATION-PROGRESS.md), [최종 점검](../verification/final-preparation-audit-20261015.json). 공개할 설명서와 확인/판단 문안을 준비하되 실제 계정 원본과 비밀값은 첨부하지 않는다.
 
+## 현재 생성한 검토용 준비본
+
+고정 소스: https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth/commit/30bd30f9ef598ef27c74ee73a03350e1a127f0f4
+
+선택 첨부 후보 `T07-AUTH-EXPLANATION-DRAFT.md`는 37102바이트이며 확인 4줄 377자, 판단 3줄 322자다. 파일 한 개·합계 8MB, 각 문안 1,500자 제한을 통과했다. 여섯 항목과 고정 GitHub 근거 링크의 존재, 지정 비밀값·식별자 패턴 검사도 통과했다. 이는 모든 비밀값 부재를 보장하는 검사는 아니다. 결과물과 준비본 소스 URL은 격리된 익명 브라우저에서 각각 HTTP 200으로 확인했다.
+
+생성 파일은 `.test-data/submission-prep/`에 보관한다. 사용자 직접 계산과 소감이 오면 설명서와 문안을 반영해 다시 생성한다. 현재 플랫폼 입력·업로드·최종 제출은 하지 않았다.
+
 ## 이전 준비 기록: 2026-10-06 당시
 
 # T07 제출 준비 재개 · 2026-10-06
