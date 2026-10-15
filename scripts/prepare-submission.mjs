@@ -16,6 +16,9 @@ const repo = 'https://github.com/PeterAhnn/SKT-ALEPH-Project-7-Diary-Auth';
 const result = 'https://skt-aleph-project-7-diary-auth.vercel.app/';
 const source = `${repo}/commit/${commit}`;
 const actual = JSON.parse(git('show', `${commit}:verification/observation-current-status.json`));
+const ready = actual.confirmed_days === 5 && actual.manual_checks > 0
+  && actual.user_manual_check_pending === false && actual.user_interpretation_pending === false;
+const preparationLabel = ready ? '최종 제출본 · 미제출' : '제출 준비본 · 사용자 확인 대기';
 const submission = git('show', `${commit}:docs/SUBMISSION.md`);
 const section = title => {
   const body = submission.split(`## ${title}\n`)[1];
@@ -37,8 +40,8 @@ explanation = explanation.replace(/\]\((\.{1,2}\/[^)]+)\)/g, (_, relative) => {
   git('cat-file', '-e', `${commit}:${target}`);
   return `](${repo}/blob/${commit}/${target})`;
 });
-const report = `# T07 인증 구현 설명서 · 제출 준비본\n\n**미제출·사용자 직접 계산과 소감 확인 대기.** ${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 현재 완료 여부와 날짜 수는 실제 저장 기록을 기준으로 하며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
-const paste = `T07 미제출 준비본 — 사용자 직접 계산과 소감 확인 전 제출하지 않음\n\n결과물 URL (필수)\n${result}\n\n소스 저장소 URL (필수)\n${source}\n\n재현·통과 확인 4가지\n${confirmation}\n\nAI와 내 판단 3줄\n${judgment}\n`;
+const report = `# T07 인증 구현 설명서 · ${preparationLabel}\n\n${actual.client_review_date} 실제 계정 export 확인: 확정 ${actual.confirmed_days}/5일, 할 일 ${actual.observation_plan_tasks}개, 규칙 변경 ${actual.rule_changes}건, 손계산 ${actual.manual_checks}건. 현재 완료 여부와 날짜 수는 실제 저장 기록을 기준으로 하며 합성 검사를 실제 5일로 세지 않는다.\n\n결과물 URL (필수): ${result}\n\n소스 저장소 URL (필수): ${source}\n\n${explanation}\n\n## 재현·통과 확인 4가지\n\n${confirmation}\n\n## AI와 내 판단 3줄\n\n${judgment}\n`;
+const paste = `T07 ${preparationLabel}\n\n결과물 URL (필수)\n${result}\n\n소스 저장소 URL (필수)\n${source}\n\n재현·통과 확인 4가지\n${confirmation}\n\nAI와 내 판단 3줄\n${judgment}\n`;
 for (const file of ['.env.local', '.env.cloud.local']) if (existsSync(file)) process.loadEnvFile(file);
 const known = ['VERCEL_OIDC_TOKEN', 'T07_PG_PASSWORD'].map(k => process.env[k]).filter(v => v?.length > 16);
 for (const privatePath of ['.test-data/user-evidence/observation-five-confirmed-export-20261015.json', '.test-data/user-evidence/card-5-current-export-20261002.json', '.test-data/user-evidence/card-5-current-export-20261006.json', '.test-data/user-evidence/observation-restart-export-20261006.json', '.test-data/user-evidence/observation-day-1-export-20261006.json']) if (existsSync(privatePath)) {
@@ -55,7 +58,7 @@ for (const value of [report, paste]) {
 }
 const out = '.test-data/submission-prep';
 await mkdir(out, { recursive: true });
-const files = [['T07-AUTH-EXPLANATION-DRAFT.md', report], ['T07-PASTE-FIELDS.txt', paste]];
+const files = [[ready ? 'T07-AUTH-EXPLANATION-FINAL.md' : 'T07-AUTH-EXPLANATION-DRAFT.md', report], ['T07-PASTE-FIELDS.txt', paste]];
 const metadata = [];
 for (const [name, value] of files) {
   const bytes = Buffer.byteLength(value);
@@ -63,7 +66,7 @@ for (const [name, value] of files) {
   metadata.push({ name, bytes, sha256: createHash('sha256').update(value).digest('hex') });
 }
 const manifest = {
-  prepared_at: new Date().toISOString(), status: 'draft-not-submitted', source_commit: commit,
+  prepared_at: new Date().toISOString(), status: ready ? 'ready-not-submitted' : 'draft-not-submitted', source_commit: commit,
   result_url: result, source_url: source,
   confirmation_chars: confirmation.length, judgment_chars: judgment.length,
   optional_attachment: files[0][0], attachment_count: 1, attachment_bytes: metadata[0].bytes,
@@ -71,7 +74,7 @@ const manifest = {
   six_explanation_sections: true, pinned_relative_links_resolve_in_git: true,
   known_credential_and_prior_study_identifier_scan_passed: true,
   scan_limit: 'Selected patterns and locally available known credential/prior study identifier values; not proof of absence of every secret.',
-  actual_record_status: `${actual.client_review_date}: ${actual.confirmed_days}/5 confirmed days; user manual calculation and interpretation pending.`,
+  actual_record_status: `${actual.client_review_date}: ${actual.confirmed_days}/5 confirmed days; ${ready ? 'user manual calculation and interpretation verified' : 'user manual calculation and interpretation pending'}.`,
   files: metadata
 };
 await writeFile(`${out}/manifest.json`, `${JSON.stringify(manifest, null, 2)}\n`);

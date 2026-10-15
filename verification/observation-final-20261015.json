@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-15T00:36:46.950Z",
-  "exported_at": "2026-10-15T00:34:53.929Z",
+  "checked_at": "2026-10-15T01:07:27.482Z",
+  "exported_at": "2026-10-15T01:06:53.318Z",
   "day_records": [
     {
       "ordinal": 1,
@@ -89,12 +89,22 @@
   "previous_confirmed_records_unchanged": true,
   "contribution_chronology_matches": true,
   "completion_event_dates_verified_kst": true,
-  "manual_checks": 0,
-  "user_manual_check_pending": true,
-  "user_interpretation_pending": true,
+  "manual_checks": 1,
+  "user_manual_check_pending": false,
+  "user_interpretation_pending": false,
   "completed_or_confirmed_by_agent": false,
-  "private_export_sha256": "dfe58c3bfd8bf6c329e46a35180c0932879db9344e42655032b94ac5b7c433e3",
-  "raw_export": ".test-data/user-evidence/observation-five-confirmed-export-20261015.json (ignored/private)",
+  "private_export_sha256": "217f088566b219d023f70cd145f58ee7c8cba281b0c6602d1d9831bdbd62824f",
+  "raw_export": ".test-data/user-evidence/observation-human-check-export-20261015.json (ignored/private)",
   "account_identifiers_excluded": true,
-  "platform_submitted": false
+  "platform_submitted": false,
+  "user_manual_check": {
+    "hand_sum": 15,
+    "hand_mean": "3.0",
+    "note": "직접 계산해 보니 합계 15개, 평균 3.0개로 화면과 같았다. 시간을 정해도 체감한 차이는 없었다.",
+    "saved_at": "2026-10-15T01:06:41.262Z",
+    "saved_by_agent": true,
+    "values_and_interpretation_provided_by_user": true,
+    "matches_five_day_sum_and_mean": true
+  },
+  "diary_records_unchanged_after_check": true
 }

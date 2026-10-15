@@ -24,7 +24,7 @@
   },
   "evidence_rule": "성공·거절 요청을 나란히 보관하고 비밀값을 가린다. 심사자는 실제 계정으로 로그인하지 않는다.",
   "actual_confirmed_days": 5,
-  "overall_acceptance": "준비본 검증 완료; 사용자 직접 계산·소감과 최종 제출 대기",
+  "overall_acceptance": "사용자 계산·소감 반영 완료; 최종 파일 생성·공개 커밋 확인 및 플랫폼 제출 대기",
   "platform_submitted": false,
   "public_result_check": {
     "checked_date": "2026-10-15",
@@ -38,8 +38,9 @@
     "six_auth_sections": true,
     "source_scan_files": 150,
     "source_scan_passed": true,
-    "user_manual_values_not_filled": true,
-    "raw_export_ignored": true
+    "user_manual_values_not_filled": false,
+    "raw_export_ignored": true,
+    "user_provided_manual_values_saved": true
   },
   "public_source_check": {
     "checked_date": "2026-10-15",
@@ -49,7 +50,18 @@
     "source_commit": "30bd30f9ef598ef27c74ee73a03350e1a127f0f4",
     "t06_submitted_commit_is_ancestor": true
   },
-  "prepared_artifacts": {
+  "user_manual_check": {
+    "hand_sum": 15,
+    "hand_mean": "3.0",
+    "note": "직접 계산해 보니 합계 15개, 평균 3.0개로 화면과 같았다. 시간을 정해도 체감한 차이는 없었다.",
+    "saved_at": "2026-10-15T01:06:41.262Z",
+    "saved_by_agent": true,
+    "values_and_interpretation_provided_by_user": true,
+    "matches_five_day_sum_and_mean": true
+  },
+  "user_manual_check_pending": false,
+  "user_interpretation_pending": false,
+  "previous_prepared_artifacts": {
     "status": "draft-not-submitted",
     "confirmation_chars": 377,
     "judgment_chars": 322,

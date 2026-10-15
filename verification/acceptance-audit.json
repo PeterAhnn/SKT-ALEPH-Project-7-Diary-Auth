@@ -1221,7 +1221,7 @@
       "id": "T07-C132",
       "stage": 5,
       "official_requirement": "화면에 보이는 합계·평균이 내 5일 기록을 손으로 더한 값과 같다.",
-      "current_recorded_status": "AI 산술 검증 완료; 사용자 직접 합계·평균 확인 대기",
+      "current_recorded_status": "사용자 직접 계산 15개·3.0개 일치 확인 및 앱 저장 검증 완료",
       "evidence": [
         "docs/AUTH-IMPLEMENTATION.md",
         "docs/OBSERVATION-PLAN.md",
@@ -1230,9 +1230,10 @@
         "verification/observation-browser.json",
         "contracts/t07-schema-v3.json",
         "docs/CARD-5-REVIEW.md",
-        "verification/card-5-current-status.json"
+        "verification/card-5-current-status.json",
+        "verification/observation-final-20261015.json"
       ],
-      "remaining": "사용자가 직접 계산한 결과를 받은 뒤 저장·대조한다.",
+      "remaining": "최종 제출 및 접수 확인",
       "next_check": "실제 5일 진행과 제출 직전"
     },
     {
@@ -1486,5 +1487,13 @@
     "overall_acceptance": "사용자 손계산·소감 및 최종 공개 커밋 확인 대기",
     "platform_submitted": false,
     "actual_evidence": "verification/observation-final-20261015.json"
+  },
+  "final_human_confirmation_update": {
+    "checked_at": "2026-10-15T01:07:27.482Z",
+    "confirmed_days": 5,
+    "manual_checks": 1,
+    "user_statement": "사용자가 직접 계산한 합계 15개·평균 3.0개가 화면과 같다고 확인했다. 실제 소감은 “시간을 정해도 체감한 차이는 없었다”다. 사용자 요청에 따라 이 값과 소감을 앱에 대신 저장했고, 2026-10-15 10:06:41(한국 시간) 저장 기록 및 최종 전체 내보내기로 일치를 검증했다. 손계산 저장은 1건이며, 기존 5일·규칙 변경·할 일은 변경되지 않았다. 플랫폼에는 아직 제출하지 않았다.",
+    "evidence": "verification/observation-final-20261015.json",
+    "platform_submitted": false
   }
 }

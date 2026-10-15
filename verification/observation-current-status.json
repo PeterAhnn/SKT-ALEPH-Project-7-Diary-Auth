@@ -1,8 +1,8 @@
 {
   "client_review_date": "2026-10-15",
-  "checked_at": "2026-10-15T00:36:46.950Z",
+  "checked_at": "2026-10-15T01:07:27.482Z",
   "data_origin": "actual-user-export",
-  "exported_at": "2026-10-15T00:34:53.929Z",
+  "exported_at": "2026-10-15T01:06:53.318Z",
   "plan_title": "ALEPH 공부·과제 진행 — 완료 개수 5일 관찰 (10/6 새 시작)",
   "started_at": "2026-10-06T00:48:47.113Z",
   "question": "하루 시작에 할 일을 정하면 하루 완료 개수는 어떻게 달라질까?",
@@ -171,7 +171,7 @@
     }
   ],
   "rule_changes": 1,
-  "manual_checks": 0,
+  "manual_checks": 1,
   "assistant_arithmetic_crosscheck": {
     "sum": 15,
     "mean": 3,
@@ -193,11 +193,11 @@
   "initial_definition_unchanged": true,
   "contribution_chronology_matches": true,
   "completed_or_confirmed_by_agent": false,
-  "private_export_sha256": "dfe58c3bfd8bf6c329e46a35180c0932879db9344e42655032b94ac5b7c433e3",
-  "raw_export": ".test-data/user-evidence/observation-five-confirmed-export-20261015.json (ignored/private)",
+  "private_export_sha256": "217f088566b219d023f70cd145f58ee7c8cba281b0c6602d1d9831bdbd62824f",
+  "raw_export": ".test-data/user-evidence/observation-human-check-export-20261015.json (ignored/private)",
   "account_identifiers_excluded": true,
   "platform_submitted": false,
-  "comparison_complete": false,
+  "comparison_complete": true,
   "day_two_preparation": {
     "date": "2026-10-07",
     "registered_by_agent": true,
@@ -262,6 +262,15 @@
   },
   "five_dates_complete": true,
   "comparison_calculation_complete": true,
-  "user_manual_check_pending": true,
-  "user_interpretation_pending": true
+  "user_manual_check_pending": false,
+  "user_interpretation_pending": false,
+  "user_manual_check": {
+    "hand_sum": 15,
+    "hand_mean": "3.0",
+    "note": "직접 계산해 보니 합계 15개, 평균 3.0개로 화면과 같았다. 시간을 정해도 체감한 차이는 없었다.",
+    "saved_at": "2026-10-15T01:06:41.262Z",
+    "saved_by_agent": true,
+    "values_and_interpretation_provided_by_user": true,
+    "matches_five_day_sum_and_mean": true
+  }
 }
